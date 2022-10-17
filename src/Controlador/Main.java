@@ -10,7 +10,7 @@ public class Main {
 Scanner input= new Scanner(System.in);
 
 
-        System.out.println("hola a trabajar  todos!");
+        System.out.println("hola a trabajar!");
 
 
 
