@@ -86,15 +86,13 @@ private boolean enviado;
         return fechaHora;
     }
 
-    public void setFechaHora(LocalDateTime fechaHora) {   //calcula la fecha actual cada vez que usas el set.
-        //fechaHora= LocalDateTime.now();
+    public void setFechaHora(LocalDateTime fechaHora) {   //entiendo que en el momento de crear el pedido ya calcula la hora de ese momento "this.fechaHora= LocalDateTime.now()";
         this.fechaHora = fechaHora;
     }
 
 
 
-    //Un pedido no se puede ser cancelado una vez transcurrido el tiempo de preparación para el envío del articulo a partir de la fecha del pedido.
-    public boolean pedidoEnviado(){
+  public boolean pedidoEnviado(){        // funcion para saber si el pedido ha sido envido o no
         String pattern = "yyyy-MM-dd HH:mm";
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
         String fecha1=fechaHora.toString().replace("T"," ");  //fecha elaboracion
@@ -103,9 +101,9 @@ private boolean enviado;
             Date date1 = sdf.parse(fecha1);
             Date date2 = sdf.parse(fecha2);
             long diff = date2.getTime() - date1.getTime();
-            if(diff>articulo.getTiempoDePreparacion()){
+            if(diff>articulo.getTiempoDePreparacion()){   //si diff es mayor al tiempo de prep., el pedido ya se ha enviado
                 return true;
-            }else{
+            }else{    //si diff es menor al tiempo de prep., el pedido aun no se ha enviado
                 return false;
             }
         }
@@ -115,8 +113,8 @@ private boolean enviado;
         return false;
     }
     //Para calcular el precio del pedido hay que tener en cuenta el precio de venta, las unidades pedidas, el coste del envío y si el cliente que lo ha realizado es premium.
-    public double precioEnvio(){   ////en el producto es un float
-        if (cliente.getDescuento()!=0){    //////????????????????????????????
+    public double precioEnvio(){
+        if (cliente.getDescuento()!=0){    ///REPASAR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
             return articulo.getPrecioDeVenta()*cantidadArticulos+articulo.getGastosDeEnvio()- cliente.getDescuento();
         }else{
             return articulo.getPrecioDeVenta() * cantidadArticulos + articulo.getGastosDeEnvio();
