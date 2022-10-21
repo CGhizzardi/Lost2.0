@@ -3,7 +3,7 @@ import java.text.SimpleDateFormat;
 import java.time.*;
 import java.text.ParseException;
 import java.util.Date;
-public class Pedidos {
+public class Pedido {
 
 
 
@@ -33,13 +33,7 @@ private boolean enviado;
      * @param articulo
      * @param cantidadArticulos
      */
-    public Pedidos(int numeroPedido, Clientes cliente, Articulos articulo, int cantidadArticulos) {
-        this.numeroPedido = numeroPedido;
-        this.cliente = cliente;
-        this.articulo = articulo;
-        this.cantidadArticulos = cantidadArticulos;
-        this.fechaHora= LocalDateTime.now();   //la hora de prodruccion del pedido
-    }
+
 
 
     /** Metodos Getters y Setters */

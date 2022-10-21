@@ -8,7 +8,7 @@ public class ListaPedidos extends Lista{
      *
      * @param lista
      */
-    public ListaPedidos(ArrayList<Pedidos> lista) {
+    public ListaPedidos(ArrayList<Pedido> lista) {
         super(lista);
     }
 
