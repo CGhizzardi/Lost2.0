@@ -114,7 +114,7 @@ private boolean enviado;
     }
     //Para calcular el precio del pedido hay que tener en cuenta el precio de venta, las unidades pedidas, el coste del envío y si el cliente que lo ha realizado es premium.
     public double precioEnvio(){
-        if (cliente.getDescuento()!=0){    ///REPASAR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        if (cliente.getDescuento()!=0){    //REPASAR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
             return articulo.getPrecioDeVenta()*cantidadArticulos+articulo.getGastosDeEnvio()- cliente.getDescuento();
         }else{
             return articulo.getPrecioDeVenta() * cantidadArticulos + articulo.getGastosDeEnvio();
