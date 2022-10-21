@@ -26,10 +26,6 @@ private LocalDateTime fechaHora;
 private double precioTotal;
 private boolean enviado;
 
-
-
-
-
     /** Metodo Constructor de la clase pedido
      *
      * @param numeroPedido
@@ -37,7 +33,6 @@ private boolean enviado;
      * @param articulo
      * @param cantidadArticulos
      */
-
     public Pedidos(int numeroPedido, Clientes cliente, Articulos articulo, int cantidadArticulos) {
         this.numeroPedido = numeroPedido;
         this.cliente = cliente;
@@ -90,6 +85,14 @@ private boolean enviado;
         this.fechaHora = fechaHora;
     }
 
+    public void setEnviado(boolean enviado) { this.enviado = pedidoEnviado(); }
+
+    public boolean getEnviado(){ return enviado; }
+
+    public void setPrecioTotal(double precioTotal){ this.precioTotal = precioEnvio(); }
+
+    public double getPrecioTotal() { return precioTotal; }
+
 
 
   public boolean pedidoEnviado(){        // funcion para saber si el pedido ha sido envido o no
@@ -110,12 +113,12 @@ private boolean enviado;
         catch (ParseException e) {
             e.printStackTrace();
         }
-        return false;
+        return true;  //si hay algun error, el pedido no se devolvera ya que saldra como enviado.
     }
     //Para calcular el precio del pedido hay que tener en cuenta el precio de venta, las unidades pedidas, el coste del envío y si el cliente que lo ha realizado es premium.
-    public double precioEnvio(){
-        if (cliente.getDescuento()!=0){    //REPASAR<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-            return articulo.getPrecioDeVenta()*cantidadArticulos+articulo.getGastosDeEnvio()- cliente.getDescuento();
+    public double precioEnvio(){  //precio de pedido = precio de cada articulo X cantidad + gastos de envio del articulo - descuento(¿¿es % ???)
+        if (cliente.getDescuento()!=0){
+            return articulo.getPrecioDeVenta()*cantidadArticulos+articulo.getGastosDeEnvio()- cliente.getDescuento();   //tengo que saber como esta "descuento", si es % o no.
         }else{
             return articulo.getPrecioDeVenta() * cantidadArticulos + articulo.getGastosDeEnvio();
         }
@@ -131,12 +134,12 @@ private boolean enviado;
                 ", Nif del cliente=" + cliente.getNif() +
                 ", Nombre del Cliente=" + cliente.getNombre() +
                 ", Articulo codigo=" + articulo.getCodigo() +
-                ", Descripción=" + articulo +    ///DESCRIPCION ARTICULO!! no existe aun
+                ", Descripción=" + articulo.getDescripcion() +    ///DESCRIPCION ARTICULO!!(getDescripcion() no existe en rama principal)
                 ", Cantidad=" + cantidadArticulos +
                 ", Articulo codigo=" + articulo.getPrecioDeVenta() +
                 ", Envio=" + precioEnvio() +" €"+
                 ", Precio total=" + precioTotal + " €"+
-                ", El pedido esta enviado=" + enviado +   //falta calcularlo!!!!
+                ", El pedido esta enviado=" + enviado +   //falta probar
                 '}';
     }
 }

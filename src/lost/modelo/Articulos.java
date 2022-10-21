@@ -26,7 +26,10 @@ import java.util.Date;
             this.tiempoDePreparacion = tiempoDePrepar;
 
         }
-        /** Metodos getters y setters */
+
+        /**
+         * Metodos getters y setters
+         */
 
         public String getCodigo() {
             return codigo;
@@ -59,4 +62,11 @@ import java.util.Date;
         public void setTiempoDePreparacion(long tiempoDePreparacion) {
             this.tiempoDePreparacion = tiempoDePreparacion;
         }
+
+        public void setDescripcion(String descripcion) {
+            this.descripcion = descripcion;
+        }
+
+        public String getDescripcion() { return descripcion; }
+
     }
