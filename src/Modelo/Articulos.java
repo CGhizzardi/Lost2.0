@@ -2,6 +2,11 @@ package Modelo;
 
 /** Clase Articulo */
 
+
+import java.sql.Time;
+import java.util.Date;
+
+
 public class Articulos {
     private String codigo;
     private String descripcion;
@@ -17,6 +22,10 @@ public class Articulos {
         this.tiempoDePreparacion = tiempoDePrepar;
     }
 
+
+
+
+
     public Articulos() {
     }
 
@@ -27,6 +36,7 @@ public class Articulos {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
+
 
     public double getPrecioDeVenta() {
         return this.precioDeVenta;
@@ -52,6 +62,40 @@ public class Articulos {
         return this.descripcion;
     }
 
+
+    public String getCodigo() {
+        return this.codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public double getPrecioDeVenta() {
+        return this.precioDeVenta;
+    }
+
+    public void setPrecioDeVenta(double precioDeVenta) {
+        this.precioDeVenta = precioDeVenta;
+    }
+
+    public double getGastosDeEnvio() {
+        return this.gastosDeEnvio;
+    }
+
+    public void setGastosDeEnvio(double gastosDeEnvio) {
+        this.gastosDeEnvio = gastosDeEnvio;
+    }
+
+
+    public int getTiempoDePreparacion() {
+        return this.tiempoDePreparacion;
+    }
+
+    public String getDescripcion() {
+        return this.descripcion;
+    }
+
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
@@ -66,3 +110,24 @@ public class Articulos {
 
 
 }
+
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setTiempoDePreparacion(int tiempoDePreparacion) {
+        this.tiempoDePreparacion = tiempoDePreparacion;
+    }
+
+    public String toString() {
+        return "articulos{codigo='" + this.codigo + "', descripcion='" + this.descripcion + "', precioDeVenta=" + this.precioDeVenta + ", gastosDeEnvio=" + this.gastosDeEnvio + ", tiempoDePreparacion=" + this.tiempoDePreparacion + "}";
+    }
+
+
+
+}
+
+    }
+
+

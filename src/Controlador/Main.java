@@ -1,5 +1,5 @@
 package Controlador;
-import Modelo.*;
+
 import Vista.*;
 
 import java.util.Scanner;
@@ -11,6 +11,7 @@ Scanner input= new Scanner(System.in);
 
 
         System.out.println("hola a trabajar!");
+
 
 
 
