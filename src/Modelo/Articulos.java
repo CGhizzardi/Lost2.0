@@ -2,13 +2,14 @@ package Modelo;
 
 /** Clase Articulo */
 
+
 import java.sql.Time;
 import java.util.Date;
 
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
+
+public class Articulos {
+
+
 
 
 
@@ -19,6 +20,23 @@ public class Articulos {
     private double gastosDeEnvio;
     private int tiempoDePreparacion;
 
+        private String codigo;
+        private String descripcion;
+        private double precioDeVenta;
+        private double gastosDeEnvio;
+        private long tiempoDePreparacion;
+
+
+        /**Metodo Constructor de la clase Articulo
+         *
+         * @param codigo
+         * @param descripcion
+         * @param precioDeVenta
+         * @param gastoDeEnvio
+         * @param tiempoDePrepar
+         */
+
+
     public Articulos(String codigo, String descripcion, double precioDeVenta, double gastoDeEnvio, int tiempoDePrepar) {
         this.codigo = codigo;
         this.descripcion = descripcion;
@@ -27,8 +45,16 @@ public class Articulos {
         this.tiempoDePreparacion = tiempoDePrepar;
     }
 
+
     public Articulos() {
     }
+
+        }
+
+        /**
+         * Metodos getters y setters
+         */
+
 
     public String getCodigo() {
         return this.codigo;
@@ -54,6 +80,7 @@ public class Articulos {
         this.gastosDeEnvio = gastosDeEnvio;
     }
 
+
     public int getTiempoDePreparacion() {
         return this.tiempoDePreparacion;
     }
@@ -76,3 +103,20 @@ public class Articulos {
 
 
 }
+
+        public long getTiempoDePreparacion() {
+            return tiempoDePreparacion;
+        }
+
+        public void setTiempoDePreparacion(long tiempoDePreparacion) {
+            this.tiempoDePreparacion = tiempoDePreparacion;
+        }
+
+        public void setDescripcion(String descripcion) {
+            this.descripcion = descripcion;
+        }
+
+        public String getDescripcion() { return descripcion; }
+
+    }
+

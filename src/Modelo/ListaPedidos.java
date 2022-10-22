@@ -2,13 +2,13 @@ package Modelo;
 
 import java.util.ArrayList;
 
-public class ListaPedidos extends Lista{
+public class ListaPedidos extends Lista<Pedidos>{
     /**
      * Metodo constructor
      *
      * @param lista
      */
-    public ListaPedidos(ArrayList<Pedidos> lista) {
+    public ListaPedidos(ArrayList<Pedido> lista) {
         super(lista);
     }
 

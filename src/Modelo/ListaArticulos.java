@@ -2,13 +2,15 @@ package Modelo;
 
 import java.util.ArrayList;
 
-public class ListaArticulo extends Lista {
-    /**
-     * Metodo constructor
+public class ListaArticulos extends Lista<Articulos> {
+
+    /** Metodo Constructor
      *
      * @param lista
      */
-    public ListaArticulo(ArrayList<Articulos> lista) {
+
+
+    public ListaArticulos(ArrayList<Articulos> lista) {
         super(lista);
     }
 
