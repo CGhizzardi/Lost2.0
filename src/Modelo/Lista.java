@@ -71,6 +71,37 @@ public class Lista<T> {
         return arrListSize;
     }
 
+    /** obtener un objeto especifico del arrayList
+     *
+     * @param position
+     * @return
+     */
+
+    public T getAt(int position) {
+
+        T objeto= lista.get(position);
+
+        return objeto;
+    }
+
+
+    public void clear() {
+    /** TO-BE-DONE */
+    }
+    public int isEmpty() {
+    /** TO-BE-DONE */
+    return 0;
+    }
+
+
+    /** metodo que crea y devuelve un arrayList
+     *
+     * @return
+     */
+    public ArrayList<T> getArrayList() {
+        ArrayList<T> arrlist = new ArrayList<>(lista);
+        return arrlist;
+    }
 
     @Override
     public String toString() {
