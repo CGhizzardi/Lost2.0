@@ -2,10 +2,7 @@ package Modelo;
 
 /** Clase Articulo */
 
-import java.sql.Time;
-import java.util.Date;
-
-    public class Articulos {
+public class Articulos {
 
         /**
          * Atributos de la clase
@@ -15,7 +12,7 @@ import java.util.Date;
         private String descripcion;
         private double precioDeVenta;
         private double gastosDeEnvio;
-        private int tiempoDePreparacion;
+        private long tiempoDePreparacion;
 
 
         /**Metodo Constructor de la clase Articulo
@@ -35,7 +32,10 @@ import java.util.Date;
             this.tiempoDePreparacion = tiempoDePrepar;
 
         }
-        /** Metodos getters y setters */
+
+        /**
+         * Metodos getters y setters
+         */
 
         public String getCodigo() {
             return codigo;
@@ -61,11 +61,18 @@ import java.util.Date;
             this.gastosDeEnvio = gastosDeEnvio;
         }
 
-        public int getTiempoDePreparacion() {
+        public long getTiempoDePreparacion() {
             return tiempoDePreparacion;
         }
 
-        public void setTiempoDePreparacion(int tiempoDePreparacion) {
+        public void setTiempoDePreparacion(long tiempoDePreparacion) {
             this.tiempoDePreparacion = tiempoDePreparacion;
         }
+
+        public void setDescripcion(String descripcion) {
+            this.descripcion = descripcion;
+        }
+
+        public String getDescripcion() { return descripcion; }
+
     }
