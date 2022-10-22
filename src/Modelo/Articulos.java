@@ -73,4 +73,6 @@ public class Articulos {
     public String toString() {
         return "articulos{codigo='" + this.codigo + "', descripcion='" + this.descripcion + "', precioDeVenta=" + this.precioDeVenta + ", gastosDeEnvio=" + this.gastosDeEnvio + ", tiempoDePreparacion=" + this.tiempoDePreparacion + "}";
     }
+
+
 }
