@@ -8,34 +8,11 @@ import java.util.Date;
 
 
 public class Articulos {
-
-
-
-
-
-public class Articulos {
     private String codigo;
     private String descripcion;
     private double precioDeVenta;
     private double gastosDeEnvio;
     private int tiempoDePreparacion;
-
-        private String codigo;
-        private String descripcion;
-        private double precioDeVenta;
-        private double gastosDeEnvio;
-        private long tiempoDePreparacion;
-
-
-        /**Metodo Constructor de la clase Articulo
-         *
-         * @param codigo
-         * @param descripcion
-         * @param precioDeVenta
-         * @param gastoDeEnvio
-         * @param tiempoDePrepar
-         */
-
 
     public Articulos(String codigo, String descripcion, double precioDeVenta, double gastoDeEnvio, int tiempoDePrepar) {
         this.codigo = codigo;
@@ -46,14 +23,44 @@ public class Articulos {
     }
 
 
+
+
+
     public Articulos() {
     }
 
-        }
+    public String getCodigo() {
+        return this.codigo;
+    }
 
-        /**
-         * Metodos getters y setters
-         */
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+
+    public double getPrecioDeVenta() {
+        return this.precioDeVenta;
+    }
+
+    public void setPrecioDeVenta(double precioDeVenta) {
+        this.precioDeVenta = precioDeVenta;
+    }
+
+    public double getGastosDeEnvio() {
+        return this.gastosDeEnvio;
+    }
+
+    public void setGastosDeEnvio(double gastosDeEnvio) {
+        this.gastosDeEnvio = gastosDeEnvio;
+    }
+
+    public int getTiempoDePreparacion() {
+        return this.tiempoDePreparacion;
+    }
+
+    public String getDescripcion() {
+        return this.descripcion;
+    }
 
 
     public String getCodigo() {
@@ -104,19 +111,23 @@ public class Articulos {
 
 }
 
-        public long getTiempoDePreparacion() {
-            return tiempoDePreparacion;
-        }
 
-        public void setTiempoDePreparacion(long tiempoDePreparacion) {
-            this.tiempoDePreparacion = tiempoDePreparacion;
-        }
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-        public void setDescripcion(String descripcion) {
-            this.descripcion = descripcion;
-        }
+    public void setTiempoDePreparacion(int tiempoDePreparacion) {
+        this.tiempoDePreparacion = tiempoDePreparacion;
+    }
 
-        public String getDescripcion() { return descripcion; }
+    public String toString() {
+        return "articulos{codigo='" + this.codigo + "', descripcion='" + this.descripcion + "', precioDeVenta=" + this.precioDeVenta + ", gastosDeEnvio=" + this.gastosDeEnvio + ", tiempoDePreparacion=" + this.tiempoDePreparacion + "}";
+    }
+
+
+
+}
 
     }
+
 
