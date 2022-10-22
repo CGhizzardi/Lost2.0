@@ -4,15 +4,13 @@ import java.util.ArrayList;
 
 public class ListaArticulos extends Lista<Articulos> {
 
-
-
-
-    /**
-     * Metodo constructor
+    /** Metodo Constructor
      *
      * @param lista
      */
-   public ListaArticulos(ArrayList<Articulos> lista) {
+
+
+    public ListaArticulos(ArrayList<Articulos> lista) {
         super(lista);
     }
 

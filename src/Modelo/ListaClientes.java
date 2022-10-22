@@ -4,17 +4,14 @@ import java.util.ArrayList;
 
 public class ListaClientes extends Lista<Clientes> {
 
-    /**
-     * Metodo constructor
+    /** Metodo Constructor
      *
      * @param lista
      */
-    public ListaClientes(ArrayList<Clientes> lista) {
 
+    public ListaClientes(ArrayList<Clientes> lista) {
         super(lista);
     }
-
-
 
     @Override
     public String toString() {
