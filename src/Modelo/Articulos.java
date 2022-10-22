@@ -15,6 +15,15 @@ public class Articulos {
         private long tiempoDePreparacion;
 
 
+        /**Metodo Constructor de la clase Articulo
+         *
+         * @param codigo
+         * @param descripcion
+         * @param precioDeVenta
+         * @param gastoDeEnvio
+         * @param tiempoDePrepar
+         */
+
         public Articulos(String codigo, String descripcion, double precioDeVenta, double gastoDeEnvio, int tiempoDePrepar) {
             this.codigo = codigo;
             this.descripcion = descripcion;
