@@ -6,7 +6,10 @@ import java.util.Date;
 public class Pedido {
 
 
+
 /** Atributos de la clase */
+
+
 
 private int numeroPedido;
 private Clientes cliente;
@@ -117,3 +120,4 @@ private boolean enviado;
                 '}';
     }
 }
+
