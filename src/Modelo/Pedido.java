@@ -5,17 +5,6 @@ import java.text.ParseException;
 import java.util.Date;
 public class Pedido {
 
-
-
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    static final int MINUTES_PER_HOUR = 60;
-    static final int SECONDS_PER_MINUTE = 60;
-    static final int SECONDS_PER_HOUR = SECONDS_PER_MINUTE * MINUTES_PER_HOUR;
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-
-
 /** Atributos de la clase */
 
 private int numeroPedido;
@@ -25,15 +14,6 @@ private int cantidadArticulos;
 private LocalDateTime fechaHora;
 private double precioTotal;
 private boolean enviado;
-
-    /** Metodo Constructor de la clase pedido
-     *
-     * @param numeroPedido
-     * @param cliente
-     * @param articulo
-     * @param cantidadArticulos
-     */
-
 
 
     /** Metodos Getters y Setters */
@@ -88,7 +68,6 @@ private boolean enviado;
     public double getPrecioTotal() { return precioTotal; }
 
 
-
   public boolean pedidoEnviado(){        // funcion para saber si el pedido ha sido envido o no
         String pattern = "yyyy-MM-dd HH:mm";
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
@@ -110,7 +89,6 @@ private boolean enviado;
         }
         return true;  //si hay algun error, el pedido no se devolvera ya que saldra como enviado.
     }
-    //Para calcular el precio del pedido hay que tener en cuenta el precio de venta, las unidades pedidas, el coste del envío y si el cliente que lo ha realizado es premium.
     public double precioEnvio(){  //precio de pedido = precio de cada articulo X cantidad + gastos de envio del articulo - descuento(¿¿es % ???)
         if (cliente.getDescuento()!=0){
             return articulo.getPrecioDeVenta()*cantidadArticulos+articulo.getGastosDeEnvio()- cliente.getDescuento();   //tengo que saber como esta "descuento", si es % o no.

@@ -11,6 +11,7 @@ Scanner input= new Scanner(System.in);
 
 
         System.out.println("Hello world!");
+        Articulos articulo = new Articulos();
 
 
 
