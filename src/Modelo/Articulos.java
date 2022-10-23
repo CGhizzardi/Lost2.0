@@ -3,25 +3,11 @@ package Modelo;
 /** Clase Articulo */
 
 
-import java.sql.Time;
-import java.util.Date;
-
-
 public class Articulos {
 
-
-
-
-
-public class Articulos {
-    private String codigo;
-    private String descripcion;
-    private double precioDeVenta;
-    private double gastosDeEnvio;
-    private int tiempoDePreparacion;
-
+    /** Atributos de la clase */
         private String codigo;
-        private String descripcion;
+        private String Descripcion;
         private double precioDeVenta;
         private double gastosDeEnvio;
         private long tiempoDePreparacion;
@@ -33,90 +19,107 @@ public class Articulos {
          * @param descripcion
          * @param precioDeVenta
          * @param gastoDeEnvio
-         * @param tiempoDePrepar
+         * @param tiempoDePrepararcion
          */
 
+        /** Constructores */
 
-    public Articulos(String codigo, String descripcion, double precioDeVenta, double gastoDeEnvio, int tiempoDePrepar) {
-        this.codigo = codigo;
-        this.descripcion = descripcion;
-        this.precioDeVenta = precioDeVenta;
-        this.gastosDeEnvio = gastoDeEnvio;
-        this.tiempoDePreparacion = tiempoDePrepar;
-    }
-
-
-    public Articulos() {
-    }
-
+        public Articulos(String codigo, String descripcion, double precioDeVenta, double gastoDeEnvio, long tiempoDePrepar) {
+            this.codigo = codigo;
+            this.Descripcion = Descripcion;
+            this.precioDeVenta = precioDeVenta;
+            this.gastosDeEnvio = gastoDeEnvio;
+            this.tiempoDePreparacion = tiempoDePrepar;
         }
 
-        /**
-         * Metodos getters y setters
-         */
+        public Articulos() {
+        }
 
 
-    public String getCodigo() {
+
+    /**
+     * Metodos getters y setters
+     */
+
+
+        public String getCodigo() {
         return this.codigo;
     }
 
-    public void setCodigo(String codigo) {
+        public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
-    public double getPrecioDeVenta() {
+        public double getPrecioDeVenta() {
         return this.precioDeVenta;
     }
 
-    public void setPrecioDeVenta(double precioDeVenta) {
+        public void setPrecioDeVenta(double precioDeVenta) {
         this.precioDeVenta = precioDeVenta;
     }
 
-    public double getGastosDeEnvio() {
+        public double getGastosDeEnvio() {
         return this.gastosDeEnvio;
     }
 
-    public void setGastosDeEnvio(double gastosDeEnvio) {
+        public void setGastosDeEnvio(double gastosDeEnvio) {
         this.gastosDeEnvio = gastosDeEnvio;
     }
 
-
-    public int getTiempoDePreparacion() {
+        public long getTiempoDePreparacion() {
         return this.tiempoDePreparacion;
     }
 
-    public String getDescripcion() {
-        return this.descripcion;
+        public String getDescripcion() {return this.Descripcion;}
+
+        public void setDescripcion(String descripcion) {
+        this.Descripcion = descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+        public void setTiempoDePreparacion(long tiempoDePreparacion) {
+        this.tiempoDePreparacion = tiempoDePreparacion;}
 
-    public void setTiempoDePreparacion(int tiempoDePreparacion) {
-        this.tiempoDePreparacion = tiempoDePreparacion;
-    }
-
+    /** El metodo toString() */
     public String toString() {
-        return "articulos{codigo='" + this.codigo + "', descripcion='" + this.descripcion + "', precioDeVenta=" + this.precioDeVenta + ", gastosDeEnvio=" + this.gastosDeEnvio + ", tiempoDePreparacion=" + this.tiempoDePreparacion + "}";
+        return "articulos{codigo='" + this.codigo + "', descripcion='" + this.Descripcion + "', precioDeVenta=" + this.precioDeVenta + ", gastosDeEnvio=" + this.gastosDeEnvio + ", tiempoDePreparacion=" + this.tiempoDePreparacion + "}";
     }
 
+    /** Metodos */
+    /** Añadir articulo */
+    /** En el caso de que el cliente añada el producto habria que cambiar el valor por el Scanner
+     * y que lo pueda introducir
+     * @param art
+     */
+    public void addArticulo (Articulos art){
+        String cod , desc;
+        long tiempo;
+        double gastos, precio;
+        cod = "asrj";
+        desc = "articulo  de prueba";
+        tiempo = 12;
+        gastos = 13.8;
+        precio = 15.8;
+        art.setCodigo(cod);
+        art.setDescripcion(desc);
+        art.setTiempoDePreparacion(tiempo);
+        art.setGastosDeEnvio(gastos);
+        art.setPrecioDeVenta(precio);
+    }
+    /** Mostrar articulo de prueba articulo */
+    public void mostraArticulos (Articulos art){
+
+         art.toString();
+
+
+
+    }
 
 }
 
-        public long getTiempoDePreparacion() {
-            return tiempoDePreparacion;
-        }
 
-        public void setTiempoDePreparacion(long tiempoDePreparacion) {
-            this.tiempoDePreparacion = tiempoDePreparacion;
-        }
 
-        public void setDescripcion(String descripcion) {
-            this.descripcion = descripcion;
-        }
 
-        public String getDescripcion() { return descripcion; }
 
-    }
+
+
 
