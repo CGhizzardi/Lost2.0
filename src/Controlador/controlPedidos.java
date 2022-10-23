@@ -3,13 +3,12 @@ import Vista.*;
 import Modelo.*;
 import java.time.*;
 
-public class controlPedidos {
 
-    public class StudentController {
+    public class controlPedidos {
         private Pedido modelo;
         private PedidoVista vista;
 
-        public StudentController (Pedido modelo, PedidoVista vista) {
+        public controlPedidos (Pedido modelo, PedidoVista vista) {
             this.modelo = modelo;
             this.vista = vista;
         }
@@ -44,7 +43,7 @@ public class controlPedidos {
 
         public boolean getEnviado() { return modelo.getEnviado(); }
 
-    }
+        }
 
-}
+
 

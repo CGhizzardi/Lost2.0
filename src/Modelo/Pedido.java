@@ -7,7 +7,9 @@ public class Pedido {
 
 
 
- /** Atributos de la clase */
+/** Atributos de la clase */
+
+
 
 private int numeroPedido;
 private Clientes cliente;
