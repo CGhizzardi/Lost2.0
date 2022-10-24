@@ -2,8 +2,7 @@ package Modelo;
 
 import java.util.ArrayList;
 
-public class ListaArticulos extends Lista<Articulos> {
-
+public class ListaClientesPremium extends Lista<ClientesPremium> {
 
 
 
@@ -11,15 +10,16 @@ public class ListaArticulos extends Lista<Articulos> {
      *
      * @param lista
      */
-
-
-    public ListaArticulos(ArrayList<Articulos> lista) {
+    public ListaClientesPremium(ArrayList<ClientesPremium> lista) {
         super(lista);
     }
 
+
+
+
     @Override
     public String toString() {
-        return "ListaArticulo{" +
+        return "ListaClientesEstandar{" +
                 "lista=" + lista +
                 '}';
     }

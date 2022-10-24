@@ -10,30 +10,44 @@ public abstract class Clientes {
     private String domicilio;
     private String nif;
     private String email;
-    private double cuota;
+
+    private double cuotaMensual;
     private double descuento;
+
 
 
 
     /** Metodo constructor de la clase Clientes
      *
      * @param name
-     * @param addres
+     * @param Ad
      * @param Nif
      * @param mail
-     * @param cuotaMensual
-     * @param descuento
+     *
      */
 
-    public Clientes(String name, String addres, String Nif, String mail, double cuotaMensual, double descuento){
+    public Clientes(String name, String Ad, String Nif, String mail) {
         this.nombre= name;
-        this.domicilio= addres;
+        this.domicilio= Ad;
         this.nif= Nif;
         this.email= mail;
-        this.cuota= cuotaMensual;
-        this. descuento= descuento;
-
     }
+
+    /** Metodo constructor con sobrecarga */
+    public Clientes(String name, String Ad, String Nif, String mail, double quota, double desc) {
+        this.nombre= name;
+        this.domicilio= Ad;
+        this.nif= Nif;
+        this.email= mail;
+        this.cuotaMensual = quota;
+        this.descuento = desc;
+    }
+
+
+
+
+
+
 
 
 
@@ -72,11 +86,11 @@ public abstract class Clientes {
     }
 
     public void setCuota(double cuota) {
-        this.cuota = cuota;
+        this.cuotaMensual = cuota;
     }
 
     public double getCuota() {
-        return cuota;
+        return cuotaMensual;
     }
 
     public void setDescuento(double descuento) {
