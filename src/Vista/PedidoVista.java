@@ -18,6 +18,7 @@ public class PedidoVista {
 
         //faltan los datos de cliente y articulo en controlador.
 
+
         System.out.println("numeroPedido=" + pedido.getNumeroPedido() +
                 ", fechaHora=" + pedido.getFechaHora() +
                 ", Nif del cliente=" + cliente.getNif() +
@@ -28,7 +29,7 @@ public class PedidoVista {
                 ", Articulo codigo=" + articulo.getPrecioDeVenta() +
                 ", Envio=" + pedido.getPrecioTotal() +" €"+
                 ", Precio total=" + pedido.getPrecioTotal() + " €"+
-                ", El pedido esta enviado=" + pedido.getEnviado() +  
+                ", El pedido esta enviado=" + pedido.getEnviado() +
                 '}');
     }
 }
