@@ -64,7 +64,7 @@ private boolean enviado;
 
     public boolean getEnviado(){ return enviado; }
 
-    public void setPrecioTotal(double precioTotal){ this.precioTotal = precioEnvio(); }
+    public void setPrecioTotal(double precioTotal){ this.precioTotal = precioEnvio(articulo.getPrecioDeVenta(),cantidadArticulos,articulo.getGastosDeEnvio(),cliente.getDescuento()); }
 
     public double getPrecioTotal() { return precioTotal; }
 
@@ -90,15 +90,22 @@ private boolean enviado;
         }
         return true;  //si hay algun error, el pedido no se devolvera ya que saldra como enviado.
     }
-    public double precioEnvio(){  //precio de pedido = precio de cada articulo X cantidad + gastos de envio del articulo - descuento(¿¿es % ???)
+    /*public double precioEnvio(){  //precio de pedido = precio de cada articulo X cantidad + gastos de envio del articulo - descuento(¿¿es % ???)
         if (cliente.getDescuento()!=0){
             return articulo.getPrecioDeVenta()*cantidadArticulos+articulo.getGastosDeEnvio()- cliente.getDescuento();   //tengo que saber como esta "descuento", si es % o no.
         }else{
             return articulo.getPrecioDeVenta() * cantidadArticulos + articulo.getGastosDeEnvio();
         }
 
-    }
+    }*/
+    public double precioEnvio(double precioDeVenta, double cantidadArticulos, double gastosEnvio, double descuento){  //precio de pedido = precio de cada articulo X cantidad + gastos de envio del articulo - descuento(¿¿es % ???)
+        if (descuento!=0){
+            return precioDeVenta*cantidadArticulos+gastosEnvio-descuento;   //tengo que saber como esta "descuento", si es % o no.
+        }else{
+            return precioDeVenta * cantidadArticulos + gastosEnvio;
+        }
 
+    }
 
     @Override
     public String toString() {
@@ -111,7 +118,7 @@ private boolean enviado;
                 ", Descripción=" + articulo.getDescripcion() +    ///DESCRIPCION ARTICULO!!(getDescripcion() no existe en rama principal)
                 ", Cantidad=" + cantidadArticulos +
                 ", Articulo codigo=" + articulo.getPrecioDeVenta() +
-                ", Envio=" + precioEnvio() +" €"+
+                ", Envio=" + precioEnvio(articulo.getPrecioDeVenta(),cantidadArticulos,articulo.getGastosDeEnvio(),cliente.getDescuento()) +" €"+
                 ", Precio total=" + precioTotal + " €"+
                 ", El pedido esta enviado=" + enviado +   //falta probar
                 '}';

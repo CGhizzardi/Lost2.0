@@ -18,7 +18,7 @@ public class Controlador {
 
     private ArrayList<Articulos> ListaArticulos;
     private ArrayList<Clientes> ListaClientes;
-    private ArrayList<Pedidos> ListaPedidos;
+    private ArrayList<Pedido> ListaPedidos;
 
     /** Objetos de las clases Articulos, Clientes, Pedidos
      *

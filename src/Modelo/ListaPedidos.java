@@ -2,7 +2,7 @@ package Modelo;
 
 import java.util.ArrayList;
 
-public class ListaPedidos extends Lista<Pedidos>{
+public class ListaPedidos extends Lista<Pedido>{
     /**
      * Metodo constructor
      *
