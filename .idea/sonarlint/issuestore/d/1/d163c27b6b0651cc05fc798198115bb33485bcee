@@ -1,0 +1,12 @@
+
+{
+java:S1319"eThe type of "lista" should be an interface such as "List" rather than the implementation "ArrayList".(„ê
+‹
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(„ãÄÀıÿÿÿÿ
+{
+java:S1319"eThe type of "lista" should be an interface such as "List" rather than the implementation "ArrayList".(ÍêÁÒ
+*
+java:S1700"Rename field "lista"(·¡‘‰
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(àÄ€ü
+O
+java:S5993"9Change the visibility of this constructor to "protected".(„ê

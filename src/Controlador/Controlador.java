@@ -4,8 +4,9 @@ import Modelo.*;
 
 
 
-public class Controlador {
-    private Datos datos;
+
+
+
     public Controlador() {
         datos = new Datos ();
         datos.datosPrograma();
