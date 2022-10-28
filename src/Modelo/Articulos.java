@@ -1,4 +1,8 @@
 package Modelo;
+
+/** Clase Articulo */
+
+
 public class Articulos {
 
     /** Atributos de la clase */
@@ -28,8 +32,8 @@ public class Articulos {
         this.tiempoDePreparacion = tiempoDePrepar;
     }
 
-    //public Articulos() {
-    //}
+    public Articulos() {
+    }
 
 
 
@@ -111,3 +115,4 @@ public class Articulos {
     }
 
 }
+

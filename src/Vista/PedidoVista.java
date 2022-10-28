@@ -8,18 +8,18 @@ public class PedidoVista {
     //}
 
     // tal y como esta en el ejemplo:
-    public void imprimirPedido (controlPedidos pedido, controlClientes cliente, controlArticulos articulo){
+    public void imprimirPedido (controlPedidos pedido){
 
         //faltan los datos de cliente y articulo en controlador.
 
         System.out.println("numeroPedido=" + pedido.getNumeroPedido() +
                 ", fechaHora=" + pedido.getFechaHora() +
-                ", Nif del cliente=" + cliente.getNif() +
-                ", Nombre del Cliente=" + cliente.getNombre() +
-                ", Articulo codigo=" + articulo.getCodigo() +
-                ", Descripción=" + articulo.getDescripcion() +
-                ", Cantidad=" + cantidadArticulos +
-                ", Articulo codigo=" + articulo.getPrecioDeVenta() +
+                ", Nif del cliente=" + pedido.getCliente().getNif() +
+                ", Nombre del Cliente=" + pedido.getCliente().getNombre() +
+                ", Articulo codigo=" + pedido.getArticulo().getCodigo() +
+                ", Descripción=" + pedido.getArticulo().getDescripcion() +
+                ", Cantidad=" + pedido.getCantidadArticulos() +
+                ", Articulo codigo=" + pedido.getArticulo().getPrecioDeVenta() +
                 ", Envio=" + pedido.getPrecioTotal() +" €"+
                 ", Precio total=" + pedido.getPrecioTotal() + " €"+
                 ", El pedido esta enviado=" + pedido.getEnviado() +
