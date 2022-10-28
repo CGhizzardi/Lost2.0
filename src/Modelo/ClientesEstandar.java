@@ -1,5 +1,6 @@
 package Modelo;
 
+
 /** Clase "ClientesEstandar" */
 
 public class ClientesEstandar extends Clientes {
@@ -12,11 +13,17 @@ public class ClientesEstandar extends Clientes {
      * @param Nif
      * @param mail
      */
-    public ClientesEstandar(String name, String addres, String Nif, String mail, double cuotaMensual, double descuento) {
-        super(name, addres, Nif, mail,cuotaMensual, descuento);
+
+
+
+    public ClientesEstandar(String name, String addres, String Nif, String mail) {
+        super(name, addres, Nif, mail);
     }
 
-
+    @Override
+    public String toString() {
+        return "ClientesEstandar{}";
+    }
 }
 
 
