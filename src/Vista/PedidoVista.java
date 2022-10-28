@@ -10,7 +10,6 @@ public class PedidoVista {
     // tal y como esta en el ejemplo:
     public void imprimirPedido (controlPedidos pedido){
 
-        //faltan los datos de cliente y articulo en controlador.
 
         System.out.println("numeroPedido=" + pedido.getNumeroPedido() +
                 ", fechaHora=" + pedido.getFechaHora() +
