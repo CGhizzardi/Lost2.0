@@ -1,5 +1,7 @@
 package Vista;
 import Controlador.*;
+
+
 import java.util.Scanner;
 public class GestionOs {
     private Controlador controlador;

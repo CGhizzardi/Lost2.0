@@ -26,7 +26,7 @@ public class Articulos {
 
     public Articulos(String codigo, String descripcion, double precioDeVenta, double gastoDeEnvio, long tiempoDePrepar) {
         this.codigo = codigo;
-        this.Descripcion = Descripcion;
+        this.Descripcion = descripcion;
         this.precioDeVenta = precioDeVenta;
         this.gastosDeEnvio = gastoDeEnvio;
         this.tiempoDePreparacion = tiempoDePrepar;
