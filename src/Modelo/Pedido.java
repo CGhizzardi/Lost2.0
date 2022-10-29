@@ -103,11 +103,11 @@ private boolean enviado;
     }
     */
 
-
-    public double precioEnvio(double precioDeVenta, double cantidadArticulos, double gastosEnvio, double descuento){  //precio de pedido = precio de cada articulo X cantidad + gastos de envio del articulo - descuento(¿¿es % ???)
+//Funcion para calcular el precio TOTAL del pedido (precio de todos los articulos + envio - descuento)
+    public double precioEnvio(double precioDeVenta, double cantidadArticulos, double gastosEnvio, double descuento){
         double precio = precioDeVenta*cantidadArticulos;
         if (descuento!=0){
-            return precio-(precio*descuento/100)+gastosEnvio;   //tengo que saber como esta "descuento", si es % o no.
+            return precio-(precio*descuento/100)+gastosEnvio;
         }else{
             return precio + gastosEnvio;
         }

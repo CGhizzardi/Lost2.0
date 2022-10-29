@@ -11,7 +11,7 @@ public class Test_jUnit extends TestCase{
 
     public void escenario (){  pedido = new Pedido(); }
     @Test
-    public void testPrecioEnvio(){  //precio de pedido = precio de cada articulo X cantidad + gastos de envio del articulo - descuento(¿¿es % ???)
+    public void testPrecioEnvio(){  // se hace un test de la funcion (PrecioEnvio) sin descuento.
         escenario();
         double precioDeVenta= 10;
         double cantidadArticulos = 50;
