@@ -1,16 +1,49 @@
 package Controlador;
-import java.util.ArrayList;
 import Modelo.*;
+import java.util.ArrayList;
+public class Controlador {
 
+    protected Datos datosPr;
 
+    /** ArrayList para la creacion de los objetos de las clases
+     * articulos, clientes y pedidos
+     */
 
+    private ArrayList<Articulos> listaArticulos;
+    protected ArrayList<ClientesEstandar> listaClientesEstandar;
+    protected ArrayList<ClientesPremium> listaClientesPremium;
+    private ArrayList<Pedido> listaPedidos;
 
+    /** Objetos de las clases Articulos, Clientes, Pedidos
+     *
+     */
 
+    protected ListaArticulos articulosList= new ListaArticulos(listaArticulos);
+    protected ListaClientesEstandar clientesEsList= new ListaClientesEstandar(listaClientesEstandar);
+    protected ListaClientesPremium clientesPreList= new ListaClientesPremium(listaClientesPremium);
+    protected ListaPedidos pedidosList= new ListaPedidos(listaPedidos);
 
     public Controlador() {
-        datos = new Datos ();
-        datos.datosPrograma();
+
+        this.datosPr=new Datos(articulosList ,clientesEsList, clientesPreList, pedidosList);
+        this.datosPr.datosPrograma();
     }
 
-// TO-BE-DONE
+
+
+
+    public Datos getDatosPr() {
+        return datosPr;
+    }
+
+    public void setDatosPr(Datos datosPr) {
+        this.datosPr = datosPr;
+    }
+
+    @Override
+    public String toString() {
+        return "Controlador{" +
+                "datosPr=" + datosPr +
+                '}';
+    }
 }

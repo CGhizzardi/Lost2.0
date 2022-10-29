@@ -23,8 +23,8 @@ public  class Lista<T> {
     /**
      * Metodos Getters y Setters
      */
-    public ArrayList<T> getLista() {
-        return lista;
+    public ArrayList<T> getLista(ArrayList<T> list) {
+        return list;
     }
 
     public void setLista(ArrayList<T> lista) {

@@ -5,16 +5,19 @@ package Modelo;
 public class ClientesPremium extends Clientes {
 
 
-    private double cuotaMensual;
-    private double descuento;
+    public ClientesPremium(String name, String Ad, String Nif, String mail, double quota, double desc) {
+        super(name, Ad, Nif, mail, quota, desc);
+    }
 
 
-    public ClientesPremium(String name, String Addres, String Nif, String mail, double cuotaMensual, double descuento) {
-        super(name, Addres, Nif, mail);
-        this.cuotaMensual = cuotaMensual;
-        this.descuento = descuento;
+    @Override
+    public String toString() {
+        return "ClientesPremium{}";
     }
 }
+
+
+
 
 
 

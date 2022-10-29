@@ -1,4 +1,4 @@
-package Controlador;
+/**package Controlador;
 import junit.framework.TestCase;
 import Modelo.*;
 import Vista.*;
@@ -12,4 +12,4 @@ public class Test_jUnit extends TestCase{
         assertTrue(pedido.precioEnvio(10,50,5,0)== 505);
 
     }
-}
+} */

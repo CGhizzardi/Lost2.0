@@ -9,7 +9,7 @@ public class Datos {
     protected ListaArticulos listaArticulos;
     protected ListaClientesEstandar listaClientesEstandar;
     protected ListaClientesPremium listaClientesPremium;
-    private ListaPedidos listaPedidos;
+    protected ListaPedidos listaPedidos;
 
 
     /** Metodo constructor de la clase Datos
@@ -17,7 +17,7 @@ public class Datos {
      */
 
 
-    public Datos() {
+    public Datos(ListaArticulos listaArticulos,ListaClientesEstandar listaClientesEstandar, ListaClientesPremium listaClientesPremium, ListaPedidos listaPedidos) {
         this.listaArticulos = listaArticulos;
         this.listaClientesEstandar = listaClientesEstandar;
         this.listaClientesPremium = listaClientesPremium;
@@ -28,6 +28,7 @@ public class Datos {
      *
      * @return
      */
+
 
     public ListaArticulos getListaArticulos() {
         return listaArticulos;
@@ -45,14 +46,6 @@ public class Datos {
         this.listaClientesEstandar = listaClientesEstandar;
     }
 
-    public ListaPedidos getListaPedidos() {
-        return listaPedidos;
-    }
-
-    public void setListaPedidos(ListaPedidos listaPedidos) {
-        this.listaPedidos = listaPedidos;
-    }
-
     public ListaClientesPremium getListaClientesPremium() {
         return listaClientesPremium;
     }
@@ -61,6 +54,13 @@ public class Datos {
         this.listaClientesPremium = listaClientesPremium;
     }
 
+    public ListaPedidos getListaPedidos() {
+        return listaPedidos;
+    }
+
+    public void setListaPedidos(ListaPedidos listaPedidos) {
+        this.listaPedidos = listaPedidos;
+    }
 
     /** Metodo que carga datos automaticamente en nuestro programa simulando una BBDD
      *
@@ -82,7 +82,7 @@ public class Datos {
         artiP.add(LibInfantil);
         artiP.add(LibHistoria);
 
-        listaArticulos.setLista(artiP);
+        listaArticulos.lista= artiP;
 
 
         /**Carga de Clientes **/
@@ -95,12 +95,12 @@ public class Datos {
         ArrayList<ClientesPremium> clienP= new ArrayList<ClientesPremium>();
         clienP.add(MLopez);
         clienP.add(DTerrago);
-        listaClientesPremium.setLista(clienP);
+        listaClientesPremium.lista= clienP;
 
         ArrayList<ClientesEstandar> clienE= new ArrayList<ClientesEstandar>();
         clienE.add(PMacron);
         clienE.add(SPlana);
-        listaClientesEstandar.setLista(clienE);
+        listaClientesEstandar.lista=clienE;
 
 
 
