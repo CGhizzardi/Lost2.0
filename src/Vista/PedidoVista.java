@@ -12,17 +12,17 @@ public class PedidoVista {
 
         //faltan los datos de cliente y articulo en controlador.
 
-        System.out.println("numeroPedido=" + pedido.getNumeroPedido() +
-                ", fechaHora=" + pedido.getFechaHora() +
-                ", Nif del cliente=" + pedido.getCliente().getNif() +
-                ", Nombre del Cliente=" + pedido.getCliente().getNombre() +
-                ", Articulo codigo=" + pedido.getArticulo().getCodigo() +
-                ", Descripción=" + pedido.getArticulo().getDescripcion() +
-                ", Cantidad=" + pedido.getCantidadArticulos() +
-                ", Articulo codigo=" + pedido.getArticulo().getPrecioDeVenta() +
-                ", Envio=" + pedido.getPrecioTotal() +" €"+
-                ", Precio total=" + pedido.getPrecioTotal() + " €"+
-                ", El pedido esta enviado=" + pedido.getEnviado() +
+        System.out.println("numeroPedido=" + pedido.getNumeroPedido()+"\n"+
+                ", fechaHora=" + pedido.getFechaHora()+"\n" +
+                ", Nif del cliente=" + pedido.getCliente().getNif()+"\n" +
+                ", Nombre del Cliente=" + pedido.getCliente().getNombre()+"\n" +
+                ", Articulo codigo=" + pedido.getArticulo().getCodigo()+"\n" +
+                ", Descripción=" + pedido.getArticulo().getDescripcion()+"\n" +
+                ", Cantidad=" + pedido.getCantidadArticulos()+"\n" +
+                ", Articulo codigo=" + pedido.getArticulo().getPrecioDeVenta()+"\n" +
+                ", Envio=" + pedido.getPrecioTotal() +" €\n"+
+                ", Precio total=" + pedido.getPrecioTotal() + " €\n"+
+                ", El pedido esta enviado=" + pedido.getEnviado()+"\n" +
                 '}');
     }
 }
