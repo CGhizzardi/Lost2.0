@@ -60,7 +60,7 @@ private boolean enviado;
         this.fechaHora = fechaHora;
     }
 
-    public void setEnviado(boolean enviado) { this.enviado = pedidoEnviado(); }
+    public void setEnviado(boolean enviado) { this.enviado = pedidoEnviado(fechaHora, articulo.getTiempoDePreparacion()); }
 
     public boolean getEnviado(){ return enviado; }
 
@@ -69,7 +69,7 @@ private boolean enviado;
     public double getPrecioTotal() { return precioTotal; }
 
 
-  public boolean pedidoEnviado(){        // funcion para saber si el pedido ha sido envido o no
+  public boolean pedidoEnviado(LocalDateTime fechaHora, Long tiempoPreparacion){        // funcion para saber si el pedido ha sido envido o no
         String pattern = "yyyy-MM-dd HH:mm";
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
         String fecha1=fechaHora.toString().replace("T"," ");  //fecha elaboracion
@@ -78,7 +78,7 @@ private boolean enviado;
             Date date1 = sdf.parse(fecha1);
             Date date2 = sdf.parse(fecha2);
             long diff = date2.getTime() - date1.getTime();
-            if(diff>articulo.getTiempoDePreparacion()){   //si diff es mayor al tiempo de prep., el pedido ya se ha enviado
+            if(diff>tiempoPreparacion){   //si diff es mayor al tiempo de prep., el pedido ya se ha enviado
                 return true;
             }else{    //si diff es menor al tiempo de prep., el pedido aun no se ha enviado
                 return false;
@@ -90,14 +90,20 @@ private boolean enviado;
         }
         return true;  //si hay algun error, el pedido no se devolvera ya que saldra como enviado.
     }
-    /*public double precioEnvio(){  //precio de pedido = precio de cada articulo X cantidad + gastos de envio del articulo - descuento(¿¿es % ???)
+
+
+    /*
+    public double precioEnvio(){  //precio de pedido = precio de cada articulo X cantidad + gastos de envio del articulo - descuento(¿¿es % ???)
         if (cliente.getDescuento()!=0){
             return articulo.getPrecioDeVenta()*cantidadArticulos+articulo.getGastosDeEnvio()- cliente.getDescuento();   //tengo que saber como esta "descuento", si es % o no.
         }else{
             return articulo.getPrecioDeVenta() * cantidadArticulos + articulo.getGastosDeEnvio();
         }
 
-    }*/
+    }
+    */
+
+
     public double precioEnvio(double precioDeVenta, double cantidadArticulos, double gastosEnvio, double descuento){  //precio de pedido = precio de cada articulo X cantidad + gastos de envio del articulo - descuento(¿¿es % ???)
         double precio = precioDeVenta*cantidadArticulos;
         if (descuento!=0){
