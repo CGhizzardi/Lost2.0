@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class Test_jUnit extends TestCase{
     private Pedido pedido;
 
-    public void escenario (){  pedido = new Pedido(); }
+    public void escenario (){  pedido = new Pedido(); }  //cada test debe de tener su propia instancia
     @Test
     public void testPrecioEnvio(){  // se hace un test de la funcion (PrecioEnvio) sin descuento.
         escenario();
