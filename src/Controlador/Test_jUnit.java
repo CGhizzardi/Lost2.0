@@ -1,4 +1,4 @@
-/**package Controlador;
+package Controlador;
 import junit.framework.TestCase;
 import Modelo.*;
 import Vista.*;
@@ -9,9 +9,9 @@ import java.time.LocalDateTime;
 public class Test_jUnit extends TestCase{
     private Pedido pedido;
 
-    public void escenario (){  pedido = new Pedido(); }
+    public void escenario (){  pedido = new Pedido(); }  //cada test debe de tener su propia instancia
     @Test
-    public void testPrecioEnvio(){  //precio de pedido = precio de cada articulo X cantidad + gastos de envio del articulo - descuento(¿¿es % ???)
+    public void testPrecioEnvio(){  // se hace un test de la funcion (PrecioEnvio) sin descuento.
         escenario();
         double precioDeVenta= 10;
         double cantidadArticulos = 50;
@@ -30,4 +30,4 @@ public class Test_jUnit extends TestCase{
         assertFalse("FALLO: El pedido consta enviado pero no ha superado el tiempo de preparacion.",pedido.pedidoEnviado(FechaPedido,duracionPreparacion));
         System.out.println("La funcion(pedidoEnviado) funciona porque no se ha enviado el pedido todabia.");
     }
-} */
+}

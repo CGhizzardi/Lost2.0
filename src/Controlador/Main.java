@@ -7,17 +7,15 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-Scanner input= new Scanner(System.in);
+        Scanner input= new Scanner(System.in);
 
-OnlineStore vista= new OnlineStore();
-
-
-
-
-
-
-
+        OnlineStore vista= new OnlineStore();
 
 
     }
 }
+
+
+
+
+
