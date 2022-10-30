@@ -11,6 +11,9 @@ public class controlArticulos {
 
 
 
+
+
+
     /**Metodo constructor de la clase
      *
      * @param artModel
@@ -69,24 +72,35 @@ public class controlArticulos {
     }
 
 
-    /** Metodo que muestra el articulo
+    /** Metodo que para añadir el articulo
      *
      * @return
      */
 
-    public void addarticulo (Articulos art) {
+    public void addarticulo (Articulos art, ListaArticulos list) {
         Scanner teclado = new Scanner(System.in);
         String codigo, descripcion;
         double precio, envio;
         long tiempo;
+
         codigo = teclado.nextLine();
         descripcion = teclado.nextLine();
         precio = teclado.nextDouble();
         envio = teclado.nextDouble();
         tiempo = teclado.nextLong();
 
+        art.setCodigo(codigo);
+        art.setDescripcion(descripcion);
+        art.setPrecioDeVenta(precio);
+        art.setGastosDeEnvio(envio);
+        art.setTiempoDePreparacion(tiempo);
+        list.add(art);
 
     }
+    /** Metodo que muestra el articulo
+     *
+     * @return
+     */
     public String MostrarArticulo() {
         System.out.println("Introduce el nombre del articulo que deseas mostrar");
 
