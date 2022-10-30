@@ -1,11 +1,15 @@
 package Vista;
-import Vista.*;
 
 public class OnlineStore {
 
+    private GestionOs gestion;
+
     public OnlineStore(){
-        GestionOs gestion = new GestionOs();
+        this.gestion = new GestionOs();
         gestion.inicio();
     }
 
+    public void getGestion() {
+        this.gestion.getController().getArticulosList();
+    }
 }

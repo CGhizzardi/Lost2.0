@@ -1,5 +1,8 @@
 package Vista;
+
 import Controlador.*;
+import Modelo.Articulos;
+
 
 import java.time.LocalDateTime;
 import java.util.Scanner;
@@ -14,7 +17,12 @@ public class PedidoVista {
     protected ControlClientes contCli;
 
 
-    public PedidoVista(controlPedidos contP, controlArticulos contArt, Controlador cont, ControlClientes contCli){
+    
+
+
+    protected controller cont;
+    public PedidoVista(controlPedidos contP, controlArticulos contArt, controller cont, ControlClientes contCli){
+
         this.contP=contP;
         this.contArt=contArt;
         this.cont=cont;
@@ -95,6 +103,7 @@ public class PedidoVista {
         LocalDateTime fechaPedido = LocalDateTime.now();
                                                                     //precio total del pedido
         double precioTotal= contP.getPrecioTotal();
+
 
 
 

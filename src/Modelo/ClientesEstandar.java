@@ -19,6 +19,26 @@ public class ClientesEstandar extends Clientes {
 
     //TO STRING
     @Override
+    public Clientes copiaCliente(Clientes clientes) {
+        return null;
+    }
+
+    @Override
+    public String tipoCliente() {
+        return null;
+    }
+
+    @Override
+    public float calcAnual() {
+        return 0;
+    }
+
+    @Override
+    public float descuentoEnv() {
+        return 0;
+    }
+
+    @Override
     public String toString() {
         return super.toString();
     }

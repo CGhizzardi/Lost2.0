@@ -1,9 +1,14 @@
 package Vista;
+
+import Controlador.controller;
 import Controlador.controlArticulos;
+import Vista.GestionOs.*;
+
 
 public class ArticuloVista {
 
     protected controlArticulos contArt;
+    protected controller cont;
 
 
     /** Metodo constructor de la clase
@@ -18,19 +23,24 @@ public class ArticuloVista {
     }
 
 
-    /** El metodo para imprimir los datos del articulo
-     *
-     * @param contArt
-     * @return
-     */
+    /** El metodo para imprimir los datos del articulo */
 
-    public String printArticulo(controlArticulos contArt) {
-        return "articulos{codigo=" + contArt.getCodigo()+ "\n"+
-                "descripcion=" + contArt.getDescripcion() + "\n" +
-                "precioDeVenta=" + contArt.getPrecioDeVenta()+ "\n" +
-                "gastosDeEnvio=" + contArt.getGastosDeEnvio()+ "\n" +
-                "tiempoDePreparacion=" + contArt.getTiempoDePreparacion()+ "\n";
+    public void ImprimirArt(){
+        OnlineStore list = new OnlineStore();
+        list.getGestion();
     }
+
+
+
+public void imprimirArticulo(){
+
+
+
+
+
+
+
+}
 
 
 
