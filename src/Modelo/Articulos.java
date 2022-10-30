@@ -6,34 +6,34 @@ package Modelo;
 public class Articulos {
 
     /** Atributos de la clase */
-        private String codigo;
-        private String Descripcion;
-        private double precioDeVenta;
-        private double gastosDeEnvio;
-        private long tiempoDePreparacion;
+    private String codigo;
+    private String Descripcion;
+    private double precioDeVenta;
+    private double gastosDeEnvio;
+    private long tiempoDePreparacion;
 
 
-        /**Metodo Constructor de la clase Articulo
-         *
-         * @param codigo
-         * @param descripcion
-         * @param precioDeVenta
-         * @param gastoDeEnvio
-         * @param tiempoDePrepararcion
-         */
+    /**Metodo Constructor de la clase Articulo
+     *
+     * @param codigo
+     * @param descripcion
+     * @param precioDeVenta
+     * @param gastoDeEnvio
+     * @param tiempoDePrepararcion
+     */
 
-        /** Constructores */
+    /** Constructores */
 
-        public Articulos(String codigo, String descripcion, double precioDeVenta, double gastoDeEnvio, long tiempoDePrepar) {
-            this.codigo = codigo;
-            this.Descripcion = Descripcion;
-            this.precioDeVenta = precioDeVenta;
-            this.gastosDeEnvio = gastoDeEnvio;
-            this.tiempoDePreparacion = tiempoDePrepar;
-        }
+    public Articulos(String codigo, String descripcion, double precioDeVenta, double gastoDeEnvio, long tiempoDePrepar) {
+        this.codigo = codigo;
+        this.Descripcion = descripcion;
+        this.precioDeVenta = precioDeVenta;
+        this.gastosDeEnvio = gastoDeEnvio;
+        this.tiempoDePreparacion = tiempoDePrepar;
+    }
 
-        public Articulos() {
-        }
+    public Articulos() {
+    }
 
 
 
@@ -42,41 +42,41 @@ public class Articulos {
      */
 
 
-        public String getCodigo() {
+    public String getCodigo() {
         return this.codigo;
     }
 
-        public void setCodigo(String codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
-        public double getPrecioDeVenta() {
+    public double getPrecioDeVenta() {
         return this.precioDeVenta;
     }
 
-        public void setPrecioDeVenta(double precioDeVenta) {
+    public void setPrecioDeVenta(double precioDeVenta) {
         this.precioDeVenta = precioDeVenta;
     }
 
-        public double getGastosDeEnvio() {
+    public double getGastosDeEnvio() {
         return this.gastosDeEnvio;
     }
 
-        public void setGastosDeEnvio(double gastosDeEnvio) {
+    public void setGastosDeEnvio(double gastosDeEnvio) {
         this.gastosDeEnvio = gastosDeEnvio;
     }
 
-        public long getTiempoDePreparacion() {
+    public long getTiempoDePreparacion() {
         return this.tiempoDePreparacion;
     }
 
-        public String getDescripcion() {return this.Descripcion;}
+    public String getDescripcion() {return this.Descripcion;}
 
-        public void setDescripcion(String descripcion) {
+    public void setDescripcion(String descripcion) {
         this.Descripcion = descripcion;
     }
 
-        public void setTiempoDePreparacion(long tiempoDePreparacion) {
+    public void setTiempoDePreparacion(long tiempoDePreparacion) {
         this.tiempoDePreparacion = tiempoDePreparacion;}
 
     /** El metodo toString() */
@@ -108,7 +108,9 @@ public class Articulos {
     /** Mostrar articulo de prueba articulo */
     public void mostraArticulos (Articulos art){
 
-         art.toString();
+        art.toString();
+
+
 
 
 
