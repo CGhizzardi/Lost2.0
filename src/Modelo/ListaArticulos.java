@@ -43,9 +43,10 @@ public class ListaArticulos extends Lista<Articulos> {
     }
 
     @Override
-    public Articulos getAt(int position) {
-        return super.getAt(position);
+    public Articulos getArt(int position) {
+        return super.getArt(position);
     }
+
 
     @Override
     public void clear() {
@@ -53,7 +54,7 @@ public class ListaArticulos extends Lista<Articulos> {
     }
 
     @Override
-    public int isEmpty() {
+    public boolean isEmpty() {
         return super.isEmpty();
     }
 

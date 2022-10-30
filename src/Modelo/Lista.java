@@ -77,7 +77,7 @@ public  class Lista<T> {
      * @return
      */
 
-    public T getAt(int position) {
+    public T getArt(int position) {
         T objeto= lista.get(position);
         return objeto;
     }

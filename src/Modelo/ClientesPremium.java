@@ -9,6 +9,26 @@ public class ClientesPremium extends Clientes {
         super(name, Ad, Nif, mail, quota, desc);
     }
 
+    @Override
+    public Clientes copiaCliente(Clientes clientes) {
+        return null;
+    }
+
+    @Override
+    public String tipoCliente() {
+        return null;
+    }
+
+    @Override
+    public float calcAnual() {
+        return 0;
+    }
+
+    @Override
+    public float descuentoEnv() {
+        return 0;
+    }
+
 
     @Override
     public String toString() {

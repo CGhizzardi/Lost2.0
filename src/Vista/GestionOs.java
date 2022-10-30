@@ -1,13 +1,13 @@
 package Vista;
-import Controlador.*;
 
+import Controlador.controller;
 
 import java.util.Scanner;
 public class GestionOs {
-    private Controlador controlador;
+    private controller controller;
     Scanner input = new Scanner(System.in);
     public GestionOs() {
-        controlador = new Controlador();
+        controller = new controller();
     }
     public void inicio() {
         boolean salir = false;
@@ -20,6 +20,8 @@ public class GestionOs {
             opcio = pedirOpcion();
             switch (opcio) {
                 case '1':
+
+                    controller.MostrarArticulo();
 // TO-BE-DONE
                     break;
                 case '2':
@@ -42,4 +44,9 @@ public class GestionOs {
         }
         return resp.charAt(0);
     }
+
+
+public controller getController(){
+    return this.controller;
+}
 }

@@ -1,8 +1,9 @@
 package Controlador;
 import Vista.*;
 import Modelo.*;
-import java.time.*;
+import Controlador.controller.*;
 import java.util.*;
+
 
 public class controlArticulos {
     Scanner input = new Scanner(System.in);
@@ -10,7 +11,6 @@ public class controlArticulos {
 
     private Articulos artModel;
     private ArticuloVista artVista;
-
 
 
     /**Metodo constructor de la clase
@@ -77,12 +77,7 @@ public class controlArticulos {
      * @return
      */
 
-    public String MostrarArticulo() {
-
-        System.out.print("Introduce el nombre del articulo que deseas mostrar:\n");
-        String articuloName= input.nextLine();
-
-
+    public String articuloToString() {
 
         return  "articulos codigo=" + artModel.getCodigo()+ "\n"+
                 "descripcion=" + artModel.getDescripcion() + "\n" +
@@ -92,6 +87,8 @@ public class controlArticulos {
     }
 
 /** Metodos para la vista*/
+
+
 
 
 

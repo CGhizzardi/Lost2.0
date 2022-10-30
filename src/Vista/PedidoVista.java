@@ -1,5 +1,8 @@
 package Vista;
-import Controlador.*;
+
+import Controlador.controlArticulos;
+import Controlador.controlPedidos;
+import Controlador.controller;
 import Modelo.Articulos;
 
 import java.time.LocalDateTime;
@@ -12,8 +15,8 @@ public class PedidoVista {
     protected controlPedidos contP;
     protected controlArticulos contArt;
 
-    protected Controlador cont;
-    public PedidoVista(controlPedidos contP, controlArticulos contArt, Controlador cont){
+    protected controller cont;
+    public PedidoVista(controlPedidos contP, controlArticulos contArt, controller cont){
         this.contP=contP;
         this.contArt=contArt;
         this.cont=cont;
@@ -101,7 +104,7 @@ public class PedidoVista {
         //double precioTotal= contP.getPrecioTotal();
 
 
-        contP.
+
     }
     public void menuEliminarPedido(){
 
