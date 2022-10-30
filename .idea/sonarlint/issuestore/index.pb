@@ -3,12 +3,6 @@ E
 src/Modelo/Lista.java,d/1/d163c27b6b0651cc05fc798198115bb33485bcee
 8
 Lost.iml,a/1/a16f34b8bf17c3eaa59bf3f3255a553b542b0e6e
-N
-src/Modelo/ListaArticulos.java,f/d/fdbe385c07d076b2309df51f5dcaf7e1eb446d81
-I
-src/Modelo/Articulos.java,6/d/6d9fb6f9ccb240c62dd7f3630c5b061b017d757b
-O
-src/Controlador/Test_jUnit.java,3/e/3ef4ed2be206241d97da7ace74d74f4c1b6e19b9
 P
  src/Modelo/ClientesEstandar.java,c/e/ce62077d4a7b977942408be6b086fed460cc2306
 O
