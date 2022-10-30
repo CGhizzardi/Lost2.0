@@ -13,14 +13,10 @@ public class PedidoVista {
 
     protected controlPedidos contP;
     protected controlArticulos contArt;
-    protected Controlador cont;
+    protected controller cont;
     protected ControlClientes contCli;
 
 
-    
-
-
-    protected controller cont;
     public PedidoVista(controlPedidos contP, controlArticulos contArt, controller cont, ControlClientes contCli){
 
         this.contP=contP;

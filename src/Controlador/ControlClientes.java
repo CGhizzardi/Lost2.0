@@ -8,7 +8,7 @@ public class ControlClientes {
 
     private Clientes modelo;
     private Clientes vista;
-    Controlador c = new Controlador();
+    controller c = new controller();
     //CONSTRUCTOR
     public ControlClientes(Clientes modelo, Clientes vista) {
         this.modelo = modelo;

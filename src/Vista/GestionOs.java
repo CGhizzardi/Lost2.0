@@ -1,6 +1,6 @@
 package Vista;
 
-import Controlador.controller;
+import Controlador.*;
 
 import java.util.Scanner;
 public class GestionOs {
@@ -8,7 +8,7 @@ public class GestionOs {
     
     private controlPedidos contP;
     private controlArticulos contArt;
-    private Controlador cont;
+    private controller cont;
     private ControlClientes contCli;
 
     private controller controller;
