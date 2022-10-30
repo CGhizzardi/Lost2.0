@@ -44,14 +44,6 @@ public abstract class Clientes {
     }
 
 
-
-
-
-
-
-
-
-
     /** Metodos Getter y setters de la clase */
 
     public void setNombre(String nombre) {
@@ -101,20 +93,19 @@ public abstract class Clientes {
         return descuento;
     }
 
+    //MÉTODOS ABSTRACTOS
+    public abstract Clientes copiaCliente (Clientes clientes);
+    public abstract String tipoCliente();
+    public abstract float calcAnual();
+    public abstract float descuentoEnv();
 
-
-
-
-
-
-
-    /** Metodo to String para la clase Clientes ClientesEstandar*/
+    //TO STRING
 
     @Override
     public String toString() {
         return "Nombre del Clientes: " + nombre + "Domicilio: " + domicilio + "Nif del Cliente " + nif + "Correo electronico: " + email;
     }
-    /** Metodo to String para la clase Clientes ClientesPremium*/
+
 
 
 
