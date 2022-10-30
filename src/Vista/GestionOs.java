@@ -1,13 +1,21 @@
 package Vista;
-import Controlador.*;
 
+import Controlador.controller;
 
 import java.util.Scanner;
 public class GestionOs {
-    private Controlador controlador;
+
+    
+    private controlPedidos contP;
+    private controlArticulos contArt;
+    private Controlador cont;
+    private ControlClientes contCli;
+
+    private controller controller;
     Scanner input = new Scanner(System.in);
+    PedidoVista pedidoV = new PedidoVista(contP,contArt,cont, contCli);
     public GestionOs() {
-        controlador = new Controlador();
+        controller = new controller();
     }
     public void inicio() {
         boolean salir = false;
@@ -20,13 +28,15 @@ public class GestionOs {
             opcio = pedirOpcion();
             switch (opcio) {
                 case '1':
+
+                    controller.MostrarArticulo();
 // TO-BE-DONE
                     break;
                 case '2':
 // TO-BE-DONE
                     break;
                 case '3':
-// TO-BE-DONE
+                    pedidoV.menuCrearPedido();
                     break;
                 case '0':
                     salir = true;
@@ -42,4 +52,9 @@ public class GestionOs {
         }
         return resp.charAt(0);
     }
+
+
+public controller getController(){
+    return this.controller;
+}
 }

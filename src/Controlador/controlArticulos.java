@@ -3,14 +3,17 @@ import Vista.*;
 import Modelo.*;
 import java.time.*;
 import java.util.Scanner;
+import Controlador.controller.*;
+import java.util.*;
+
+
 
 public class controlArticulos {
+    Scanner input = new Scanner(System.in);
+
 
     private Articulos artModel;
     private ArticuloVista artVista;
-
-
-
 
 
 
@@ -72,10 +75,14 @@ public class controlArticulos {
     }
 
 
-    /** Metodo que para añadir el articulo
+
+
+    /** Metodo que muestra el articulo
+
      *
      * @return
      */
+
 
     public void addarticulo (Articulos art, ListaArticulos list) {
         Scanner teclado = new Scanner(System.in);
@@ -104,15 +111,18 @@ public class controlArticulos {
     public String MostrarArticulo() {
         System.out.println("Introduce el nombre del articulo que deseas mostrar");
 
+    public String articuloToString() {
 
-        return "articulos{codigo=" + artModel.getCodigo()+ "\n"+
+
+        return  "articulos codigo=" + artModel.getCodigo()+ "\n"+
                 "descripcion=" + artModel.getDescripcion() + "\n" +
                 "precioDeVenta=" + artModel.getPrecioDeVenta()+ "\n" +
                 "gastosDeEnvio=" + artModel.getGastosDeEnvio()+ "\n" +
                 "tiempoDePreparacion=" + artModel.getTiempoDePreparacion()+ "\n";
     }
 
-/** Metodos para la vista*/
+
+
 
 
 

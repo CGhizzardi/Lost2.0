@@ -32,7 +32,6 @@ public  class Lista<T> {
     }
 
     /** Metodos de la clase para los arrayList **/
-
     /**
      * Agregar objeto al ArrayList
      *
@@ -52,7 +51,6 @@ public  class Lista<T> {
         int i;
         int index;
         System.out.println("Seleccione el numero del objeto que desea borrar");
-
         /** Bucle que imprime la lista de elemntos que contieene el ArrayList y su indice **/
         for (i = 0; i < lista.size(); i++) {
             System.out.println(i + " " + lista.get(i));
@@ -79,20 +77,31 @@ public  class Lista<T> {
      * @return
      */
 
-    public T getAt(int position) {
-
+    public T getArt(int position) {
         T objeto= lista.get(position);
-
         return objeto;
     }
 
 
+
+    //https://docs.oracle.com/javase/7/docs/api/
+
     public void clear() {
-    /** TO-BE-DONE */
+        //void clear()
+        //Removes all of the elements from this list (optional operation)-Quita todos los elementos de esta lista (operación opcional).
+        //The list will be empty after this call returns.
+        lista.clear();
+
     }
-    public int isEmpty() {
-    /** TO-BE-DONE */
-    return 0;
+    public boolean isEmpty() {
+        //boolean isEmpty()
+        //Returns true if this list contains no elements.
+        if(lista.isEmpty() == true){
+            System.out.println("Esta lista está vacía");
+            return true;
+        }
+        System.out.println("Esta lista contiene elementos");
+        return false;
     }
 
 
