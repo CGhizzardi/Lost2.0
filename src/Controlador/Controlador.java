@@ -30,7 +30,10 @@ public class Controlador {
     }
 
 
-
+    /** metodos Getters y Setters
+     *
+     * @return
+     */
 
     public Datos getDatosPr() {
         return datosPr;
@@ -40,6 +43,37 @@ public class Controlador {
         this.datosPr = datosPr;
     }
 
+    /**Metodo que devuelve la lista de los articulos
+     *
+     * @return
+     */
+
+    public ListaArticulos getArticulosList(){
+        return datosPr.getListaArticulos();
+    }
+
+    /**Metodo que devuelve la lista de los Clientes Premium
+     *
+     * @return
+     */
+
+    public ListaClientesPremium getClientesPreList(){
+        return datosPr.getListaClientesPremium();
+    }
+
+    /**Metodo que devuelve la lista de los Clientes Estandar
+     *
+     * @return
+     */
+
+    public ListaClientesEstandar getClientesEsList(){
+        return datosPr.getListaClientesEstandar();
+    }
+
+    /** Metodo to String
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Controlador{" +
