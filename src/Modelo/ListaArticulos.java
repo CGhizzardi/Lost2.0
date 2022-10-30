@@ -52,10 +52,10 @@ public class ListaArticulos extends Lista<Articulos> {
         super.clear();
     }
 
-    @Override
+    /*@Override
     public int isEmpty() {
-        return super.isEmpty();
-    }
+    return super.isEmpty();
+    }*/
 
     @Override
     public ArrayList<Articulos> setArrayList() {

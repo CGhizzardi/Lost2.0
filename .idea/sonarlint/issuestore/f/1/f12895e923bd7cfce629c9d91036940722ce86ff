@@ -1,10 +1,0 @@
-
-m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®µ¥Ý8¾°­ÂÂ0
-m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®µ¥Ý8¾°­ÂÂ0
-r	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»Ê¹Æÿÿÿÿÿ8¾°­ÂÂ0
-r	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»Ê¹Æÿÿÿÿÿ8¾°­ÂÂ0
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(àÄ€ü
-V
-java:S5993"9Change the visibility of this constructor to "protected".(®µ¥Ý8Ä°­ÂÂ0
-[
-java:S5993%"9Change the visibility of this constructor to "protected".(»Ê¹Æÿÿÿÿÿ8Ä°­ÂÂ0
