@@ -9,9 +9,9 @@ public class Controlador {
      * articulos, clientes y pedidos
      */
 
-    private ArrayList<Articulos> listaArticulos;
-    protected ArrayList<ClientesEstandar> listaClientesEstandar;
-    protected ArrayList<ClientesPremium> listaClientesPremium;
+    public ArrayList<Articulos> listaArticulos;
+    public ArrayList<ClientesEstandar> listaClientesEstandar;
+    public ArrayList<ClientesPremium> listaClientesPremium;
     private ArrayList<Pedido> listaPedidos;
 
     /** Objetos de las clases Articulos, Clientes, Pedidos
