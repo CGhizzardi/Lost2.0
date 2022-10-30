@@ -2,19 +2,24 @@ package Modelo;
 
 import java.util.ArrayList;
 
-public class ListaPedidos extends Lista<Pedido>{
-    /**
-     * Metodo constructor
+public class ListaClientesPremium extends Lista<ClientesPremium> {
+
+
+
+    /** Metodo Constructor
      *
      * @param lista
      */
-    public ListaPedidos(ArrayList<Pedido> lista) {
+    public ListaClientesPremium(ArrayList<ClientesPremium> lista) {
         super(lista);
     }
 
+
+
+
     @Override
     public String toString() {
-        return "ListaPedidos{" +
+        return "ListaClientesEstandar{" +
                 "lista=" + lista +
                 '}';
     }

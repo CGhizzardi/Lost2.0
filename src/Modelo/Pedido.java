@@ -5,18 +5,8 @@ import java.text.ParseException;
 import java.util.Date;
 public class Pedido {
 
-
-
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    static final int MINUTES_PER_HOUR = 60;
-    static final int SECONDS_PER_MINUTE = 60;
-    static final int SECONDS_PER_HOUR = SECONDS_PER_MINUTE * MINUTES_PER_HOUR;
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-
-
 /** Atributos de la clase */
+
 
 private int numeroPedido;
 private Clientes cliente;
@@ -25,15 +15,6 @@ private int cantidadArticulos;
 private LocalDateTime fechaHora;
 private double precioTotal;
 private boolean enviado;
-
-    /** Metodo Constructor de la clase pedido
-     *
-     * @param numeroPedido
-     * @param cliente
-     * @param articulo
-     * @param cantidadArticulos
-     */
-
 
 
     /** Metodos Getters y Setters */
@@ -79,17 +60,16 @@ private boolean enviado;
         this.fechaHora = fechaHora;
     }
 
-    public void setEnviado(boolean enviado) { this.enviado = pedidoEnviado(); }
+    public void setEnviado(boolean enviado) { this.enviado = pedidoEnviado(fechaHora, articulo.getTiempoDePreparacion()); }
 
     public boolean getEnviado(){ return enviado; }
 
-    public void setPrecioTotal(double precioTotal){ this.precioTotal = precioEnvio(); }
+    public void setPrecioTotal(double precioTotal){ this.precioTotal = precioEnvio(articulo.getPrecioDeVenta(),cantidadArticulos,articulo.getGastosDeEnvio(),cliente.getDescuento()); }
 
     public double getPrecioTotal() { return precioTotal; }
 
 
-
-  public boolean pedidoEnviado(){        // funcion para saber si el pedido ha sido envido o no
+  public boolean pedidoEnviado(LocalDateTime fechaHora, Long tiempoPreparacion){        // funcion para saber si el pedido ha sido envido o no
         String pattern = "yyyy-MM-dd HH:mm";
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
         String fecha1=fechaHora.toString().replace("T"," ");  //fecha elaboracion
@@ -98,7 +78,7 @@ private boolean enviado;
             Date date1 = sdf.parse(fecha1);
             Date date2 = sdf.parse(fecha2);
             long diff = date2.getTime() - date1.getTime();
-            if(diff>articulo.getTiempoDePreparacion()){   //si diff es mayor al tiempo de prep., el pedido ya se ha enviado
+            if(diff>tiempoPreparacion){   //si diff es mayor al tiempo de prep., el pedido ya se ha enviado
                 return true;
             }else{    //si diff es menor al tiempo de prep., el pedido aun no se ha enviado
                 return false;
@@ -110,7 +90,9 @@ private boolean enviado;
         }
         return true;  //si hay algun error, el pedido no se devolvera ya que saldra como enviado.
     }
-    //Para calcular el precio del pedido hay que tener en cuenta el precio de venta, las unidades pedidas, el coste del envío y si el cliente que lo ha realizado es premium.
+
+
+    /*
     public double precioEnvio(){  //precio de pedido = precio de cada articulo X cantidad + gastos de envio del articulo - descuento(¿¿es % ???)
         if (cliente.getDescuento()!=0){
             return articulo.getPrecioDeVenta()*cantidadArticulos+articulo.getGastosDeEnvio()- cliente.getDescuento();   //tengo que saber como esta "descuento", si es % o no.
@@ -119,7 +101,18 @@ private boolean enviado;
         }
 
     }
+    */
 
+//Funcion para calcular el precio TOTAL del pedido (precio de todos los articulos + envio - descuento)
+    public double precioEnvio(double precioDeVenta, double cantidadArticulos, double gastosEnvio, double descuento){
+        double precio = precioDeVenta*cantidadArticulos;
+        if (descuento!=0){
+            return precio-(precio*descuento/100)+gastosEnvio;
+        }else{
+            return precio + gastosEnvio;
+        }
+
+    }
 
     @Override
     public String toString() {
@@ -132,9 +125,10 @@ private boolean enviado;
                 ", Descripción=" + articulo.getDescripcion() +    ///DESCRIPCION ARTICULO!!(getDescripcion() no existe en rama principal)
                 ", Cantidad=" + cantidadArticulos +
                 ", Articulo codigo=" + articulo.getPrecioDeVenta() +
-                ", Envio=" + precioEnvio() +" €"+
+                ", Envio=" + precioEnvio(articulo.getPrecioDeVenta(),cantidadArticulos,articulo.getGastosDeEnvio(),cliente.getDescuento()) +" €"+
                 ", Precio total=" + precioTotal + " €"+
                 ", El pedido esta enviado=" + enviado +   //falta probar
                 '}';
     }
 }
+

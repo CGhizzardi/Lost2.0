@@ -1,9 +1,11 @@
 package Vista;
 import Controlador.*;
+
+
 import java.util.Scanner;
 public class GestionOs {
     private Controlador controlador;
-    Scanner teclado = new Scanner(System.in);
+    Scanner input = new Scanner(System.in);
     public GestionOs() {
         controlador = new Controlador();
     }
@@ -34,7 +36,7 @@ public class GestionOs {
     char pedirOpcion() {
         String resp;
         System.out.println("Elige una opción (1,2,3 o 0):");
-                resp = teclado.nextLine();
+                resp = input.nextLine();
         if (resp.isEmpty()) {
             resp = " ";
         }

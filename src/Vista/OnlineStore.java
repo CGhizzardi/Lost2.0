@@ -1,8 +1,11 @@
 package Vista;
+import Vista.*;
 
 public class OnlineStore {
-    public static void main(String[] args) {
+
+    public OnlineStore(){
         GestionOs gestion = new GestionOs();
         gestion.inicio();
     }
+
 }

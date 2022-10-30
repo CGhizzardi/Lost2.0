@@ -3,7 +3,7 @@ package Modelo;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Lista<T> {
+public  class Lista<T> {
 
     Scanner input = new Scanner(System.in);
     protected ArrayList<T> lista;
@@ -18,11 +18,13 @@ public class Lista<T> {
 
     }
 
+
+
     /**
      * Metodos Getters y Setters
      */
-    public ArrayList<T> getLista() {
-        return lista;
+    public ArrayList<T> getLista(ArrayList<T> list) {
+        return list;
     }
 
     public void setLista(ArrayList<T> lista) {
@@ -98,7 +100,7 @@ public class Lista<T> {
      *
      * @return
      */
-    public ArrayList<T> getArrayList() {
+    public ArrayList<T> setArrayList() {
         ArrayList<T> arrlist = new ArrayList<>(lista);
         return arrlist;
     }
