@@ -8,7 +8,7 @@ public class ControlClientes {
 
     private Clientes modelo;
     private Clientes vista;
-    controller c = new controller();
+
     //CONSTRUCTOR
     public ControlClientes(Clientes modelo, Clientes vista) {
         this.modelo = modelo;
@@ -61,31 +61,4 @@ public class ControlClientes {
         return modelo.getDescuento();
     }
 
-    public void mostrarCli(){
-        int i=1;
-        System.out.println("CLIENTES ESTANDAR:\n");     //MUESTRA CLIENTES ESTANDAR
-        for (ClientesEstandar clientesEstandar : c.listaClientesEstandar){
-            System.out.println("clientesEstandar numero "+i+"= " + clientesEstandar);
-            i++;
-        }
-        i=1;
-        System.out.println("CLIENTES PREMIUM:\n");     //MUESTRA CLIENTES PREMIUM
-        for (ClientesPremium clientesPremium : c.listaClientesPremium){
-            System.out.println("clientesPremium numero "+i+"= " + clientesPremium);
-            i++;
-        }
-    }
-    public Clientes encontrarClientePorId(String NIF){                  //DEVUELVE 1 CLIENTE, ENTRANDO EL NIF
-        for (ClientesEstandar clientesEstandar : c.listaClientesEstandar){
-            if (NIF == clientesEstandar.getNif()){
-                return clientesEstandar;
-            }
-        }
-        for (ClientesPremium clientesPremium : c.listaClientesPremium){
-            if (NIF == clientesPremium.getNif()){
-                return clientesPremium;
-            }
-        }
-        return null;
-    }
 }

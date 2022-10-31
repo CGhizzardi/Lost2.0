@@ -11,69 +11,6 @@ public class ClientesPremium extends Clientes {
         super(name, Ad, Nif, mail, quota, desc);
     }
 
-    public ClientesPremium(String name, String Ad, String Nif, String mail) {
-        super(name, Ad, Nif, mail);
-    }
-
-    @Override
-    public void setNombre(String nombre) {
-        super.setNombre(nombre);
-    }
-
-    @Override
-    public String getNombre() {
-        return super.getNombre();
-    }
-
-    @Override
-    public void setDomicilio(String domicilio) {
-        super.setDomicilio(domicilio);
-    }
-
-    @Override
-    public String getDomicilio() {
-        return super.getDomicilio();
-    }
-
-    @Override
-    public void setNif(String nif) {
-        super.setNif(nif);
-    }
-
-    @Override
-    public String getNif() {
-        return super.getNif();
-    }
-
-    @Override
-    public void setEmail(String email) {
-        super.setEmail(email);
-    }
-
-    @Override
-    public String getEmail() {
-        return super.getEmail();
-    }
-
-    @Override
-    public void setCuota(double cuota) {
-        super.setCuota(cuota);
-    }
-
-    @Override
-    public double getCuota() {
-        return super.getCuota();
-    }
-
-    @Override
-    public void setDescuento(double descuento) {
-        super.setDescuento(descuento);
-    }
-
-    @Override
-    public double getDescuento() {
-        return super.getDescuento();
-    }
 
     @Override
     public String toString() {
@@ -96,10 +33,8 @@ public class ClientesPremium extends Clientes {
     public float descuentoEnv(){
         return (float)0.2;
     }
+
+
+
+
 }
-
-
-
-
-
-

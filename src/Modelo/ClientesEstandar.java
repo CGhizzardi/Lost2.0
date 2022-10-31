@@ -17,45 +17,28 @@ public class ClientesEstandar extends Clientes {
         super(name, addres, Nif, mail);
     }
 
+
+
+
     //TO STRING
-    @Override
-    public Clientes copiaCliente(Clientes clientes) {
-        return null;
-    }
-
-    @Override
-    public String tipoCliente() {
-        return null;
-    }
-
-    @Override
-    public float calcAnual() {
-        return 0;
-    }
-
-    @Override
-    public float descuentoEnv() {
-        return 0;
-    }
-
     @Override
     public String toString() {
         return super.toString();
     }
 
     //IMPLEMENTACIÓN DE MÉTODOS ABSTRACTOS
-    public Clientes copiaCliente(ClientesEstandar clientes){
+    public Clientes copiaCliente(Clientes clientes){
         ClientesEstandar e = (ClientesEstandar) clientes;
         Clientes copiaCliente = new ClientesEstandar(e.getNombre(), e.getDomicilio(),e.getNif(), e.getEmail());
         return copiaCliente(e);
     }
-    public String imtipoCliente(){
+    public String tipoCliente(){
         return "El cliente " + this.getNombre() + "es de tipo Estandar";
     }
-    public float imcalcAnual(){
+    public float calcAnual(){
         return 0;
     }
-    public float imdescuentoEnv(){
+    public float descuentoEnv(){
         return 0;
     }
 }

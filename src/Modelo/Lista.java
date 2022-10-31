@@ -88,7 +88,7 @@ public  class Lista<T> {
 
     public void clear() {
         //void clear()
-        //Removes all  the elements from this list (optional operation)-Quita todos los elementos de esta lista (operación opcional).
+        //Removes all of the elements from this list (optional operation)-Quita todos los elementos de esta lista (operación opcional).
         //The list will be empty after this call returns.
         lista.clear();
 
@@ -113,6 +113,9 @@ public  class Lista<T> {
         ArrayList<T> arrlist = new ArrayList<>(lista);
         return arrlist;
     }
+
+
+
 
     @Override
     public String toString() {

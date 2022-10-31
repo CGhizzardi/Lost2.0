@@ -11,13 +11,18 @@ public class GestionOs {
     private controller cont;
     private ControlClientes contCli;
 
+    Scanner input = new Scanner(System.in);
+
     private controller controller;
     private ArticuloVista artV;
-    Scanner input = new Scanner(System.in);
+
+    private ClientesVista cliV;
+
     PedidoVista pedidoV = new PedidoVista(contP,contArt,cont, contCli);
     public GestionOs() {
-        controller = new controller();
-        artV= new ArticuloVista();
+        this.controller = new controller();
+        this.artV= new ArticuloVista();
+        this.cliV= new ClientesVista();
     }
     public void inicio() {
         boolean salir = false;
@@ -35,7 +40,7 @@ public class GestionOs {
 // TO-BE-DONE
                     break;
                 case '2':
-
+                    cliV.menuCliente();
                     break;
                 case '3':
                     pedidoV.menuCrearPedido();

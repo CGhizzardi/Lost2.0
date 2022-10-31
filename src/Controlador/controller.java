@@ -18,6 +18,8 @@ public class controller {
     protected ArrayList<ClientesPremium> listaClientesPremium;
     private ArrayList<Pedido> listaPedidos;
 
+
+
     /**
      * Objetos de las clases Articulos, Clientes, Pedidos
      */
@@ -85,6 +87,10 @@ public class controller {
 
     }
 
+    /** Metodo que Muestra los Articulos
+     *
+     */
+
     public void MostrarArticulo() {
 
 
@@ -125,4 +131,80 @@ break;
         }    //bucle que recorre el array para comparar nombres e imprime el articulo
 
     }
+
+    /** Metodo que Muestra los Clientes
+     *
+     */
+
+    public void mostrarCli(){
+
+        ListaClientesEstandar listadoCE = datosPr.getListaClientesEstandar();
+        ListaClientesPremium listadoPR = datosPr.getListaClientesPremium();
+        String nifIngresado;
+        String clienteNif;
+        int i = 0;
+
+
+        System.out.println("=====================Listado de Clientes registrados========================\n");
+
+        System.out.println("=====Clients Estandar=====");
+        for (i = 0; i < listadoCE.getSize(); i++) {
+            System.out.println(listadoCE.getArt(i).getNif()+" "+ listadoCE.getArt(i).getNombre() );
+        }                               //bucle que imprime los nombres de los clientes
+        System.out.println("............................................................................\n");
+        System.out.println("=====Clientes Premium=====");
+        for (i = 0; i < listadoPR.getSize(); i++) {
+            System.out.println(listadoPR.getArt(i).getNif()+" "+ listadoPR.getArt(i).getNombre() );
+        }
+        System.out.println("============================================================================\n");
+
+        System.out.print("Introduce el NIF del Cliente que deseas mostrar:\n");
+        nifIngresado = input.next();
+
+
+        for (i = 0; i < listadoCE.getSize(); i++) {
+
+            clienteNif = listadoCE.getArt(i).getNif();
+
+            if (nifIngresado.equals(clienteNif)) {
+                System.out.println("Cliente Estandar \n ");
+
+                System.out.println("nif= " + listadoCE.getArt(i).getNif() + "\n" +
+                        "nombre= " + listadoCE.getArt(i).getNombre() + "\n" +
+                        "Domicilio= " + listadoCE.getArt(i).getDomicilio() + "\n" +
+                        "e-Mail= " + listadoCE.getArt(i).getEmail() + "\n");
+                break;
+
+            } else {
+                System.out.println("");
+                break;
+            }
+        } //bucle que recorre el array para comparar NIF e imprime el Cliente
+
+            for (i = 0; i < listadoPR.getSize(); i++) {
+
+                clienteNif = listadoPR.getArt(i).getNif();
+
+                if (nifIngresado.equals(clienteNif)) {
+                    System.out.println("Cliente Premium \n ");
+
+                    System.out.println("nif= " + listadoPR.getArt(i).getNif() + "\n" +
+                            "nombre= " + listadoPR.getArt(i).getNombre() + "\n" +
+                            "Domicilio =" + listadoPR.getArt(i).getDomicilio() + "\n" +
+                            "e-Mail= " + listadoPR.getArt(i).getEmail() + "\n" +
+                            "Cuota= " + listadoPR.getArt(i).getCuota() + "\n" +
+                             "Descuento= " + listadoPR.getArt(i).getDescuento() + "\n");
+                    break;
+
+                } else {
+                    System.out.println(" ");
+                    break;
+                }
+
+        }    //bucle que recorre el array para comparar NIF e imprime el Cliente
+
+
+    }
+
+
 }

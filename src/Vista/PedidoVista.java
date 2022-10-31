@@ -74,11 +74,11 @@ public class PedidoVista {
             if(opcion==1){
 
                 System.out.println("Lista de clientes: ");
-                contCli.mostrarCli();                                   //NO FUNCIONA!
+               // contCli.mostrarCli();                                   //NO FUNCIONA!
 
                 System.out.println("\nIntroduce el NIF del cliente: ");
                 String nif = input.nextLine();
-                contCli.encontrarClientePorId(nif);
+               // contCli.encontrarClientePorId(nif);
 
 
             }else if(opcion==2){
