@@ -1,12 +1,17 @@
 package Vista;
-
-import Controlador.controller;
 import Controlador.controlArticulos;
-
 import Modelo.Articulos;
 import Modelo.ListaArticulos;
 import Vista.GestionOs.*;
 import java.util.Scanner;
+
+
+public class ArticuloVista {
+
+    protected controlArticulos contArt;
+
+
+
 
 public class ArticuloVista {
 
@@ -15,6 +20,7 @@ Scanner teclado = new Scanner(System.in);
 public controlArticulos contArt;
 protected controlArticulos contArt;
 protected controller cont;
+
 
 
 
@@ -43,25 +49,21 @@ protected controller cont;
 // TO-BE-DONE
 
 
-    /** El metodo para imprimir los datos del articulo */
+    /** El metodo para imprimir los datos del articulo
+     *
+     * @param contArt
+     * @return
+     */
 
 
-    public void ImprimirArt(){
-        OnlineStore list = new OnlineStore();
-        list.getGestion();
+    public String printArticulo(controlArticulos contArt) {
+        return "articulos{codigo=" + contArt.getCodigo()+ "\n"+
+                "descripcion=" + contArt.getDescripcion() + "\n" +
+                "precioDeVenta=" + contArt.getPrecioDeVenta()+ "\n" +
+                "gastosDeEnvio=" + contArt.getGastosDeEnvio()+ "\n" +
+                "tiempoDePreparacion=" + contArt.getTiempoDePreparacion()+ "\n";
+
     }
-
-
-
-public void imprimirArticulo(){
-
-
-
-
-
-
-
-}
 
 
 
