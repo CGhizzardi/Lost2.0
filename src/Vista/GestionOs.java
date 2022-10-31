@@ -18,7 +18,7 @@ public class GestionOs {
 
     private ClientesVista cliV;
 
-    PedidoVista pedidoV = new PedidoVista(contP,contArt,cont, contCli);
+    PedidoVista pedidoV = new PedidoVista();
     public GestionOs() {
         this.controller = new controller();
         this.artV= new ArticuloVista();
@@ -41,7 +41,7 @@ public class GestionOs {
                     cliV.menuCliente();
                     break;
                 case '3':
-                    pedidoV.menuCrearPedido();
+                    pedidoV.menuPedidos();
                     break;
                 case '0':
                     salir = true;

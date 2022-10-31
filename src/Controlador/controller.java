@@ -1,6 +1,8 @@
 package Controlador;
 import Modelo.*;
 import Vista.ArticuloVista;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -34,6 +36,11 @@ public class controller {
     protected Articulos art;
 
     protected controlArticulos artC = new controlArticulos(art, artV);
+
+    /** Metodo Constructor de la Clase
+     *
+     */
+
 
     public controller() {
 
@@ -146,12 +153,12 @@ public class controller {
                         "precioDeVenta=" + listadoAr.getArt(i).getPrecioDeVenta() + "\n" +
                         "gastosDeEnvio=" + listadoAr.getArt(i).getGastosDeEnvio() + "\n" +
                         "tiempoDePreparacion=" + listadoAr.getArt(i).getTiempoDePreparacion() + "\n");
-break;
 
-            } else {
-                System.out.println("El codigo seleccionado no existe \n ");
-break;
+                break;
+
             }
+
+
 
 
         }    //bucle que recorre el array para comparar nombres e imprime el articulo
@@ -222,15 +229,77 @@ break;
                              "Descuento= " + listadoPR.getArt(i).getDescuento() + "\n");
                     break;
 
-                } else {
-                    System.out.println(" ");
-                    break;
                 }
 
         }    //bucle que recorre el array para comparar NIF e imprime el Cliente
 
 
     }
+
+
+
+    /** Pedidos */
+
+
+    public String mostrarClientesPedidos(){
+
+        ListaClientesEstandar listadoCE = datosPr.getListaClientesEstandar();
+        ListaClientesPremium listadoPR = datosPr.getListaClientesPremium();
+        String nifIngresado;
+        int i = 0;
+
+
+        System.out.println("=====================Listado de Clientes registrados========================\n");
+
+        System.out.println("=====Clients Estandar=====");
+        for (i = 0; i < listadoCE.getSize(); i++) {
+            System.out.println(listadoCE.getArt(i).getNif()+" "+ listadoCE.getArt(i).getNombre() );
+        }                               //bucle que imprime los nombres de los clientes
+        System.out.println("............................................................................\n");
+        System.out.println("=====Clientes Premium=====");
+        for (i = 0; i < listadoPR.getSize(); i++) {
+            System.out.println(listadoPR.getArt(i).getNif()+" "+ listadoPR.getArt(i).getNombre() );
+        }
+        System.out.println("============================================================================\n");
+
+        System.out.print("Introduce el NIF del Cliente que deseas mostrar:\n");
+        nifIngresado = input.next();
+
+        return nifIngresado;
+
+
+
+    }
+
+
+
+    public void menuCrearPedido(){
+        System.out.println("Añade el numero de pedido: ");
+
+
+        int numeroPedido= input.nextInt();
+
+        System.out.println("=====================Listado de Clientes registrados========================\n");
+
+        System.out.println("=====Clients Estandar=====");
+        int i=0;
+        for (i = 0; i < datosPr.getListaClientesEstandar().getSize(); i++) {
+            System.out.println(datosPr.getListaClientesEstandar().getArt(i).getNif()+" "+ datosPr.getListaClientesEstandar().getArt(i).getNombre() );
+        }                               //bucle que imprime los nombres de los clientes
+        System.out.println("............................................................................\n");
+        System.out.println("=====Clientes Premium=====");
+        for (i = 0; i< datosPr.getListaClientesPremium().getSize(); i++) {
+            System.out.println(datosPr.getListaClientesPremium().getArt(i).getNif()+" "+ datosPr.getListaClientesPremium().getArt(i).getNombre() );
+        }
+        System.out.println("============================================================================\n");
+
+
+
+    }
+
+
+
+
 
 
 }

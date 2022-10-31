@@ -13,15 +13,15 @@ public class PedidoVista {
 
     protected controlPedidos contP;
     protected controlArticulos contArt;
-    protected controller cont;
+    protected controller controller;
     protected ControlClientes contCli;
 
 
-    public PedidoVista(controlPedidos contP, controlArticulos contArt, controller cont, ControlClientes contCli){
+    public PedidoVista(){
 
         this.contP=contP;
         this.contArt=contArt;
-        this.cont=cont;
+        this.controller= new controller();
         this.contCli=contCli;
     }
     Scanner input = new Scanner(System.in);
@@ -43,7 +43,7 @@ public class PedidoVista {
 
             switch (resp) {
                 case 1:
-                    menuCrearPedido();
+                    controller.menuCrearPedido();
                     break;
                 case 2:
                     menuEliminarPedido();
