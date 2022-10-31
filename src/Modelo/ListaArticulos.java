@@ -53,10 +53,17 @@ public class ListaArticulos extends Lista<Articulos> {
         super.clear();
     }
 
+
+    /*@Override
+    public int isEmpty() {
+    return super.isEmpty();
+    }*/
+
     @Override
     public boolean isEmpty() {
         return super.isEmpty();
     }
+
 
     @Override
     public ArrayList<Articulos> setArrayList() {

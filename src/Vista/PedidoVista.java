@@ -1,9 +1,8 @@
 package Vista;
 
-import Controlador.controlArticulos;
-import Controlador.controlPedidos;
-import Controlador.controller;
+import Controlador.*;
 import Modelo.Articulos;
+
 
 import java.time.LocalDateTime;
 import java.util.Scanner;
@@ -14,14 +13,23 @@ public class PedidoVista {
 
     protected controlPedidos contP;
     protected controlArticulos contArt;
+    protected Controlador cont;
+    protected ControlClientes contCli;
+
+
+    
+
 
     protected controller cont;
-    public PedidoVista(controlPedidos contP, controlArticulos contArt, controller cont){
+    public PedidoVista(controlPedidos contP, controlArticulos contArt, controller cont, ControlClientes contCli){
+
         this.contP=contP;
         this.contArt=contArt;
         this.cont=cont;
+        this.contCli=contCli;
     }
     Scanner input = new Scanner(System.in);
+    ClientesVista cliV=new ClientesVista();
     public void menuPedidos(){   //menu de pedidos
         boolean salir = false;
         do {
@@ -62,7 +70,7 @@ public class PedidoVista {
         int numeroPedido= input.nextInt();
         System.out.println("CLIENTE: \n" +
                 "1.Escoger cliente registrado.\n" +
-                "2.Crear cliente nuevo." +
+                "2.Crear cliente nuevo.\n" +
                 "OPCION= ");
         int opcion=0;
         do{
@@ -70,10 +78,12 @@ public class PedidoVista {
             if(opcion==1){
 
                 System.out.println("Lista de clientes: ");
-                //SE TIENE QUE VER LA LISTA DE CLIENTES!!!!!!
+                contCli.mostrarCli();                                   //NO FUNCIONA!
 
-                System.out.println("Escoge el cliente: ");
-                //SELECCIONARLO
+                System.out.println("\nIntroduce el NIF del cliente: ");
+                String nif = input.nextLine();
+                contCli.encontrarClientePorId(nif);
+
 
             }else if(opcion==2){
                 //CREAR NUEVO CLIENTE!!!
@@ -82,18 +92,9 @@ public class PedidoVista {
 
             }
         }while(opcion!=1 && opcion!=2);
-        for(Articulos articulos : cont.listaArticulos){
-            System.out.println(articulos);
-        }
-                                                                    //aqui esta articulo!
-        Articulos art;
-        System.out.println("Introduce el codigo del cliente: ");
-        int codigoArticulo= input.nextInt();
-        for(Articulos articulos : cont.listaArticulos){
-            if(codigoArticulo==parseInt(articulos.getCodigo())){
-                art= articulos;
-            }
-        }
+
+
+        //listar articulo y escoger el articulo.
 
         System.out.println("Introduce la cantidad de articulos: ");
                                                                     //aqui esta la cantidad!!
@@ -101,7 +102,8 @@ public class PedidoVista {
                                                                     //aqui esta la fecha del pedido
         LocalDateTime fechaPedido = LocalDateTime.now();
                                                                     //precio total del pedido
-        //double precioTotal= contP.getPrecioTotal();
+        double precioTotal= contP.getPrecioTotal();
+
 
 
 

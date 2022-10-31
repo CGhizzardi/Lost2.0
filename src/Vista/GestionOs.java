@@ -4,9 +4,17 @@ import Controlador.controller;
 
 import java.util.Scanner;
 public class GestionOs {
+
+    
+    private controlPedidos contP;
+    private controlArticulos contArt;
+    private Controlador cont;
+    private ControlClientes contCli;
+
     private controller controller;
     private ArticuloVista artV;
     Scanner input = new Scanner(System.in);
+    PedidoVista pedidoV = new PedidoVista(contP,contArt,cont, contCli);
     public GestionOs() {
         controller = new controller();
         artV= new ArticuloVista();
@@ -30,7 +38,7 @@ public class GestionOs {
 
                     break;
                 case '3':
-// TO-BE-DONE
+                    pedidoV.menuCrearPedido();
                     break;
                 case '0':
                     salir = true;
