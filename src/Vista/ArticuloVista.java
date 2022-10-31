@@ -1,8 +1,9 @@
 package Vista;
 
-import Controlador.controller;
 import Controlador.controlArticulos;
-import Vista.GestionOs.*;
+import Controlador.controller;
+import Modelo.Articulos;
+
 
 import java.util.Scanner;
 
@@ -10,18 +11,15 @@ import java.util.Scanner;
 public class ArticuloVista {
 Scanner input= new Scanner(System.in);
     protected controlArticulos contArt;
-    protected controller cont;
+    protected controller controllerV;
+    protected OnlineStore g;
 
 
-    /** Metodo constructor de la clase
-     *
-     * @param contArt
-     */
 
-    public ArticuloVista(controlArticulos contArt){
+    public ArticuloVista(){
 
         this.contArt=contArt;
-
+        this.controllerV= new controller();
 
     }
 
@@ -29,8 +27,8 @@ Scanner input= new Scanner(System.in);
             boolean salir = false;
             char opcio;
             do {
-                System.out.println("1. Añadir Cliente");
-                System.out.println("2. Gestión Clientes");
+                System.out.println("1. Añadir Articulo");
+                System.out.println("2. Imprimir Articulo");
                 System.out.println("0. Salir");
                 opcio = pedirOpcion();
                 switch (opcio) {
@@ -40,8 +38,7 @@ Scanner input= new Scanner(System.in);
 // TO-BE-DONE
                         break;
                     case '2':
-                        System.out.println("Imprimir Articulo");
-                        cont.MostrarArticulo();
+                        controllerV.MostrarArticulo();
                         break;
                     case '0':
                         salir = true;
@@ -68,10 +65,7 @@ Scanner input= new Scanner(System.in);
 
     /** El metodo para imprimir los datos del articulo */
 
-    public void ImprimirArt(){
-        OnlineStore list = new OnlineStore();
-        list.getGestion();
-    }
+
 
 
 

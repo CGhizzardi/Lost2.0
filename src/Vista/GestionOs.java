@@ -5,9 +5,11 @@ import Controlador.controller;
 import java.util.Scanner;
 public class GestionOs {
     private controller controller;
+    private ArticuloVista artV;
     Scanner input = new Scanner(System.in);
     public GestionOs() {
         controller = new controller();
+        artV= new ArticuloVista();
     }
     public void inicio() {
         boolean salir = false;
@@ -21,11 +23,11 @@ public class GestionOs {
             switch (opcio) {
                 case '1':
 
-                    controller.MostrarArticulo();
+                   artV.menuArticulos();
 // TO-BE-DONE
                     break;
                 case '2':
-// TO-BE-DONE
+
                     break;
                 case '3':
 // TO-BE-DONE
