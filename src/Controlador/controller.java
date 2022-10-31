@@ -241,35 +241,6 @@ public class controller {
     /** Pedidos */
 
 
-    public String mostrarClientesPedidos(){
-
-        ListaClientesEstandar listadoCE = datosPr.getListaClientesEstandar();
-        ListaClientesPremium listadoPR = datosPr.getListaClientesPremium();
-        String nifIngresado;
-        int i = 0;
-
-
-        System.out.println("=====================Listado de Clientes registrados========================\n");
-
-        System.out.println("=====Clients Estandar=====");
-        for (i = 0; i < listadoCE.getSize(); i++) {
-            System.out.println(listadoCE.getArt(i).getNif()+" "+ listadoCE.getArt(i).getNombre() );
-        }                               //bucle que imprime los nombres de los clientes
-        System.out.println("............................................................................\n");
-        System.out.println("=====Clientes Premium=====");
-        for (i = 0; i < listadoPR.getSize(); i++) {
-            System.out.println(listadoPR.getArt(i).getNif()+" "+ listadoPR.getArt(i).getNombre() );
-        }
-        System.out.println("============================================================================\n");
-
-        System.out.print("Introduce el NIF del Cliente que deseas mostrar:\n");
-        nifIngresado = input.next();
-
-        return nifIngresado;
-
-
-
-    }
 
 
 
