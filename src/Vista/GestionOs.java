@@ -12,10 +12,12 @@ public class GestionOs {
     private ControlClientes contCli;
 
     private controller controller;
+    private ArticuloVista artV;
     Scanner input = new Scanner(System.in);
     PedidoVista pedidoV = new PedidoVista(contP,contArt,cont, contCli);
     public GestionOs() {
         controller = new controller();
+        artV= new ArticuloVista();
     }
     public void inicio() {
         boolean salir = false;
@@ -29,11 +31,11 @@ public class GestionOs {
             switch (opcio) {
                 case '1':
 
-                    controller.MostrarArticulo();
+                   artV.menuArticulos();
 // TO-BE-DONE
                     break;
                 case '2':
-// TO-BE-DONE
+
                     break;
                 case '3':
                     pedidoV.menuCrearPedido();
