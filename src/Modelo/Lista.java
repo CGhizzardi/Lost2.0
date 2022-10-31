@@ -88,7 +88,7 @@ public  class Lista<T> {
 
     public void clear() {
         //void clear()
-        //Removes all of the elements from this list (optional operation)-Quita todos los elementos de esta lista (operación opcional).
+        //Removes all  the elements from this list (optional operation)-Quita todos los elementos de esta lista (operación opcional).
         //The list will be empty after this call returns.
         lista.clear();
 

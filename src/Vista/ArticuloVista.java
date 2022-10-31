@@ -1,67 +1,81 @@
 package Vista;
+
 import Controlador.controlArticulos;
+import Controlador.controller;
 import Modelo.Articulos;
-import Modelo.ListaArticulos;
-import Vista.GestionOs.*;
+
+
 import java.util.Scanner;
 
 
 public class ArticuloVista {
-
+    Scanner input= new Scanner(System.in);
     protected controlArticulos contArt;
+    protected controller controllerV;
+    protected OnlineStore g;
 
 
 
+    public ArticuloVista(){
 
-public class ArticuloVista {
+        this.contArt=contArt;
+        this.controllerV= new controller();
 
-Scanner teclado = new Scanner(System.in);
-
-public controlArticulos contArt;
-protected controlArticulos contArt;
-protected controller cont;
-
-
-
-
-    /** Metodo constructor de la clase
-     *
-     * @param contArt
-     */
-
-    public ArticuloVista(controlArticulos contArt) {
-        this.contArt = contArt;
     }
 
-    public void gestionarticulos() {
+    public void menuArticulos() {
         boolean salir = false;
         char opcio;
         do {
-            System.out.println("1. Añadir articulos");
-            System.out.println("2. Mostrar articulos");
+            System.out.println("1. Añadir Articulo");
+            System.out.println("2. Imprimir Articulo");
             System.out.println("0. Salir");
             opcio = pedirOpcion();
             switch (opcio) {
                 case '1':
+
+
 // TO-BE-DONE
                     break;
                 case '2':
-// TO-BE-DONE
+                    controllerV.MostrarArticulo();
+                    break;
+                case '0':
+                    salir = true;
+            }
+        } while (!salir);
+    }
+    char pedirOpcion() {
+        String resp;
+        System.out.println("Elige una opción (1,2,3 o 0):");
+        resp = input.nextLine();
+        if (resp.isEmpty()) {
+            resp = " ";
+        }
+        return resp.charAt(0);
+    }
 
 
-    /** El metodo para imprimir los datos del articulo
-     *
-     * @param contArt
-     * @return
-     */
 
 
-    public String printArticulo(controlArticulos contArt) {
-        return "articulos{codigo=" + contArt.getCodigo()+ "\n"+
-                "descripcion=" + contArt.getDescripcion() + "\n" +
-                "precioDeVenta=" + contArt.getPrecioDeVenta()+ "\n" +
-                "gastosDeEnvio=" + contArt.getGastosDeEnvio()+ "\n" +
-                "tiempoDePreparacion=" + contArt.getTiempoDePreparacion()+ "\n";
+
+
+
+
+
+    /** El metodo para imprimir los datos del articulo */
+
+
+
+
+
+    public void imprimirArticulo(){
+
+
+
+
+
+
 
     }
 
@@ -70,3 +84,4 @@ protected controller cont;
 
 
 }
+

@@ -44,18 +44,18 @@ public class ClientesEstandar extends Clientes {
     }
 
     //IMPLEMENTACIÓN DE MÉTODOS ABSTRACTOS
-    public Clientes copiaCliente(Clientes clientes){
+    public Clientes copiaCliente(ClientesEstandar clientes){
         ClientesEstandar e = (ClientesEstandar) clientes;
         Clientes copiaCliente = new ClientesEstandar(e.getNombre(), e.getDomicilio(),e.getNif(), e.getEmail());
         return copiaCliente(e);
     }
-    public String tipoCliente(){
+    public String imtipoCliente(){
         return "El cliente " + this.getNombre() + "es de tipo Estandar";
     }
-    public float calcAnual(){
+    public float imcalcAnual(){
         return 0;
     }
-    public float descuentoEnv(){
+    public float imdescuentoEnv(){
         return 0;
     }
 }

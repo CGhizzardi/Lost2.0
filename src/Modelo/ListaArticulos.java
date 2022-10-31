@@ -17,6 +17,9 @@ public class ListaArticulos extends Lista<Articulos> {
     }
 
 
+
+
+
     @Override
     public ArrayList<Articulos> getLista(ArrayList<Articulos> list) {
         return super.getLista(list);
@@ -43,7 +46,7 @@ public class ListaArticulos extends Lista<Articulos> {
     }
 
     @Override
-    public Articulos getAt(int position) {
+    public Articulos getArt(int position) {
         return super.getArt(position);
     }
 

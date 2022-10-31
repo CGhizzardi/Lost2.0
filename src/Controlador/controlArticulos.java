@@ -16,8 +16,8 @@ public class controlArticulos {
     private ArticuloVista artVista;
 
 
-
-    /**Metodo constructor de la clase
+    /**
+     * Metodo constructor de la clase
      *
      * @param artModel
      * @param artVista
@@ -29,14 +29,14 @@ public class controlArticulos {
         this.artVista = artVista;
     }
 
-    /** Metodos Getters y Setters
+    /**
+     * Metodos Getters y Setters
      *
      * @return
      */
 
 
-
-    public String getCodigo(){
+    public String getCodigo() {
         return artModel.getCodigo();
     }
 
@@ -66,25 +66,26 @@ public class controlArticulos {
     }
 
     public void setTiempoDePreparacion(long tiempoDePreparacion) {
-        artModel.setTiempoDePreparacion(tiempoDePreparacion);}
+        artModel.setTiempoDePreparacion(tiempoDePreparacion);
+    }
 
-    public String getDescripcion() {return artModel.getDescripcion();}
+    public String getDescripcion() {
+        return artModel.getDescripcion();
+    }
 
     public void setDescripcion(String descripcion) {
         artModel.setDescripcion(descripcion);
     }
 
 
-
-
-    /** Metodo que muestra el articulo
-
+    /**
+     * Metodo que muestra el articulo
      *
      * @return
      */
 
 
-    public void addarticulo (Articulos art, ListaArticulos list) {
+    public void addarticulo(Articulos art, ListaArticulos list) {
         Scanner teclado = new Scanner(System.in);
         String codigo, descripcion;
         double precio, envio;
@@ -104,21 +105,12 @@ public class controlArticulos {
         list.add(art);
 
     }
-    /** Metodo que muestra el articulo
-     *
-     * @return
-     */
-    public String MostrarArticulo() {
-        System.out.println("Introduce el nombre del articulo que deseas mostrar");
-
-    public String articuloToString() {
 
 
-        return  "articulos codigo=" + artModel.getCodigo()+ "\n"+
-                "descripcion=" + artModel.getDescripcion() + "\n" +
-                "precioDeVenta=" + artModel.getPrecioDeVenta()+ "\n" +
-                "gastosDeEnvio=" + artModel.getGastosDeEnvio()+ "\n" +
-                "tiempoDePreparacion=" + artModel.getTiempoDePreparacion()+ "\n";
+
+
+
+
     }
 
 
@@ -126,5 +118,3 @@ public class controlArticulos {
 
 
 
-
-}
