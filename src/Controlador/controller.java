@@ -119,8 +119,8 @@ public class controller {
 break;
 
             } else {
-                System.out.println("error");
-
+                System.out.println("El codigo seleccionado no existe \n ");
+break;
             }
 
 
