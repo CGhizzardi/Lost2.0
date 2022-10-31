@@ -87,9 +87,35 @@ public class controller {
 
     }
 
-    /** Metodo que Muestra los Articulos
-     *
-     */
+
+    public void addarticulo () {
+        String codigos, descripciones;
+        double precios, envios;
+        int tiempos;
+
+
+
+        System.out.println("introduce el codigo\n");
+        codigos =input.nextLine();
+        System.out.println("introduce la descripcion\n");
+        descripciones =input.nextLine();
+        System.out.println("introduce el precio, si tiene decimales separalos usando ( , )\n");
+        precios =input.nextDouble();
+        System.out.println("introduce el Costo de envio si tiene decimales separalos usando ( , )\n");
+        envios =input.nextDouble();
+        System.out.println("introduce el tiempo de envio\n");
+        tiempos =input.nextInt();
+
+        Articulos artic= new Articulos(codigos,descripciones, precios, envios,tiempos);
+
+
+        datosPr.getListaArticulos().add(artic);
+    }
+
+
+        /** Metodo que Muestra los Articulos
+         *
+         */
 
     public void MostrarArticulo() {
 

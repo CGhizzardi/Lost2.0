@@ -25,11 +25,8 @@ public class ClientesVista {
             switch (opcio) {
                 case '1':
 
-
-// TO-BE-DONE
                     break;
                 case '2':
-
                     controller.mostrarCli();
                     break;
                 case '0':

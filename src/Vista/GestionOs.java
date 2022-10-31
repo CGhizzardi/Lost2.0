@@ -35,9 +35,7 @@ public class GestionOs {
             opcio = pedirOpcion();
             switch (opcio) {
                 case '1':
-
                    artV.menuArticulos();
-// TO-BE-DONE
                     break;
                 case '2':
                     cliV.menuCliente();

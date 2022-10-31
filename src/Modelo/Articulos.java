@@ -10,7 +10,7 @@ public class Articulos {
     private String Descripcion;
     private double precioDeVenta;
     private double gastosDeEnvio;
-    private long tiempoDePreparacion;
+    private int tiempoDePreparacion;
 
 
     /**Metodo Constructor de la clase Articulo
@@ -24,7 +24,7 @@ public class Articulos {
 
     /** Constructores */
 
-    public Articulos(String codigo, String descripcion, double precioDeVenta, double gastoDeEnvio, long tiempoDePrepar) {
+    public Articulos(String codigo, String descripcion, double precioDeVenta, double gastoDeEnvio, int tiempoDePrepar) {
         this.codigo = codigo;
         this.Descripcion = descripcion;
         this.precioDeVenta = precioDeVenta;
@@ -76,7 +76,7 @@ public class Articulos {
         this.Descripcion = descripcion;
     }
 
-    public void setTiempoDePreparacion(long tiempoDePreparacion) {
+    public void setTiempoDePreparacion(int tiempoDePreparacion) {
         this.tiempoDePreparacion = tiempoDePreparacion;}
 
     /** El metodo toString() */
@@ -84,27 +84,8 @@ public class Articulos {
         return "articulos{codigo='" + this.codigo + "', descripcion='" + this.Descripcion + "', precioDeVenta=" + this.precioDeVenta + ", gastosDeEnvio=" + this.gastosDeEnvio + ", tiempoDePreparacion=" + this.tiempoDePreparacion + "}";
     }
 
-    /** Metodos */
-    /** Añadir articulo */
-    /** En el caso de que el cliente añada el producto habria que cambiar el valor por el Scanner
-     * y que lo pueda introducir
-     * @param art
-     */
-    public void addArticulo (Articulos art){
-        String cod , desc;
-        long tiempo;
-        double gastos, precio;
-        cod = "asrj";
-        desc = "articulo  de prueba";
-        tiempo = 12;
-        gastos = 13.8;
-        precio = 15.8;
-        art.setCodigo(cod);
-        art.setDescripcion(desc);
-        art.setTiempoDePreparacion(tiempo);
-        art.setGastosDeEnvio(gastos);
-        art.setPrecioDeVenta(precio);
-    }
+
+
     /** Mostrar articulo de prueba articulo */
     public void mostraArticulos (Articulos art){
 

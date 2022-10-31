@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class ArticuloVista {
     Scanner input= new Scanner(System.in);
     protected controlArticulos contArt;
-    protected controller controllerV;
+    protected controller controller;
     protected OnlineStore g;
 
 
@@ -19,7 +19,7 @@ public class ArticuloVista {
     public ArticuloVista(){
 
         this.contArt=contArt;
-        this.controllerV= new controller();
+        this.controller= new controller();
 
     }
 
@@ -33,13 +33,10 @@ public class ArticuloVista {
             opcio = pedirOpcion();
             switch (opcio) {
                 case '1':
-
-
-// TO-BE-DONE
+                    controller.addarticulo();
                     break;
                 case '2':
-
-                    controllerV.MostrarArticulo();
+                    controller.MostrarArticulo();
                     break;
                 case '0':
                     salir = true;

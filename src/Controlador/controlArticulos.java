@@ -65,8 +65,8 @@ public class controlArticulos {
         return artModel.getTiempoDePreparacion();
     }
 
-    public void setTiempoDePreparacion(long tiempoDePreparacion) {
-        artModel.setTiempoDePreparacion(tiempoDePreparacion);
+    public void setTiempoDePreparacion(int tiempoDePreparacion) {
+        artModel.setTiempoDePreparacion((int) tiempoDePreparacion);
     }
 
     public String getDescripcion() {
@@ -85,26 +85,6 @@ public class controlArticulos {
      */
 
 
-    public void addarticulo(Articulos art, ListaArticulos list) {
-        Scanner teclado = new Scanner(System.in);
-        String codigo, descripcion;
-        double precio, envio;
-        long tiempo;
-
-        codigo = teclado.nextLine();
-        descripcion = teclado.nextLine();
-        precio = teclado.nextDouble();
-        envio = teclado.nextDouble();
-        tiempo = teclado.nextLong();
-
-        art.setCodigo(codigo);
-        art.setDescripcion(descripcion);
-        art.setPrecioDeVenta(precio);
-        art.setGastosDeEnvio(envio);
-        art.setTiempoDePreparacion(tiempo);
-        list.add(art);
-
-    }
 
 
 
