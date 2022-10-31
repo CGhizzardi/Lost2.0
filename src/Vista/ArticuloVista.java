@@ -38,6 +38,7 @@ public class ArticuloVista {
 // TO-BE-DONE
                     break;
                 case '2':
+
                     controllerV.MostrarArticulo();
                     break;
                 case '0':
@@ -47,7 +48,7 @@ public class ArticuloVista {
     }
     char pedirOpcion() {
         String resp;
-        System.out.println("Elige una opción (1,2,3 o 0):");
+        System.out.println("Elige una opción (1,2 o 0):");
         resp = input.nextLine();
         if (resp.isEmpty()) {
             resp = " ";

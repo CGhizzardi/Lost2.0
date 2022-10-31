@@ -92,15 +92,13 @@ public class controller {
         String codigoIngresado;
         String articuloCode;
         int i = 0;
-        Articulos co;
-
-        boolean esc;
 
 
+        System.out.println("====================Listado de Articulos Disponibles======================");
         for (i = 0; i < listadoAr.getSize(); i++) {
             System.out.println(listadoAr.getArt(i).getCodigo()+" "+ listadoAr.getArt(i).getDescripcion() );
         }                               //bucle que imprime los nombres de los articulos
-
+        System.out.println("==========================================================================\n");
 
         System.out.print("Introduce el codigo del articulo que deseas mostrar:\n");
         codigoIngresado = input.next();
