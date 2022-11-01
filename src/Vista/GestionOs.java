@@ -6,21 +6,21 @@ import java.util.Scanner;
 public class GestionOs {
 
     
-    private controlPedidos contP;
-    private controlArticulos contArt;
-    private controller cont;
+    private ControlPedidos contP;
+    private ControlArticulos contArt;
+    private Controller cont;
     private ControlClientes contCli;
 
     Scanner input = new Scanner(System.in);
 
-    private controller controller;
+    private Controller controller;
     private ArticuloVista artV;
 
     private ClientesVista cliV;
 
     PedidoVista pedidoV = new PedidoVista();
     public GestionOs() {
-        this.controller = new controller();
+        this.controller = new Controller();
         this.artV= new ArticuloVista();
         this.cliV= new ClientesVista();
     }
@@ -59,7 +59,7 @@ public class GestionOs {
     }
 
 
-public controller getController(){
+public Controller getController(){
     return this.controller;
 }
 }

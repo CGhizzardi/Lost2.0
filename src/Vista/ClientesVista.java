@@ -7,10 +7,10 @@ public class ClientesVista {
 
     Scanner input= new Scanner(System.in);
 
-    private controller controller;
+    private Controller controller;
 
     public ClientesVista(){
-        this.controller= new controller();
+        this.controller= new Controller();
     }
 
 

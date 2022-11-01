@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class controller {
+public class Controller {
     Scanner input = new Scanner(System.in);
     protected Datos datosPr;
 
@@ -35,14 +35,14 @@ public class controller {
 
     protected Articulos art;
 
-    protected controlArticulos artC = new controlArticulos(art, artV);
+    protected ControlArticulos artC = new ControlArticulos(art, artV);
 
     /** Metodo Constructor de la Clase
      *
      */
 
 
-    public controller() {
+    public Controller() {
 
         this.datosPr = new Datos(articulosList, clientesEsList, clientesPreList, pedidosList);
         this.datosPr.datosPrograma();

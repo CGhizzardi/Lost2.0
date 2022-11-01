@@ -1,14 +1,11 @@
 package Controlador;
 import Vista.*;
 import Modelo.*;
-import java.time.*;
+
 import java.util.Scanner;
-import Controlador.controller.*;
-import java.util.*;
 
 
-
-public class controlArticulos {
+public class ControlArticulos {
     Scanner input = new Scanner(System.in);
 
 
@@ -24,7 +21,7 @@ public class controlArticulos {
      */
 
 
-    public controlArticulos(Articulos artModel, ArticuloVista artVista) {
+    public ControlArticulos(Articulos artModel, ArticuloVista artVista) {
         this.artModel = artModel;
         this.artVista = artVista;
     }

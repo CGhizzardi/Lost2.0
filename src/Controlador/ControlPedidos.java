@@ -5,11 +5,11 @@ import java.time.*;
 
 
 
-    public class controlPedidos {
+    public class ControlPedidos {
         private Pedido modelo;
         private PedidoVista vista;
 
-        public controlPedidos (Pedido modelo, PedidoVista vista) {
+        public ControlPedidos(Pedido modelo, PedidoVista vista) {
             this.modelo = modelo;
             this.vista = vista;
         }

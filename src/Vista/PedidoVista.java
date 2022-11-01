@@ -1,7 +1,6 @@
 package Vista;
 
 import Controlador.*;
-import Modelo.Articulos;
 
 
 import java.time.LocalDateTime;
@@ -11,9 +10,9 @@ import static java.lang.Integer.parseInt;
 
 public class PedidoVista {
 
-    protected controlPedidos contP;
-    protected controlArticulos contArt;
-    protected controller controller;
+    protected ControlPedidos contP;
+    protected ControlArticulos contArt;
+    protected Controller controller;
     protected ControlClientes contCli;
 
 
@@ -21,7 +20,7 @@ public class PedidoVista {
 
         this.contP=contP;
         this.contArt=contArt;
-        this.controller= new controller();
+        this.controller= new Controller();
         this.contCli=contCli;
     }
     Scanner input = new Scanner(System.in);
@@ -115,7 +114,7 @@ public class PedidoVista {
     }
 
 
-    public void imprimirPedido (controlPedidos contP){
+    public void imprimirPedido (ControlPedidos contP){
 
 
         System.out.println("numeroPedido=" + contP.getNumeroPedido()+"\n"+

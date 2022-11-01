@@ -2,9 +2,6 @@ package Controlador;
 
 import Vista.*;
 import Modelo.*;
-import Controlador.controller.*;
-import java.util.*;
-
 
 
 public class ControlClientes {

@@ -1,8 +1,7 @@
 package Vista;
 
-import Controlador.controlArticulos;
-import Controlador.controller;
-import Modelo.Articulos;
+import Controlador.ControlArticulos;
+import Controlador.Controller;
 
 
 import java.util.Scanner;
@@ -10,8 +9,8 @@ import java.util.Scanner;
 
 public class ArticuloVista {
     Scanner input= new Scanner(System.in);
-    protected controlArticulos contArt;
-    protected controller controller;
+    protected ControlArticulos contArt;
+    protected Controller controller;
     protected OnlineStore g;
 
 
@@ -19,7 +18,7 @@ public class ArticuloVista {
     public ArticuloVista(){
 
         this.contArt=contArt;
-        this.controller= new controller();
+        this.controller= new Controller();
 
     }
 
