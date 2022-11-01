@@ -9,7 +9,5 @@ public class OnlineStore {
         gestion.inicio();
     }
 
-    public void getGestion() {
-        this.gestion.getController().getArticulosList();
-    }
+
 }

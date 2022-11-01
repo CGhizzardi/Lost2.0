@@ -1,6 +1,9 @@
 package Vista;
 
 import Controlador.*;
+import Modelo.ListaArticulos;
+import Modelo.ListaClientesEstandar;
+import Modelo.ListaClientesPremium;
 
 
 import java.time.LocalDateTime;
@@ -11,7 +14,7 @@ import static java.lang.Integer.parseInt;
 public class PedidoVista {
 
     protected ControlPedidos contP;
-    protected ControlArticulos contArt;
+
     protected Controller controller;
     protected ControlClientes contCli;
 
@@ -19,7 +22,7 @@ public class PedidoVista {
     public PedidoVista(){
 
         this.contP=contP;
-        this.contArt=contArt;
+
         this.controller= new Controller();
         this.contCli=contCli;
     }
@@ -103,16 +106,32 @@ public class PedidoVista {
 
 
     }
-    public void menuEliminarPedido(){
+
+
+    public Controller getContolador(){
+    return controller;
+    }
+    public ListaArticulos getListaArticulos(){
+     return controller.getDatosPr().getListaArticulos();
+    }
+
+    public void setListaArticulos(ListaArticulos a){
+        this.controller.getDatosPr().setListaArticulos(a);
+    }
+
+    public ListaClientesPremium getListaClientesPremium(){
+        return controller.getDatosPr().getListaClientesPremium();
 
     }
-    public void menuMostrarPendientesEnvio(){
-
+    public void setListaClientesPremium(ListaClientesPremium cp){
+        this.controller.getDatosPr().setListaClientesPremium(cp);
     }
-    public void menuMostrarEnviados(){
-
+    public ListaClientesEstandar getListaClientesEstandar(){
+        return controller.getDatosPr().getListaClientesEstandar();
     }
-
+    public void setListaClientesEstandar(ListaClientesEstandar ce){
+        this.controller.getDatosPr().setListaClientesEstandar(ce);
+    }
 
     public void imprimirPedido (ControlPedidos contP){
 

@@ -1,7 +1,8 @@
 package Vista;
 
-import Controlador.ControlArticulos;
+
 import Controlador.Controller;
+import Modelo.ListaArticulos;
 
 
 import java.util.Scanner;
@@ -9,7 +10,7 @@ import java.util.Scanner;
 
 public class ArticuloVista {
     Scanner input= new Scanner(System.in);
-    protected ControlArticulos contArt;
+
     protected Controller controller;
     protected OnlineStore g;
 
@@ -17,7 +18,7 @@ public class ArticuloVista {
 
     public ArticuloVista(){
 
-        this.contArt=contArt;
+
         this.controller= new Controller();
 
     }
@@ -53,32 +54,12 @@ public class ArticuloVista {
     }
 
 
-
-
-
-
-
-
-
-    /** El metodo para imprimir los datos del articulo */
-
-
-
-
-
-    public void imprimirArticulo(){
-
-
-
-
-
-
-
+    public Controller getController() {
+        return controller;
     }
 
-
-
-
-
+    public ListaArticulos getListaArticulos(){
+        return controller.getDatosPr().getListaArticulos();
+    }
 }
 

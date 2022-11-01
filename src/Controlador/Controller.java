@@ -35,7 +35,7 @@ public class Controller {
 
     protected Articulos art;
 
-    protected ControlArticulos artC = new ControlArticulos(art, artV);
+
 
     /** Metodo Constructor de la Clase
      *

@@ -1,6 +1,10 @@
 package Vista;
 
 import Controlador.*;
+import Modelo.ListaArticulos;
+import Modelo.ListaClientesEstandar;
+import Modelo.ListaClientesPremium;
+
 import java.util.Scanner;
 
 public class ClientesVista {
@@ -67,6 +71,17 @@ public class ClientesVista {
         }else {
             System.out.println("Cliente estandar \n");
         }
+    }
+
+    public ListaClientesPremium getListaClientesPremium(){
+        return controller.getDatosPr().getListaClientesPremium();
+
+    }
+//public void setListaArticulos(ListaArticulos a){
+
+
+    public ListaClientesEstandar getListaClientesEstandar(){
+        return controller.getDatosPr().getListaClientesEstandar();
     }
 
 }

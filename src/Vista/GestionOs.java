@@ -1,29 +1,35 @@
 package Vista;
 
 import Controlador.*;
+import Vista.ArticuloVista.*;
 
 import java.util.Scanner;
 public class GestionOs {
 
-    
+    Scanner input = new Scanner(System.in);
     private ControlPedidos contP;
-    private ControlArticulos contArt;
-    private Controller cont;
     private ControlClientes contCli;
 
-    Scanner input = new Scanner(System.in);
-
-    private Controller controller;
     private ArticuloVista artV;
-
     private ClientesVista cliV;
+    private PedidoVista pedV;
+
+
 
     PedidoVista pedidoV = new PedidoVista();
     public GestionOs() {
-        this.controller = new Controller();
+
         this.artV= new ArticuloVista();
         this.cliV= new ClientesVista();
+        this.pedidoV= new PedidoVista();
+
     }
+
+
+
+
+
+
     public void inicio() {
         boolean salir = false;
         char opcio;
@@ -36,9 +42,12 @@ public class GestionOs {
             switch (opcio) {
                 case '1':
                    artV.menuArticulos();
+                   pedidoV.setListaArticulos(artV.getListaArticulos());
                     break;
                 case '2':
                     cliV.menuCliente();
+                    pedidoV.setListaClientesPremium(cliV.getListaClientesPremium());
+                    pedidoV.setListaClientesEstandar(cliV.getListaClientesEstandar());
                     break;
                 case '3':
                     pedidoV.menuPedidos();
@@ -59,7 +68,5 @@ public class GestionOs {
     }
 
 
-public Controller getController(){
-    return this.controller;
-}
+
 }
