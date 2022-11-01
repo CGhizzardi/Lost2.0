@@ -1,8 +1,8 @@
-/**package Controlador;
+package Controlador;
+
+import Modelo.Pedido;
 import junit.framework.TestCase;
-import Modelo.*;
-import Vista.*;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import java.time.LocalDateTime;
 
@@ -30,4 +30,4 @@ public class Test_jUnit extends TestCase{
         assertFalse("FALLO: El pedido consta enviado pero no ha superado el tiempo de preparacion.",pedido.pedidoEnviado(FechaPedido,duracionPreparacion));
         System.out.println("La funcion(pedidoEnviado) funciona porque no se ha enviado el pedido todabia.");
     }
-} */
+}

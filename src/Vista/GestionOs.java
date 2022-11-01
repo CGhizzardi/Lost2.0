@@ -42,12 +42,12 @@ public class GestionOs {
             switch (opcio) {
                 case '1':
                    artV.menuArticulos();
-                   pedidoV.setListaArticulos(artV.getListaArticulos());
+                   pedidoV.getContolador().getDatosPr().setListaArticulos(artV.getController().getArticulosList());
                     break;
                 case '2':
                     cliV.menuCliente();
-                    pedidoV.setListaClientesPremium(cliV.getListaClientesPremium());
-                    pedidoV.setListaClientesEstandar(cliV.getListaClientesEstandar());
+                    pedidoV.getContolador().getDatosPr().setListaClientesEstandar(cliV.getController().getClientesEsList());
+                    pedidoV.getContolador().getDatosPr().setListaClientesPremium(cliV.getController().getClientesPreList());
                     break;
                 case '3':
                     pedidoV.menuPedidos();

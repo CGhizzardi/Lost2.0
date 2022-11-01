@@ -1,9 +1,6 @@
 package Vista;
 
 import Controlador.*;
-import Modelo.ListaArticulos;
-import Modelo.ListaClientesEstandar;
-import Modelo.ListaClientesPremium;
 
 
 import java.time.LocalDateTime;
@@ -109,31 +106,6 @@ public class PedidoVista {
 
     public Controller getContolador() {
         return controller;
-    }
-
-    public ListaArticulos getListaArticulos() {
-        return controller.getDatosPr().getListaArticulos();
-    }
-
-    public void setListaArticulos(ListaArticulos a) {
-        this.controller.getDatosPr().setListaArticulos(a);
-    }
-
-    public ListaClientesPremium getListaClientesPremium() {
-        return controller.getDatosPr().getListaClientesPremium();
-
-    }
-
-    public void setListaClientesPremium(ListaClientesPremium cp) {
-        this.controller.getDatosPr().setListaClientesPremium(cp);
-    }
-
-    public ListaClientesEstandar getListaClientesEstandar() {
-        return controller.getDatosPr().getListaClientesEstandar();
-    }
-
-    public void setListaClientesEstandar(ListaClientesEstandar ce) {
-        this.controller.getDatosPr().setListaClientesEstandar(ce);
     }
 
 }

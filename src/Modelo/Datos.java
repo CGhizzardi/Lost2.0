@@ -2,7 +2,7 @@ package Modelo;
 
 import java.util.ArrayList;
 
-/** Clase que contiene todos las operaciones para el Controller */
+/** Clase que contiene todos los datos que debera usar el Controldor para el Controller */
 
 
 public class Datos {

@@ -1,12 +1,7 @@
 package Vista;
 
 import Controlador.*;
-import Modelo.ListaArticulos;
-import Modelo.ListaClientesEstandar;
-import Modelo.ListaClientesPremium;
-
 import java.util.Scanner;
-
 public class ClientesVista {
 
     Scanner input= new Scanner(System.in);
@@ -57,7 +52,9 @@ public class ClientesVista {
     }
 
 
-
+    public Controller getController() {
+        return controller;
+    }
 
     public void imprimirClientes (ControlClientes clientes){
         System.out.println("Nombre del cliente: " + clientes.getNombre() + "\n" +
@@ -73,16 +70,7 @@ public class ClientesVista {
         }
     }
 
-    public ListaClientesPremium getListaClientesPremium(){
-        return controller.getDatosPr().getListaClientesPremium();
 
-    }
-//public void setListaArticulos(ListaArticulos a){
-
-
-    public ListaClientesEstandar getListaClientesEstandar(){
-        return controller.getDatosPr().getListaClientesEstandar();
-    }
 
 }
 /**GESTION DE CLIENTES - EN EL MENU

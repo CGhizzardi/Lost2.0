@@ -21,7 +21,6 @@ public class Controller {
     private ArrayList<Pedido> listaPedidos;
 
 
-
     /**
      * Objetos de las clases Articulos, Clientes, Pedidos
      */
@@ -30,10 +29,6 @@ public class Controller {
     protected ListaClientesEstandar clientesEsList = new ListaClientesEstandar(listaClientesEstandar);
     protected ListaClientesPremium clientesPreList = new ListaClientesPremium(listaClientesPremium);
     protected ListaPedidos pedidosList = new ListaPedidos(listaPedidos);
-
-    protected ArticuloVista artV;
-
-    protected Articulos art;
 
 
 
@@ -94,13 +89,11 @@ public class Controller {
 
     }
 
-
+    /** Metodo que agrega los articulos a la Base de datos */
     public void addarticulo () {
         String codigos, descripciones;
         double precios, envios;
         int tiempos;
-
-
 
         System.out.println("introduce el codigo\n");
         codigos =input.nextLine();

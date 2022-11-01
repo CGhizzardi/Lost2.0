@@ -8,24 +8,18 @@ public  class Lista<T> {
     Scanner input = new Scanner(System.in);
     protected ArrayList<T> lista;
 
-
     /**
      * Metodo constructor
      */
 
     public Lista(ArrayList<T> lista) {
         this.lista = new ArrayList<T>();
-
     }
-
-
 
     /**
      * Metodos Getters y Setters
      */
-    public ArrayList<T> getLista(ArrayList<T> list) {
-        return list;
-    }
+    public ArrayList<T> getLista(ArrayList<T> list) {return list;}
 
     public void setLista(ArrayList<T> lista) {
         this.lista = lista;

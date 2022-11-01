@@ -2,9 +2,6 @@ package Vista;
 
 
 import Controlador.Controller;
-import Modelo.ListaArticulos;
-
-
 import java.util.Scanner;
 
 
@@ -58,8 +55,6 @@ public class ArticuloVista {
         return controller;
     }
 
-    public ListaArticulos getListaArticulos(){
-        return controller.getDatosPr().getListaArticulos();
-    }
+
 }
 
