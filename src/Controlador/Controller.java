@@ -395,7 +395,7 @@ public class Controller {
             boolean salir = false;
             do {
                 System.out.println("1. Crear Cliente Estandar");
-                System.out.println("2. Crear Cliente Estandar");
+                System.out.println("2. Crear Cliente Premium");
                 System.out.println("0. Salir");
 
                 int opcio;
