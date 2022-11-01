@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class GestionOs {
 
     Scanner input = new Scanner(System.in);
-    private ControlPedidos contP;
-    private ControlClientes contCli;
+
+
 
     private ArticuloVista artV;
     private ClientesVista cliV;

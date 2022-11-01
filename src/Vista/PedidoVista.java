@@ -13,22 +13,22 @@ import static java.lang.Integer.parseInt;
 
 public class PedidoVista {
 
-    protected ControlPedidos contP;
 
     protected Controller controller;
     protected ControlClientes contCli;
 
 
-    public PedidoVista(){
+    public PedidoVista() {
 
-        this.contP=contP;
 
-        this.controller= new Controller();
-        this.contCli=contCli;
+        this.controller = new Controller();
+        this.contCli = contCli;
     }
+
     Scanner input = new Scanner(System.in);
-    ClientesVista cliV=new ClientesVista();
-    public void menuPedidos(){   //menu de pedidos
+    ClientesVista cliV = new ClientesVista();
+
+    public void menuPedidos() {   //menu de pedidos
         boolean salir = false;
         do {
             System.out.println("ESTA ES LA GESTION DE PEDIDOS:\n");
@@ -61,92 +61,81 @@ public class PedidoVista {
             }
         } while (!salir);
     }
-    public void menuCrearPedido(){
+
+    public void menuCrearPedido() {
         System.out.println("Añade el numero de pedido: ");
 
-                                                            //aqui esta el numero de pedido
-        int numeroPedido= input.nextInt();
+        //aqui esta el numero de pedido
+        int numeroPedido = input.nextInt();
         System.out.println("CLIENTE: \n" +
                 "1.Escoger cliente registrado.\n" +
                 "2.Crear cliente nuevo.\n" +
                 "OPCION= ");
-        int opcion=0;
-        do{
+        int opcion = 0;
+        do {
             opcion = input.nextInt();
-            if(opcion==1){
+            if (opcion == 1) {
 
                 System.out.println("Lista de clientes: ");
-               // contCli.mostrarCli();                                   //NO FUNCIONA!
+                // contCli.mostrarCli();                                   //NO FUNCIONA!
 
                 System.out.println("\nIntroduce el NIF del cliente: ");
                 String nif = input.nextLine();
-               // contCli.encontrarClientePorId(nif);
+                // contCli.encontrarClientePorId(nif);
 
 
-            }else if(opcion==2){
+            } else if (opcion == 2) {
                 //CREAR NUEVO CLIENTE!!!
 
                 //SELECCIONARLO
 
             }
-        }while(opcion!=1 && opcion!=2);
+        } while (opcion != 1 && opcion != 2);
 
 
         //listar articulo y escoger el articulo.
 
         System.out.println("Introduce la cantidad de articulos: ");
-                                                                    //aqui esta la cantidad!!
+        //aqui esta la cantidad!!
         int cantidadArticulos = input.nextInt();
-                                                                    //aqui esta la fecha del pedido
+        //aqui esta la fecha del pedido
         LocalDateTime fechaPedido = LocalDateTime.now();
-                                                                    //precio total del pedido
-        double precioTotal= contP.getPrecioTotal();
-
+        //precio total del pedido
 
 
 
     }
 
 
-    public Controller getContolador(){
-    return controller;
-    }
-    public ListaArticulos getListaArticulos(){
-     return controller.getDatosPr().getListaArticulos();
+    public Controller getContolador() {
+        return controller;
     }
 
-    public void setListaArticulos(ListaArticulos a){
+    public ListaArticulos getListaArticulos() {
+        return controller.getDatosPr().getListaArticulos();
+    }
+
+    public void setListaArticulos(ListaArticulos a) {
         this.controller.getDatosPr().setListaArticulos(a);
     }
 
-    public ListaClientesPremium getListaClientesPremium(){
+    public ListaClientesPremium getListaClientesPremium() {
         return controller.getDatosPr().getListaClientesPremium();
 
     }
-    public void setListaClientesPremium(ListaClientesPremium cp){
+
+    public void setListaClientesPremium(ListaClientesPremium cp) {
         this.controller.getDatosPr().setListaClientesPremium(cp);
     }
-    public ListaClientesEstandar getListaClientesEstandar(){
+
+    public ListaClientesEstandar getListaClientesEstandar() {
         return controller.getDatosPr().getListaClientesEstandar();
     }
-    public void setListaClientesEstandar(ListaClientesEstandar ce){
+
+    public void setListaClientesEstandar(ListaClientesEstandar ce) {
         this.controller.getDatosPr().setListaClientesEstandar(ce);
     }
 
-    public void imprimirPedido (ControlPedidos contP){
-
-
-        System.out.println("numeroPedido=" + contP.getNumeroPedido()+"\n"+
-                ", fechaHora=" + contP.getFechaHora()+"\n" +
-                ", Nif del cliente=" + contP.getCliente().getNif()+"\n" +
-                ", Nombre del Cliente=" + contP.getCliente().getNombre()+"\n" +
-                ", Articulo codigo=" + contP.getArticulo().getCodigo()+"\n" +
-                ", Descripción=" + contP.getArticulo().getDescripcion()+"\n" +
-                ", Cantidad=" + contP.getCantidadArticulos()+"\n" +
-                ", Articulo codigo=" + contP.getArticulo().getPrecioDeVenta()+"\n" +
-                ", Envio=" + contP.getPrecioTotal() +" €\n"+
-                ", Precio total=" + contP.getPrecioTotal() + " €\n"+
-                ", El pedido esta enviado=" + contP.getEnviado()+"\n" +
-                '}');
-    }
 }
+
+
