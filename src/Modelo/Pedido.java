@@ -5,19 +5,23 @@ import java.text.ParseException;
 import java.util.Date;
 public class Pedido {
 
-/** Atributos de la clase */
+    /**
+     * Atributos de la clase
+     */
 
 
-private int numeroPedido;
-private Clientes cliente;
-private Articulos articulo;
-private int cantidadArticulos;
-private LocalDateTime fechaHora;
-private double precioTotal;
-private boolean enviado;
+    private int numeroPedido;
+    private Clientes cliente;
+    private Articulos articulo;
+    private int cantidadArticulos;
+    private LocalDateTime fechaHora;
+    private double precioTotal;
+    private boolean enviado;
 
 
-    /** Metodos Getters y Setters */
+    /**
+     * Metodos Getters y Setters
+     */
 
 
     public int getNumeroPedido() {
@@ -60,31 +64,38 @@ private boolean enviado;
         this.fechaHora = fechaHora;
     }
 
-    public void setEnviado(boolean enviado) { this.enviado = pedidoEnviado(fechaHora, articulo.getTiempoDePreparacion()); }
+    public void setEnviado(boolean enviado) {
+        this.enviado = pedidoEnviado(fechaHora, articulo.getTiempoDePreparacion());
+    }
 
-    public boolean getEnviado(){ return enviado; }
+    public boolean getEnviado() {
+        return enviado;
+    }
 
-    public void setPrecioTotal(double precioTotal){ this.precioTotal = precioEnvio(articulo.getPrecioDeVenta(),cantidadArticulos,articulo.getGastosDeEnvio(),cliente.getDescuento()); }
+    public void setPrecioTotal(double precioTotal) {
+        this.precioTotal = precioEnvio(articulo.getPrecioDeVenta(), cantidadArticulos, articulo.getGastosDeEnvio(), cliente.getDescuento());
+    }
 
-    public double getPrecioTotal() { return precioTotal; }
+    public double getPrecioTotal() {
+        return precioTotal;
+    }
 
 
-  public boolean pedidoEnviado(LocalDateTime fechaHora, Long tiempoPreparacion){        // funcion para saber si el pedido ha sido envido o no
+    public boolean pedidoEnviado(LocalDateTime fechaHora, Long tiempoPreparacion) {        // funcion para saber si el pedido ha sido envido o no
         String pattern = "yyyy-MM-dd HH:mm";
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-        String fecha1=fechaHora.toString().replace("T"," ");  //fecha elaboracion
-        String fecha2=LocalDateTime.now().toString().replace("T"," "); //fecha actual
+        String fecha1 = fechaHora.toString().replace("T", " ");  //fecha elaboracion
+        String fecha2 = LocalDateTime.now().toString().replace("T", " "); //fecha actual
         try {
             Date date1 = sdf.parse(fecha1);
             Date date2 = sdf.parse(fecha2);
             long diff = date2.getTime() - date1.getTime();
-            if(diff>tiempoPreparacion){   //si diff es mayor al tiempo de prep., el pedido ya se ha enviado
+            if (diff > tiempoPreparacion) {   //si diff es mayor al tiempo de prep., el pedido ya se ha enviado
                 return true;
-            }else{    //si diff es menor al tiempo de prep., el pedido aun no se ha enviado
+            } else {    //si diff es menor al tiempo de prep., el pedido aun no se ha enviado
                 return false;
             }
-        }
-        catch (ParseException e) {
+        } catch (ParseException e) {
             System.out.println("El calculo de pedidoEnviado() en pedidos, ha fallado.");
             e.printStackTrace();
         }
@@ -103,12 +114,12 @@ private boolean enviado;
     }
     */
 
-//Funcion para calcular el precio TOTAL del pedido (precio de todos los articulos + envio - descuento)
-    public double precioEnvio(double precioDeVenta, double cantidadArticulos, double gastosEnvio, double descuento){
-        double precio = precioDeVenta*cantidadArticulos;
-        if (descuento!=0){
-            return precio-(precio*descuento/100)+gastosEnvio;
-        }else{
+    //Funcion para calcular el precio TOTAL del pedido (precio de todos los articulos + envio - descuento)
+    public double precioEnvio(double precioDeVenta, double cantidadArticulos, double gastosEnvio, double descuento) {
+        double precio = precioDeVenta * cantidadArticulos;
+        if (descuento != 0) {
+            return precio + ((1-(descuento / 100)) * gastosEnvio);
+        } else {
             return precio + gastosEnvio;
         }
 
@@ -116,19 +127,36 @@ private boolean enviado;
 
     @Override
     public String toString() {
-        return "Pedidos{" +
-                "numeroPedido=" + numeroPedido +
-                ", fechaHora=" + fechaHora +
-                ", Nif del cliente=" + cliente.getNif() +
-                ", Nombre del Cliente=" + cliente.getNombre() +
-                ", Articulo codigo=" + articulo.getCodigo() +
-                ", Descripción=" + articulo.getDescripcion() +    ///DESCRIPCION ARTICULO!!(getDescripcion() no existe en rama principal)
-                ", Cantidad=" + cantidadArticulos +
-                ", Articulo codigo=" + articulo.getPrecioDeVenta() +
-                ", Envio=" + precioEnvio(articulo.getPrecioDeVenta(),cantidadArticulos,articulo.getGastosDeEnvio(),cliente.getDescuento()) +" €"+
-                ", Precio total=" + precioTotal + " €"+
-                ", El pedido esta enviado=" + enviado +   //falta probar
-                '}';
+        if (enviado) {
+            return "\n--------------------------------------------------" +
+                    "\nNumero del Pedido= " + numeroPedido +
+                    "\nfechaHora= " + fechaHora +
+                    "\nNif del cliente= " + cliente.getNif() +
+                    "\nNombre del Cliente= " + cliente.getNombre() +
+                    "\nArticulo codigo= " + articulo.getCodigo() +
+                    "\nDescripción= " + articulo.getDescripcion() +
+                    "\nCantidad= " + cantidadArticulos +
+                    "\nPrecio unidad= " + articulo.getPrecioDeVenta() +
+                    "\nGastos de envio= " + articulo.getGastosDeEnvio() +
+                    "\nPrecio total(con DESCUENTO, si procede)= " + precioEnvio(articulo.getPrecioDeVenta(), cantidadArticulos, articulo.getGastosDeEnvio(), cliente.getDescuento()) + " €" +
+                    "\nEl pedido esta ENVIADO." +
+                    "\n--------------------------------------------------\n";
+
+        } else {
+            return "\n--------------------------------------------------" +
+                    "\nNumero del Pedido= " + numeroPedido +
+                    "\nfechaHora= " + fechaHora +
+                    "\nNif del cliente= " + cliente.getNif() +
+                    "\nNombre del Cliente= " + cliente.getNombre() +
+                    "\nArticulo codigo= " + articulo.getCodigo() +
+                    "\nDescripción= " + articulo.getDescripcion() +
+                    "\nCantidad= " + cantidadArticulos +
+                    "\nPrecio unidad= " + articulo.getPrecioDeVenta() +
+                    "\nGastos de envio= " + articulo.getGastosDeEnvio() +
+                    "\nPrecio total(con DESCUENTO, si procede)= " + precioEnvio(articulo.getPrecioDeVenta(), cantidadArticulos, articulo.getGastosDeEnvio(), cliente.getDescuento()) + " €" +
+                    "\nEl pedido NO esta ENVIADO." +
+                    "\n--------------------------------------------------\n";
+        }
     }
 }
 

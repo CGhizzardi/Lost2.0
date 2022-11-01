@@ -263,15 +263,14 @@ public class Controller {
                     double descuento = input.nextDouble();
 
                     ClientesPremium c1 = new ClientesPremium(nombre, addres, nif, mail, cuota, descuento );
-                    //datosPr.getListaClientesPremium().add(c1);
                     datosPr.getListaClientesPremium().add(c1);
-
+                    input= new Scanner(System.in);
                     System.out.println("\nEl cliente se registro correctamente.\n");
                     break;
                 case 2:
                     ClientesEstandar c2 = new ClientesEstandar(nombre, addres, nif, mail);
                     datosPr.getListaClientesEstandar().add(c2);
-
+                    input= new Scanner(System.in);
                     System.out.println("\nEl cliente se registro correctamente.\n");
                     break;
 
@@ -502,11 +501,12 @@ public class Controller {
         }
     }
     public void menuMostrarPendientesEnvio(){
+
         System.out.println("\nLista de los pedidos PENDIENTES de envio:\n");
         System.out.println("-----------------------------------------------");
         for (int i = 0; i < datosPr.getListaPedidos().getSize(); i++) {
             if (!datosPr.getListaPedidos().getArt(i).getEnviado()) {
-                System.out.println(datosPr.getListaPedidos().getArt(i));
+                System.out.println(datosPr.getListaPedidos().getArt(i).toString());
             }
             System.out.println("-----------------------------------------------");
         }
@@ -516,16 +516,14 @@ public class Controller {
         System.out.println("-----------------------------------------------");
         for (int i = 0 ; i<datosPr.getListaPedidos().getSize();i++){
             if (datosPr.getListaPedidos().getArt(i).getEnviado()) {
-                System.out.println(datosPr.getListaPedidos().getArt(i));
+                System.out.println(datosPr.getListaPedidos().getArt(i).toString());
             }
             System.out.println("-----------------------------------------------");
         }
+    }
     }
 
 
 
 
 
-
-
-}
