@@ -210,7 +210,7 @@ public class Controller {
 
             } else {
                 System.out.println("");
-                break;
+
             }
         } //bucle que recorre el array para comparar NIF e imprime el Cliente
 
