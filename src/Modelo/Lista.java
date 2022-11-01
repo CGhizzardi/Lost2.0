@@ -114,7 +114,10 @@ public  class Lista<T> {
         return arrlist;
     }
 
+    public void EliminarConArgumento(int a) {
 
+        lista.remove(a);
+    }
 
 
     @Override

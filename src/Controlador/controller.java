@@ -236,37 +236,292 @@ public class controller {
 
     }
 
+    //AGREGAR CLIENTE
+    public void addCliente(){
+        System.out.print("Introduce el NIF: ");
+        String nif = input.nextLine();
+        boolean existeClPr = existeClientePr(nif);
+        boolean existeClEs = existeClienteEs(nif);
+        if(existeClPr == true || existeClEs == true){
+            System.out.println("\n\t¡Este cliente ya está registrado!");
 
+        }else{
+
+            System.out.print("Introduce el nombre del nuevo cliente: ");
+            String nombre = input.nextLine();
+            System.out.print("Indica domicilio: ");
+            String addres = input.nextLine();
+            System.out.print("Indica Email: ");
+            String mail = input.nextLine();
+            System.out.println("Elige el tipo de cliente: 1.Premium  2.Estandar");
+            int option = input.nextInt();
+            switch (option){
+                case 1:
+                    System.out.print("Indica cuota: ");
+                    double cuota = input.nextDouble();
+                    System.out.print("Indica descuento: ");
+                    double descuento = input.nextDouble();
+
+                    ClientesPremium c1 = new ClientesPremium(nombre, addres, nif, mail, cuota, descuento );
+                    //datosPr.getListaClientesPremium().add(c1);
+                    datosPr.getListaClientesPremium().add(c1);
+
+                    System.out.println("\nEl cliente se registro correctamente.\n");
+                    break;
+                case 2:
+                    ClientesEstandar c2 = new ClientesEstandar(nombre, addres, nif, mail);
+                    datosPr.getListaClientesEstandar().add(c2);
+
+                    System.out.println("\nEl cliente se registro correctamente.\n");
+                    break;
+
+                default:
+                    System.out.print("Debes introducir un número: ");
+            } input.reset();
+        }input.reset();
+    }
+
+    //¿EXISTE CLIENTE PREMIUM?
+    public boolean existeClientePr(String nif){
+        String clNIF;
+        ListaClientesPremium listaClPr = datosPr.getListaClientesPremium();
+        for (int i = 0; i < listaClPr.getSize(); i++) {
+            clNIF = listaClPr.getArt(i).getNif();
+            if (nif.equals(clNIF)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //¿EXISTE CLIENTE ESTANDAR?
+    public boolean existeClienteEs(String nif){
+        ListaClientesEstandar listaClEs = datosPr.getListaClientesEstandar();
+        String clNIF;
+        for (int i = 0; i < listaClEs.getSize(); i++) {
+            clNIF = listaClEs.getArt(i).getNif();
+            if (nif.equals(clNIF)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //Mostrar Clientes Premium
+    public void mostrarCliPr(){
+        ListaClientesPremium premium = datosPr.getListaClientesPremium();
+        int i = 0;
+        System.out.println("=====Clientes Premium=====\n");
+        for (i = 0; i < premium.getSize(); i++) {
+            System.out.println(premium.getArt(i).getNif()+" "+ premium.getArt(i).getNombre() );
+        }
+    }
+
+    //Mostrar Clientes Estandar
+    public void mostrarCliEs(){
+        ListaClientesEstandar estandar = datosPr.getListaClientesEstandar();
+        int i = 0;
+        System.out.println("=====Clients Estandar=====\n");
+        for (i = 0; i < estandar.getSize(); i++) {
+            System.out.println(estandar.getArt(i).getNif()+" "+ estandar.getArt(i).getNombre() );
+        }
+
+    }
 
     /** Pedidos */
 
+    char pedirOpcion() {
+        String resp;
+        System.out.println("Elige una opción (1,2,3 o 0):");
+        resp = input.nextLine();
+        if (resp.isEmpty()) {
+            resp = " ";
+        }
+        return resp.charAt(0);
+    }
 
 
 
-
-    public void menuCrearPedido(){
+    public void menuCrearPedido() {
         System.out.println("Añade el numero de pedido: ");
 
+        Pedido pedido= new Pedido();
+        int numeroPedido = input.nextInt();                     //numero pedido
 
-        int numeroPedido= input.nextInt();
+        pedido.setNumeroPedido(numeroPedido);
 
-        System.out.println("=====================Listado de Clientes registrados========================\n");
+        System.out.println("1. Escoge un cliente.\n" +
+                "2. Crea un cliente.\n");
 
-        System.out.println("=====Clients Estandar=====");
-        int i=0;
-        for (i = 0; i < datosPr.getListaClientesEstandar().getSize(); i++) {
-            System.out.println(datosPr.getListaClientesEstandar().getArt(i).getNif()+" "+ datosPr.getListaClientesEstandar().getArt(i).getNombre() );
-        }                               //bucle que imprime los nombres de los clientes
-        System.out.println("............................................................................\n");
-        System.out.println("=====Clientes Premium=====");
-        for (i = 0; i< datosPr.getListaClientesPremium().getSize(); i++) {
-            System.out.println(datosPr.getListaClientesPremium().getArt(i).getNif()+" "+ datosPr.getListaClientesPremium().getArt(i).getNombre() );
+        int opcion = input.nextInt();
+        Clientes clientePedido;
+        if (opcion == 1) {
+            System.out.println("=====================Listado de Clientes registrados========================\n");
+
+            System.out.println("=====Clients Estandar=====");
+            int i = 0;
+            for (i = 0; i < datosPr.getListaClientesEstandar().getSize(); i++) {
+                System.out.println(datosPr.getListaClientesEstandar().getArt(i).getNif() + " " + datosPr.getListaClientesEstandar().getArt(i).getNombre());
+            }                               //bucle que imprime los nombres de los clientes
+            System.out.println("............................................................................\n");
+            System.out.println("=====Clientes Premium=====");
+            for (i = 0; i < datosPr.getListaClientesPremium().getSize(); i++) {
+                System.out.println(datosPr.getListaClientesPremium().getArt(i).getNif() + " " + datosPr.getListaClientesPremium().getArt(i).getNombre());
+            }
+            System.out.println("============================================================================\n");
+
+            System.out.println("Introduce el NIF del cliente:\n ");
+            Scanner input2 = new Scanner(System.in);
+            String nif = input2.nextLine();
+            //cliente registrado
+            for (i = 0; i < datosPr.getListaClientesEstandar().getSize(); i++) {
+                if(nif.equals(datosPr.getListaClientesEstandar().getArt(i).getNif())){
+                    clientePedido = datosPr.getListaClientesEstandar().getArt(i);
+
+                    pedido.setCliente(clientePedido);
+
+                    System.out.println(" Cliente estandar registrado en el pedido.");
+                }
+            }
+            for (i = 0; i < datosPr.getListaClientesPremium().getSize(); i++) {
+                if(nif.equals(datosPr.getListaClientesPremium().getArt(i).getNif())){
+                    clientePedido = datosPr.getListaClientesPremium().getArt(i);
+
+                    pedido.setCliente(clientePedido);
+
+                    System.out.println(" Cliente premium registrado en el pedido.");
+                }
+            }
+        }else if(opcion==2){
+            boolean salir = false;
+            do {
+                System.out.println("1. Crear Cliente Estandar");
+                System.out.println("2. Crear Cliente Estandar");
+                System.out.println("0. Salir");
+
+                int opcio;
+                System.out.println("Elige una opción (1,2 o 0):");
+                opcio = input.nextInt();
+                switch (opcio) {
+                    case 1:
+                        input.nextLine();
+                        System.out.println("introduce el Nif");
+                        String Nif= input.nextLine();
+                        System.out.println("introduce el Nombre");
+                        String name= input.nextLine();
+                        System.out.println("introduce la Direccion");
+                        String Addres= input.nextLine();
+                        System.out.println("introduce un correo electronico");
+                        String mail= input.nextLine();
+                        ClientesEstandar cE= new ClientesEstandar(Nif, name, Addres, mail);
+                        datosPr.getListaClientesEstandar().add(cE);
+                        pedido.setCliente(cE);
+                        System.out.println("Cliente standar añadido.");
+                        salir=true;
+                        break;
+                    case 2:
+                        input.nextLine();
+                        System.out.println("introduce el Nif");
+
+                        String nif= input.nextLine();
+                        System.out.println("introduce el Nombre");
+                        String Name= input.nextLine();
+                        System.out.println("introduce la Direccion");
+                        String dir= input.nextLine();
+                        System.out.println("introduce un correo electronico");
+                        String email= input.nextLine();
+                        System.out.println("introduce la cuota mensual del socio");
+                        double quotaCliente= input.nextDouble();
+                        System.out.println("introduce el porcentage de descuento");
+                        double porDes= input.nextDouble();
+                        ClientesPremium cP= new ClientesPremium(nif, Name, dir, email, quotaCliente, porDes);
+                        datosPr.getListaClientesPremium().add(cP);
+                        pedido.setCliente(cP);
+                        System.out.println("Cliente premium añadido.");
+                        salir=true;
+                        break;
+                    case 0:
+                        salir = true;
+                }
+            } while (!salir);
         }
-        System.out.println("============================================================================\n");
+        ListaArticulos listadoAr = datosPr.getListaArticulos();
+        String codigoIngresado;
+        String articuloCode;
+
+        System.out.println("====================Listado de Articulos Disponibles======================");
+        for (int i = 0; i < listadoAr.getSize(); i++) {
+            System.out.println(listadoAr.getArt(i).getCodigo() + " " + listadoAr.getArt(i).getDescripcion());
+        }                               //bucle que imprime los nombres de los articulos
+        System.out.println("==========================================================================\n");
+
+        System.out.println("Introduce el codigo del articulo para añadirlo al pedido: ");
+        input.nextLine();                                                //para limpiar el buffer del "/n"
+        String codigo = input.nextLine();
+
+        for (int i = 0; i < datosPr.getListaArticulos().getSize(); i++) {
+            if (codigo.equals(datosPr.getListaArticulos().getArt(i).getCodigo())) {
+                Articulos articulo = datosPr.getListaArticulos().getArt(i);
+
+                pedido.setArticulo(articulo);                                                     //articulo escogido
+
+            }
+        }
+
+        System.out.println("Introduce la cantidad de articulos: ");
+        int cantidadArticulos = input.nextInt();                                                //cantidad articulos
+
+        pedido.setCantidadArticulos(cantidadArticulos);
+
+        LocalDateTime horaActual= LocalDateTime.now();                                          //la hora del pedido
+        pedido.setFechaHora(horaActual);
+
+
+        datosPr.getListaPedidos().add(pedido);                                                  //pedido guardado en array
 
 
 
     }
+
+
+    public void menuEliminarPedido(){
+        System.out.println("MENU PARA ELIMINAR PEDIDOS\n");
+        System.out.println("Introduce el numero del pedido.\n" +
+                "(Recuerda que solo podras eliminar pedidos PENDIENTES DE ENVIO!)\n");
+        int codigo=input.nextInt();
+        for (int i = 0 ; i<datosPr.getListaPedidos().getSize();i++){
+            if(codigo==datosPr.getListaPedidos().getArt(i).getNumeroPedido()){
+                if( datosPr.getListaPedidos().getArt(i).getEnviado()){
+                    System.out.println("Siento comunicarles que el pedido ya ha sido ENVIADO.");
+                    break;
+                }else{
+                    datosPr.getListaPedidos().EliminarConArgumento(i);
+                    System.out.println("El pedido "+codigo+" ha sido eliminado.");
+                }
+            }
+        }
+    }
+    public void menuMostrarPendientesEnvio(){
+        System.out.println("\nLista de los pedidos PENDIENTES de envio:\n");
+        System.out.println("-----------------------------------------------");
+        for (int i = 0; i < datosPr.getListaPedidos().getSize(); i++) {
+            if (!datosPr.getListaPedidos().getArt(i).getEnviado()) {
+                System.out.println(datosPr.getListaPedidos().getArt(i));
+            }
+            System.out.println("-----------------------------------------------");
+        }
+    }
+    public void menuMostrarEnviados(){
+        System.out.println("\nLista de los pedidos ENVIADOS:\n");
+        System.out.println("-----------------------------------------------");
+        for (int i = 0 ; i<datosPr.getListaPedidos().getSize();i++){
+            if (datosPr.getListaPedidos().getArt(i).getEnviado()) {
+                System.out.println(datosPr.getListaPedidos().getArt(i));
+            }
+            System.out.println("-----------------------------------------------");
+        }
+    }
+
 
 
 

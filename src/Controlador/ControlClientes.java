@@ -2,15 +2,18 @@ package Controlador;
 
 import Vista.*;
 import Modelo.*;
+import Controlador.controller.*;
+import java.util.*;
+
 
 
 public class ControlClientes {
-
     private Clientes modelo;
-    private Clientes vista;
+    private ClientesVista vista;
+
 
     //CONSTRUCTOR
-    public ControlClientes(Clientes modelo, Clientes vista) {
+    public ControlClientes(Clientes modelo, ClientesVista vista) {
         this.modelo = modelo;
         this.vista = vista;
     }

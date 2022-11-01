@@ -20,14 +20,22 @@ public class ClientesVista {
         do {
             System.out.println("1. Añadir Clientes");
             System.out.println("2. Mostrar Clientes");
+            System.out.println("3. Mostrar Clientes Estandar");
+            System.out.println("4. Mostrar Clientes Premium");
             System.out.println("0. Salir");
             opcio = pedirOpcion();
             switch (opcio) {
                 case '1':
-
+                    controller.addCliente();
                     break;
                 case '2':
                     controller.mostrarCli();
+                    break;
+                case '3':
+                    controller.mostrarCliEs();
+                    break;
+                case '4':
+                    controller.mostrarCliPr();
                     break;
                 case '0':
                     salir = true;

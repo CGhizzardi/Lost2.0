@@ -46,13 +46,13 @@ public class PedidoVista {
                     controller.menuCrearPedido();
                     break;
                 case 2:
-                    menuEliminarPedido();
+                    controller.menuEliminarPedido();
                     break;
                 case 3:
-                    menuMostrarPendientesEnvio();
+                    controller.menuMostrarPendientesEnvio();
                     break;
                 case 4:
-                    menuMostrarEnviados();
+                    controller.menuMostrarEnviados();
                     break;
                 case 0:
                     salir = true;
