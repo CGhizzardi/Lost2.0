@@ -25,11 +25,6 @@ public class GestionOs {
 
     }
 
-
-
-
-
-
     public void inicio() {
         boolean salir = false;
         char opcio;
