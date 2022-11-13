@@ -42,7 +42,7 @@ public class ArticuloVista {
     }
     char pedirOpcion() {
         String resp;
-        System.out.println("Elige una opción (1,2 o 0):");
+
         resp = input.nextLine();
         if (resp.isEmpty()) {
             resp = " ";
