@@ -15,16 +15,19 @@ public class ClientesDAO implements ClientesFactory{
     final String GETALL_Estandar = "SELECT * FROM clientes where cuotaMensual=null";
     final String GETONE = "SELECT * FROM clientes WHERE nif = ?";
     Entidad e = new Entidad();
-    private Connection conn;
+    String user;
+    String pass;
 
-    public ClientesDAO(Connection conn) {
-        this.conn = conn;
+
+    public ClientesDAO(String user, String pass) {
+        this.user=user;
+        this.pass=pass;
     }
     @Override
     public void insertarCliente(Clientes a) { // inserta CLIENTE a la BBDD      (sin distinguir clientes premium de estandar!)
         PreparedStatement stat = null;
         try {
-
+            Connection conn = e.conectarBBDD(user,pass);
             stat = conn.prepareStatement(INSERT);
             stat.setString(1, a.getNif());
             stat.setString(2, a.getNombre());
@@ -82,6 +85,7 @@ public class ClientesDAO implements ClientesFactory{
         ResultSet rs = null;
         List<ClientesEstandar> clientesEstandar = new ArrayList<>();
         try {
+            Connection conn = e.conectarBBDD(user,pass);
             s = conn.prepareStatement(GETALL_Estandar);
             rs = s.executeQuery();
             while (rs.next()) {
@@ -114,6 +118,7 @@ public class ClientesDAO implements ClientesFactory{
         ResultSet rs = null;
         List<ClientesPremium> clientesPremium = new ArrayList<>();
         try {
+            Connection conn = e.conectarBBDD(user,pass);
             s = conn.prepareStatement(GETALL_Premium);
             rs = s.executeQuery();
             while (rs.next()) {
@@ -147,6 +152,7 @@ public class ClientesDAO implements ClientesFactory{
         ResultSet rs = null;
         ClientesPremium a = null;
         try {
+            Connection conn = e.conectarBBDD(user,pass);
             s = conn.prepareStatement(GETONE);
             s.setString(1, codigo);
             rs = s.executeQuery();
@@ -182,6 +188,7 @@ public class ClientesDAO implements ClientesFactory{
         ResultSet rs = null;
         ClientesEstandar a = null;
         try {
+            Connection conn = e.conectarBBDD(user,pass);
             s = conn.prepareStatement(GETONE);
             s.setString(1, codigo);
             rs = s.executeQuery();
@@ -210,5 +217,4 @@ public class ClientesDAO implements ClientesFactory{
         }
         return a;
     }
-}
 }

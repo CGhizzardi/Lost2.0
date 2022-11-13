@@ -5,10 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Entidad {
-    //private Connection conn;
-    //public Entidad(Connection conn) {
-    //    this.conn = conn;
-    //}
+
+
 
     public Connection conectarBBDD(String user, String password) throws SQLException {
 

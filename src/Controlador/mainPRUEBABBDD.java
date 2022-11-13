@@ -15,8 +15,7 @@ public class mainPRUEBABBDD {
         String pass = input.nextLine();
         try {
             System.out.println("1º Conectados con la base de datos...\n");
-            Connection c =e.conectarBBDD(user,pass);
-            ArticulosDAO dao = new ArticulosDAO(c);
+            ArticulosDAO dao = new ArticulosDAO(user,pass);
             //ClientesFactory dao2 = new ClientesDAO(c);
             String codigo= "AA2";
             String codigo2= "AA1";

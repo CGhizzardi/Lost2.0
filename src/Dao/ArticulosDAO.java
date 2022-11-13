@@ -17,14 +17,19 @@ public class ArticulosDAO implements ArticulosFactory {
     final String GETALL = "SELECT * FROM articulos";
     final String GETONE = "SELECT * FROM articulos WHERE codigoArticulo = ?";
     private Connection conn;
+    String user;
+    String pass;
 
-    public ArticulosDAO(Connection conn) {
-        this.conn = conn;
+    public ArticulosDAO(String user, String pass) {
+
+        this.user = user;
+        this.pass = pass;
     }
     @Override
     public void insertarArticulo(Articulos a) { // inserta articulo a la BBDD
         PreparedStatement stat = null;
         try {
+            Connection conn = e.conectarBBDD(user,pass);
             stat = conn.prepareStatement(INSERT);
             stat.setString(1, a.getCodigo());
             stat.setString(2, a.getDescripcion());
@@ -79,6 +84,7 @@ public class ArticulosDAO implements ArticulosFactory {
         List<Articulos> articulos = new ArrayList<>();
         Articulos a = null;
         try {
+            Connection conn = e.conectarBBDD(user,pass);
             s = conn.prepareStatement(GETALL);
             rs = s.executeQuery();
             while (rs.next()) {
@@ -110,6 +116,7 @@ public class ArticulosDAO implements ArticulosFactory {
         ResultSet rs = null;
         Articulos a = null;
         try {
+            Connection conn = e.conectarBBDD(user,pass);
             s = conn.prepareStatement(GETONE);
             s.setString(1, codigo);
             rs = s.executeQuery();
