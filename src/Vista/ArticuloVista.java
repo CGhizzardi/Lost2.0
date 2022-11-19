@@ -3,6 +3,7 @@ package Vista;
 
 import Controlador.Controller;
 import java.util.Scanner;
+import Dao.*;
 
 
 public class ArticuloVista {
@@ -20,7 +21,7 @@ public class ArticuloVista {
 
     }
 
-    public void menuArticulos() {
+    public void menuArticulos(String user, String pass) {
         boolean salir = false;
         char opcio;
         do {
@@ -30,10 +31,11 @@ public class ArticuloVista {
             opcio = pedirOpcion();
             switch (opcio) {
                 case '1':
-                    controller.addarticulo();
+
+                    controller.addarticulo(user, pass);
                     break;
                 case '2':
-                    controller.MostrarArticulo();
+                    controller.MostrarArticulo(user, pass);
                     break;
                 case '0':
                     salir = true;

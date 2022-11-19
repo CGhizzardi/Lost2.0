@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class GestionOs {
 
     Scanner input = new Scanner(System.in);
-
+    Controller cont = new Controller();
 
 
     private ArticuloVista artV;
@@ -28,6 +28,8 @@ public class GestionOs {
     public void inicio() {
         boolean salir = false;
         char opcio;
+        String user=cont.USUARIO();
+        String pass= cont.PASSWORD();
         do {
             System.out.println("1. Gestión Articulos");
             System.out.println("2. Gestión Clientes");
@@ -36,7 +38,7 @@ public class GestionOs {
             opcio = pedirOpcion();
             switch (opcio) {
                 case '1':
-                   artV.menuArticulos();
+                   artV.menuArticulos(user,pass);
                    pedidoV.getContolador().getDatosPr().setListaArticulos(artV.getController().getArticulosList());
                     break;
                 case '2':

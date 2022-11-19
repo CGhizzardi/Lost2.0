@@ -1,6 +1,8 @@
 package Controlador;
 import Modelo.*;
 import Vista.ArticuloVista;
+import Dao.*;
+
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -8,6 +10,7 @@ import java.util.Scanner;
 
 public class Controller {
     Scanner input = new Scanner(System.in);
+
     protected Datos datosPr;
 
     /**
@@ -88,9 +91,21 @@ public class Controller {
         return datosPr.getListaClientesEstandar();
 
     }
+    public String USUARIO(){
+        System.out.println("Instroduce el usuario para la BBDD: ");
+        String user=input.nextLine();
+        return user;
+    }
+    public String PASSWORD(){
+        System.out.println("Instroduce el password para la BBDD: ");
+        String pass=input.nextLine();
+        return pass;
+
+    }
 
     /** Metodo que agrega los articulos a la Base de datos */
-    public void addarticulo () {
+    public void addarticulo (String user, String pass) {
+        ArticulosDAO AD = new ArticulosDAO(user, pass);
         String codigos, descripciones;
         double precios, envios;
         int tiempos;
@@ -108,8 +123,8 @@ public class Controller {
 
         Articulos artic= new Articulos(codigos,descripciones, precios, envios,tiempos);
 
-
-        datosPr.getListaArticulos().add(artic);
+        AD.insertarArticulo(artic);
+        //datosPr.getListaArticulos().add(artic);
     }
 
 
@@ -117,25 +132,31 @@ public class Controller {
          *
          */
 
-    public void MostrarArticulo() {
+    public void MostrarArticulo(String user, String pass) {
 
+        ArticulosDAO AD = new ArticulosDAO(user, pass);
 
-        ListaArticulos listadoAr = datosPr.getListaArticulos();
+        //ListaArticulos listadoAr = datosPr.getListaArticulos();
         String codigoIngresado;
         String articuloCode;
         int i = 0;
 
 
         System.out.println("====================Listado de Articulos Disponibles======================");
-        for (i = 0; i < listadoAr.getSize(); i++) {
+
+        System.out.println(AD.obtenerArticulos());
+        /*for (i = 0; i < listadoAr.getSize(); i++) {
             System.out.println(listadoAr.getArt(i).getCodigo()+" "+ listadoAr.getArt(i).getDescripcion() );
-        }                               //bucle que imprime los nombres de los articulos
+        }*/                               //bucle que imprime los nombres de los articulos
         System.out.println("==========================================================================\n");
 
         System.out.print("Introduce el codigo del articulo que deseas mostrar:\n");
         codigoIngresado = input.next();
 
-        for (i = 0; i < listadoAr.getSize(); i++) {
+        System.out.println(AD.obtenerArticulo(codigoIngresado));
+
+
+        /*for (i = 0; i < listadoAr.getSize(); i++) {
 
             articuloCode = listadoAr.getArt(i).getCodigo();
 
@@ -150,11 +171,7 @@ public class Controller {
                 break;
 
             }
-
-
-
-
-        }    //bucle que recorre el array para comparar nombres e imprime el articulo
+        }*/    //bucle que recorre el array para comparar nombres e imprime el articulo
 
     }
 
