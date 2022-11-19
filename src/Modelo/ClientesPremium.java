@@ -14,7 +14,7 @@ public class ClientesPremium extends Clientes {
 
     @Override
     public String toString() {
-        return super.toString() + ", Cuota anual: " + calcAnual()+ ", Descuento en los gastos de envio: " + descuentoEnv();
+        return super.toString() + "Cuota anual: " + calcAnual()+ ", Descuento en los gastos de envio: " + descuentoEnv()+"\n";
     }
 
 

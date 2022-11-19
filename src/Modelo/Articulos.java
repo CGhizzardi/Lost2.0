@@ -86,14 +86,5 @@ public class Articulos {
 
 
 
-    /** Mostrar articulo de prueba articulo */
-    public void mostraArticulos (Articulos art){
-
-        art.toString();
-
-
-
-    }
-
 }
 

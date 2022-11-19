@@ -13,7 +13,7 @@ public class ClientesVista {
     }
 
 
-    public void menuCliente() {
+    public void menuCliente(String user, String pass) {
         boolean salir = false;
         char opcio;
         do {
@@ -21,20 +21,24 @@ public class ClientesVista {
             System.out.println("2. Mostrar Clientes");
             System.out.println("3. Mostrar Clientes Estandar");
             System.out.println("4. Mostrar Clientes Premium");
+            System.out.println("5. Eliminar cliente");
             System.out.println("0. Salir");
             opcio = pedirOpcion();
             switch (opcio) {
                 case '1':
-                    controller.addCliente();
+                    controller.addCliente(user, pass);
                     break;
                 case '2':
-                    controller.mostrarCli();
+                    controller.mostrarCli(user, pass);
                     break;
                 case '3':
-                    controller.mostrarCliEs();
+                    controller.mostrarCliEs(user,pass);
                     break;
                 case '4':
-                    controller.mostrarCliPr();
+                    controller.mostrarCliPr(user,pass);
+                    break;
+                case '5':
+                    controller.eliminarC(user,pass);
                     break;
                 case '0':
                     salir = true;

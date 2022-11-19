@@ -8,11 +8,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 public class ClientesDAO implements ClientesFactory{
-    final String INSERT = "INSERT INTO clientes VALUES(?,?,?,?,?,?)";
+    final String INSERT_PREMIUM = "INSERT INTO clientes VALUES(?,?,?,?,?,?)";
+    final String INSERT_ESTANDAR = "INSERT INTO clientes VALUES(?,?,?,?,null, null)";
     final String UPDATE = "";
     final String DELETE = "DELETE FROM clientes WHERE nif = ?";
-    final String GETALL_Premium = "SELECT * FROM clientes where cuotaMensual!=null";
-    final String GETALL_Estandar = "SELECT * FROM clientes where cuotaMensual=null";
+    final String GETALL_Premium = "SELECT * FROM clientes where cuotaMensual is not null";
+    final String GETALL_Estandar = "SELECT * FROM clientes where cuotaMensual is null";
     final String GETONE = "SELECT * FROM clientes WHERE nif = ?";
     Entidad e = new Entidad();
     String user;
@@ -24,11 +25,11 @@ public class ClientesDAO implements ClientesFactory{
         this.pass=pass;
     }
     @Override
-    public void insertarCliente(Clientes a) { // inserta CLIENTE a la BBDD      (sin distinguir clientes premium de estandar!)
+    public void insertarClientePremium(Clientes a) { // inserta CLIENTE a la BBDD      (sin distinguir clientes premium de estandar!)
         PreparedStatement stat = null;
         try {
             Connection conn = e.conectarBBDD(user,pass);
-            stat = conn.prepareStatement(INSERT);
+            stat = conn.prepareStatement(INSERT_PREMIUM);
             stat.setString(1, a.getNif());
             stat.setString(2, a.getNombre());
             stat.setString(3, a.getDomicilio());
@@ -50,15 +51,39 @@ public class ClientesDAO implements ClientesFactory{
         }
     }
     @Override
+    public void insertarClienteEstandar(Clientes a) { // inserta CLIENTE a la BBDD      (sin distinguir clientes premium de estandar!)
+        PreparedStatement stat = null;
+        try {
+            Connection conn = e.conectarBBDD(user,pass);
+            stat = conn.prepareStatement(INSERT_ESTANDAR);
+            stat.setString(1, a.getNif());
+            stat.setString(2, a.getNombre());
+            stat.setString(3, a.getDomicilio());
+            stat.setString(4, a.getEmail());
+            stat.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("No ha funcionado.");
+        } finally {
+            if (stat != null) {
+                try {
+                    stat.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERROR");
+
+                }
+            }
+        }
+    }
+    @Override
     public ClientesPremium convertirCPremium(ResultSet rs) throws SQLException {
         String nif = rs.getString("nif");
         String nombre = rs.getString("nombre");
         String domicilio = rs.getString("domicilio");
         String email = rs.getString("email");
-        double cuotaMesual = rs.getInt("cuotaMesual");
+        double cuotaMensual = rs.getInt("cuotaMensual");
         double descuento = rs.getDouble("descuento");
 
-        ClientesPremium a = new ClientesPremium(nif, nombre, domicilio, email, cuotaMesual,descuento);
+        ClientesPremium a = new ClientesPremium(nombre,domicilio,nif,email,cuotaMensual,descuento);
         return a;
     }
     @Override
@@ -68,7 +93,7 @@ public class ClientesDAO implements ClientesFactory{
         String domicilio = rs.getString("domicilio");
         String email = rs.getString("email");
 
-        ClientesEstandar a = new ClientesEstandar(nif, nombre, domicilio, email);
+        ClientesEstandar a = new ClientesEstandar(nombre,domicilio,nif,email);
         return a;
     }
     @Override
@@ -76,8 +101,27 @@ public class ClientesDAO implements ClientesFactory{
 
     }
     @Override
-    public void eliminarCliente(Articulos a) {
+    public void eliminarCliente(String nif) {
+        PreparedStatement stat = null;
+        try {
+            Connection conn = e.conectarBBDD(user,pass);
 
+            stat = conn.prepareStatement(DELETE);
+            stat.setString(1, nif);
+
+            stat.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("No ha funcionado.");
+        } finally {
+            if (stat != null) {
+                try {
+                    stat.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERROR");
+
+                }
+            }
+        }
     }
     @Override
     public List<ClientesEstandar> obtenerClientesE() {         //funcion para listar todos los clientes ESTANDAR
@@ -117,6 +161,7 @@ public class ClientesDAO implements ClientesFactory{
         PreparedStatement s = null;
         ResultSet rs = null;
         List<ClientesPremium> clientesPremium = new ArrayList<>();
+
         try {
             Connection conn = e.conectarBBDD(user,pass);
             s = conn.prepareStatement(GETALL_Premium);

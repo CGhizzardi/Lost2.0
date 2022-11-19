@@ -6,6 +6,7 @@ import Dao.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Controller {
@@ -145,9 +146,6 @@ public class Controller {
         System.out.println("====================Listado de Articulos Disponibles======================");
 
         System.out.println(AD.obtenerArticulos());
-        /*for (i = 0; i < listadoAr.getSize(); i++) {
-            System.out.println(listadoAr.getArt(i).getCodigo()+" "+ listadoAr.getArt(i).getDescripcion() );
-        }*/                               //bucle que imprime los nombres de los articulos
         System.out.println("==========================================================================\n");
 
         System.out.print("Introduce el codigo del articulo que deseas mostrar:\n");
@@ -155,34 +153,16 @@ public class Controller {
 
         System.out.println(AD.obtenerArticulo(codigoIngresado));
 
-
-        /*for (i = 0; i < listadoAr.getSize(); i++) {
-
-            articuloCode = listadoAr.getArt(i).getCodigo();
-
-            if (codigoIngresado.equals(articuloCode)) {
-
-                System.out.println("articulos codigo=" + listadoAr.getArt(i).getCodigo() + "\n" +
-                        "descripcion=" + listadoAr.getArt(i).getDescripcion() + "\n" +
-                        "precioDeVenta=" + listadoAr.getArt(i).getPrecioDeVenta() + "\n" +
-                        "gastosDeEnvio=" + listadoAr.getArt(i).getGastosDeEnvio() + "\n" +
-                        "tiempoDePreparacion=" + listadoAr.getArt(i).getTiempoDePreparacion() + "\n");
-
-                break;
-
-            }
-        }*/    //bucle que recorre el array para comparar nombres e imprime el articulo
-
     }
 
     /** Metodo que Muestra los Clientes
      *
      */
 
-    public void mostrarCli(){
-
-        ListaClientesEstandar listadoCE = datosPr.getListaClientesEstandar();
-        ListaClientesPremium listadoPR = datosPr.getListaClientesPremium();
+    public void mostrarCli(String user, String pass){
+        ClientesDAO CD = new ClientesDAO(user,pass);
+        /*ListaClientesEstandar listadoCE = datosPr.getListaClientesEstandar();
+        ListaClientesPremium listadoPR = datosPr.getListaClientesPremium();*/
         String nifIngresado;
         String clienteNif;
         int i = 0;
@@ -191,67 +171,29 @@ public class Controller {
         System.out.println("=====================Listado de Clientes registrados========================\n");
 
         System.out.println("=====Clients Estandar=====");
-        for (i = 0; i < listadoCE.getSize(); i++) {
-            System.out.println(listadoCE.getArt(i).getNif()+" "+ listadoCE.getArt(i).getNombre() );
-        }                               //bucle que imprime los nombres de los clientes
+        System.out.println(CD.obtenerClientesE());
+
         System.out.println("............................................................................\n");
         System.out.println("=====Clientes Premium=====");
-        for (i = 0; i < listadoPR.getSize(); i++) {
-            System.out.println(listadoPR.getArt(i).getNif()+" "+ listadoPR.getArt(i).getNombre() );
-        }
+        System.out.println(CD.obtenerClientesP());
         System.out.println("============================================================================\n");
 
-        System.out.print("Introduce el NIF del Cliente que deseas mostrar:\n");
+        /*System.out.print("Introduce el NIF del Cliente que deseas mostrar:\n");
         nifIngresado = input.next();
-
-
-        for (i = 0; i < listadoCE.getSize(); i++) {
-
-            clienteNif = listadoCE.getArt(i).getNif();
-
-            if (nifIngresado.equals(clienteNif)) {
-                System.out.println("Cliente Estandar \n ");
-
-                System.out.println("nif= " + listadoCE.getArt(i).getNif() + "\n" +
-                        "nombre= " + listadoCE.getArt(i).getNombre() + "\n" +
-                        "Domicilio= " + listadoCE.getArt(i).getDomicilio() + "\n" +
-                        "e-Mail= " + listadoCE.getArt(i).getEmail() + "\n");
-                break;
-
-            } else {
-                System.out.println("");
-
-            }
-        } //bucle que recorre el array para comparar NIF e imprime el Cliente
-
-            for (i = 0; i < listadoPR.getSize(); i++) {
-
-                clienteNif = listadoPR.getArt(i).getNif();
-
-                if (nifIngresado.equals(clienteNif)) {
-                    System.out.println("Cliente Premium \n ");
-
-                    System.out.println("nif= " + listadoPR.getArt(i).getNif() + "\n" +
-                            "nombre= " + listadoPR.getArt(i).getNombre() + "\n" +
-                            "Domicilio =" + listadoPR.getArt(i).getDomicilio() + "\n" +
-                            "e-Mail= " + listadoPR.getArt(i).getEmail() + "\n" +
-                            "Cuota= " + listadoPR.getArt(i).getCuota() + "\n" +
-                             "Descuento= " + listadoPR.getArt(i).getDescuento() + "\n");
-                    break;
-
-                }
-
-        }    //bucle que recorre el array para comparar NIF e imprime el Cliente
+        CD.buscarClienteEstandar(nifIngresado);
+        CD.buscarClientePremium(nifIngresado);
+        */
 
 
     }
 
     //AGREGAR CLIENTE
-    public void addCliente(){
+    public void addCliente(String user, String pass){
+        ClientesDAO CD= new ClientesDAO(user,pass);
         System.out.print("Introduce el NIF: ");
         String nif = input.nextLine();
-        boolean existeClPr = existeClientePr(nif);
-        boolean existeClEs = existeClienteEs(nif);
+        boolean existeClPr = existeClientePr(user, pass,nif);
+        boolean existeClEs = existeClienteEs(user, pass,nif);
         if(existeClPr == true || existeClEs == true){
             System.out.println("\n\t¡Este cliente ya está registrado!");
 
@@ -273,13 +215,13 @@ public class Controller {
                     double descuento = input.nextDouble();
 
                     ClientesPremium c1 = new ClientesPremium(nombre, addres, nif, mail, cuota, descuento );
-                    datosPr.getListaClientesPremium().add(c1);
+                    CD.insertarClientePremium(c1);
                     input= new Scanner(System.in);
                     System.out.println("\nEl cliente se registro correctamente.\n");
                     break;
                 case 2:
                     ClientesEstandar c2 = new ClientesEstandar(nombre, addres, nif, mail);
-                    datosPr.getListaClientesEstandar().add(c2);
+                    CD.insertarClienteEstandar(c2);
                     input= new Scanner(System.in);
                     System.out.println("\nEl cliente se registro correctamente.\n");
                     break;
@@ -289,13 +231,23 @@ public class Controller {
             } input.reset();
         }input.reset();
     }
+    public void eliminarC(String user, String pass){
+        ClientesDAO CD = new ClientesDAO(user,pass);
+        mostrarCli(user,pass);
+        System.out.println("Instroduce el nif: ");
+        String nif= input.nextLine();
+        CD.eliminarCliente(nif);
+        System.out.println("Cliente eliminado.");
+    }
 
-    //¿EXISTE CLIENTE PREMIUM?
-    public boolean existeClientePr(String nif){
+    public boolean existeClientePr(String user, String pass,String nif){
         String clNIF;
-        ListaClientesPremium listaClPr = datosPr.getListaClientesPremium();
-        for (int i = 0; i < listaClPr.getSize(); i++) {
-            clNIF = listaClPr.getArt(i).getNif();
+        ClientesDAO CD = new ClientesDAO(user,pass);
+
+        List<ClientesPremium> clientesPremium = CD.obtenerClientesP();
+
+        for (int i = 0; i < clientesPremium.size(); i++) {
+            clNIF = clientesPremium.get(i).getNif();
             if (nif.equals(clNIF)) {
                 return true;
             }
@@ -304,11 +256,14 @@ public class Controller {
     }
 
     //¿EXISTE CLIENTE ESTANDAR?
-    public boolean existeClienteEs(String nif){
-        ListaClientesEstandar listaClEs = datosPr.getListaClientesEstandar();
+    public boolean existeClienteEs(String user, String pass,String nif){
         String clNIF;
-        for (int i = 0; i < listaClEs.getSize(); i++) {
-            clNIF = listaClEs.getArt(i).getNif();
+        ClientesDAO CD = new ClientesDAO(user,pass);
+
+        List<ClientesEstandar> clientesEstandar = CD.obtenerClientesE();
+
+        for (int i = 0; i < clientesEstandar.size(); i++) {
+            clNIF = clientesEstandar.get(i).getNif();
             if (nif.equals(clNIF)) {
                 return true;
             }
@@ -317,27 +272,19 @@ public class Controller {
     }
 
     //Mostrar Clientes Premium
-    public void mostrarCliPr(){
-        ListaClientesPremium premium = datosPr.getListaClientesPremium();
-        int i = 0;
-        System.out.println("=====Clientes Premium=====\n");
-        for (i = 0; i < premium.getSize(); i++) {
-            System.out.println(premium.getArt(i).getNif()+" "+ premium.getArt(i).getNombre() );
-        }
+    public void mostrarCliPr(String user,String pass){
+        ClientesDAO CD = new ClientesDAO(user,pass);
+        System.out.println(CD.obtenerClientesP());
     }
 
     //Mostrar Clientes Estandar
-    public void mostrarCliEs(){
-        ListaClientesEstandar estandar = datosPr.getListaClientesEstandar();
-        int i = 0;
-        System.out.println("=====Clients Estandar=====\n");
-        for (i = 0; i < estandar.getSize(); i++) {
-            System.out.println(estandar.getArt(i).getNif()+" "+ estandar.getArt(i).getNombre() );
-        }
+    public void mostrarCliEs(String user,String pass){
+        ClientesDAO CD = new ClientesDAO(user,pass);
+        System.out.println(CD.obtenerClientesE());
 
     }
 
-    /** Pedidos */
+
 
     char pedirOpcion() {
         String resp;

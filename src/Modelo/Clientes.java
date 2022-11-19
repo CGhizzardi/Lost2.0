@@ -105,7 +105,7 @@ public abstract class Clientes {
 
     @Override
     public String toString() {
-        return "Nombre del Clientes: " + nombre + "Domicilio: " + domicilio + "Nif del Cliente " + nif + "Correo electronico: " + email;
+        return "Nif del Cliente " + nif +"  Nombre del Clientes: " + nombre + "  Domicilio: " + domicilio +  "  Correo electronico: " + email+"\n";
     }
 
 

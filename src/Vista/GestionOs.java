@@ -42,7 +42,7 @@ public class GestionOs {
                    pedidoV.getContolador().getDatosPr().setListaArticulos(artV.getController().getArticulosList());
                     break;
                 case '2':
-                    cliV.menuCliente();
+                    cliV.menuCliente(user, pass);
                     pedidoV.getContolador().getDatosPr().setListaClientesEstandar(cliV.getController().getClientesEsList());
                     pedidoV.getContolador().getDatosPr().setListaClientesPremium(cliV.getController().getClientesPreList());
                     break;

@@ -80,9 +80,9 @@ public class ArticulosDAO implements ArticulosFactory {
     @Override
     public List<Articulos> obtenerArticulos() {
         PreparedStatement s = null;
+
         ResultSet rs = null;
         List<Articulos> articulos = new ArrayList<>();
-        Articulos a = null;
         try {
             Connection conn = e.conectarBBDD(user,pass);
             s = conn.prepareStatement(GETALL);

@@ -41,4 +41,7 @@ public class ClientesEstandar extends Clientes {
     public float descuentoEnv(){
         return 0;
     }
+    /*public String toString() {
+        return "\nNIF:" + this.getNif() + "', Nombre: '" + this.getNombre() + "', Domicilio: " + this.getDomicilio() + ", E-mail: " + this.getEmail() + "}";
+    }*/
 }
