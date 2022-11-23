@@ -1,8 +1,6 @@
 
 8
 Lost.iml,a/1/a16f34b8bf17c3eaa59bf3f3255a553b542b0e6e
-I
-src/Controlador/Main.java,9/e/9ef65654c9a38301ef3963b8ee3d80931df32e58
 M
 src/Dao/ArticulosFactory.java,a/4/a4d2d3df257ab75899ddf0bea1b807759e5adb72
 J

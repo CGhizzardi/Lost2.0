@@ -52,50 +52,13 @@ public class Controller {
     }
 
 
-    /**
-     * metodos Getters y Setters
-     *
-     * @return
-     */
-
-    public Datos getDatosPr() {
-        return datosPr;
-    }
-
-    public void setDatosPr(Datos datosPr) {
-        this.datosPr = datosPr;
-    }
-
-    /**
-     * Metodo que devuelve la lista de los articulos
-     *
-     * @return
-     */
-
-    public ListaArticulos getArticulosList() {
-        return datosPr.getListaArticulos();
-    }
-
-    /**
-     * Metodo que devuelve la lista de los Clientes Premium
-     *
-     * @return
-     */
-
     public ListaClientesPremium getClientesPreList() {
         return datosPr.getListaClientesPremium();
     }
 
-    /**
-     * Metodo que devuelve la lista de los Clientes Estandar
-     *
-     * @return
-     */
 
-    public ListaClientesEstandar getClientesEsList() {
-        return datosPr.getListaClientesEstandar();
 
-    }
+
     public String USUARIO(){
         System.out.println("Instroduce el usuario para la BBDD: ");
         String user=input.nextLine();
@@ -396,7 +359,7 @@ public class Controller {
 
         System.out.println("====================Listado de Articulos Disponibles======================");
 
-        for (int i = 0; i < listadoAr.getSize(); i++) { System.out.println(AD.obtenerArticulos()); }
+        System.out.println(AD.obtenerArticulos());
 
         System.out.println("==========================================================================\n");
 
