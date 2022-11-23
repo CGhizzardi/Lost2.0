@@ -39,15 +39,15 @@ public class GestionOs {
             switch (opcio) {
                 case '1':
                    artV.menuArticulos(user,pass);
-                   pedidoV.getContolador().getDatosPr().setListaArticulos(artV.getController().getArticulosList());
+                   //pedidoV.getContolador().getDatosPr().setListaArticulos(artV.getController().getArticulosList());
                     break;
                 case '2':
                     cliV.menuCliente(user, pass);
-                    pedidoV.getContolador().getDatosPr().setListaClientesEstandar(cliV.getController().getClientesEsList());
-                    pedidoV.getContolador().getDatosPr().setListaClientesPremium(cliV.getController().getClientesPreList());
+                    //pedidoV.getContolador().getDatosPr().setListaClientesEstandar(cliV.getController().getClientesEsList());
+                    //pedidoV.getContolador().getDatosPr().setListaClientesPremium(cliV.getController().getClientesPreList());
                     break;
                 case '3':
-                    pedidoV.menuPedidos();
+                    pedidoV.menuPedidos(user, pass);
                     break;
                 case '0':
                     salir = true;

@@ -33,7 +33,11 @@ public class Controller {
     protected ListaClientesEstandar clientesEsList = new ListaClientesEstandar(listaClientesEstandar);
     protected ListaClientesPremium clientesPreList = new ListaClientesPremium(listaClientesPremium);
     protected ListaPedidos pedidosList = new ListaPedidos(listaPedidos);
-
+    String user;
+    String pass;
+    ClientesDAO CD = new ClientesDAO(user, pass);
+    ArticulosDAO AD = new ArticulosDAO(user,pass);
+    PedidosDAO PD = new PedidosDAO(user,pass);
 
 
     /** Metodo Constructor de la Clase
@@ -298,56 +302,41 @@ public class Controller {
 
 
 
-    public void menuCrearPedido() {
-        System.out.println("Añade el numero de pedido: ");
+    public void menuCrearPedido(String user, String pass) {
 
+        ClientesDAO CD = new ClientesDAO(user, pass);
+        ArticulosDAO AD = new ArticulosDAO(user,pass);
+        PedidosDAO PD = new PedidosDAO(user,pass);
         Pedido pedido= new Pedido();
-        int numeroPedido = input.nextInt();                     //numero pedido
 
+
+        System.out.println("Añade el numero de pedido: ");
+        int numeroPedido = input.nextInt();                         //numero de pedido
         pedido.setNumeroPedido(numeroPedido);
 
         System.out.println("1. Escoge un cliente.\n" +
                 "2. Crea un cliente.\n");
 
         int opcion = input.nextInt();
-        Clientes clientePedido;
+
         if (opcion == 1) {
             System.out.println("=====================Listado de Clientes registrados========================\n");
 
             System.out.println("=====Clients Estandar=====");
-            int i = 0;
-            for (i = 0; i < datosPr.getListaClientesEstandar().getSize(); i++) {
-                System.out.println(datosPr.getListaClientesEstandar().getArt(i).getNif() + " " + datosPr.getListaClientesEstandar().getArt(i).getNombre());
-            }                               //bucle que imprime los nombres de los clientes
+            System.out.println(CD.obtenerClientesE());
             System.out.println("............................................................................\n");
             System.out.println("=====Clientes Premium=====");
-            for (i = 0; i < datosPr.getListaClientesPremium().getSize(); i++) {
-                System.out.println(datosPr.getListaClientesPremium().getArt(i).getNif() + " " + datosPr.getListaClientesPremium().getArt(i).getNombre());
-            }
+            System.out.println(CD.obtenerClientesP());
             System.out.println("============================================================================\n");
 
             System.out.println("Introduce el NIF del cliente:\n ");
             Scanner input2 = new Scanner(System.in);
             String nif = input2.nextLine();
-            //cliente registrado
-            for (i = 0; i < datosPr.getListaClientesEstandar().getSize(); i++) {
-                if(nif.equals(datosPr.getListaClientesEstandar().getArt(i).getNif())){
-                    clientePedido = datosPr.getListaClientesEstandar().getArt(i);
 
-                    pedido.setCliente(clientePedido);
 
-                    System.out.println(" Cliente estandar registrado en el pedido.");
-                }
-            }
-            for (i = 0; i < datosPr.getListaClientesPremium().getSize(); i++) {
-                if(nif.equals(datosPr.getListaClientesPremium().getArt(i).getNif())){
-                    clientePedido = datosPr.getListaClientesPremium().getArt(i);
+            pedido.setCliente(CD.buscarClientePremium(nif));     //cliente registrado(ESTA PUESTO SOLO PREMIUM PUEDE QUE NO FUNCIONE CON ESTANDAR)
 
-                    pedido.setCliente(clientePedido);
 
-                    System.out.println(" Cliente premium registrado en el pedido.");
-                }
-            }
         }else if(opcion==2){
             boolean salir = false;
             do {
@@ -370,7 +359,7 @@ public class Controller {
                         System.out.println("introduce un correo electronico");
                         String mail= input.nextLine();
                         ClientesEstandar cE= new ClientesEstandar(Nif, name, Addres, mail);
-                        datosPr.getListaClientesEstandar().add(cE);
+                        CD.insertarClienteEstandar(cE);
                         pedido.setCliente(cE);
                         System.out.println("Cliente standar añadido.");
                         salir=true;
@@ -391,7 +380,7 @@ public class Controller {
                         System.out.println("introduce el porcentage de descuento");
                         double porDes= input.nextDouble();
                         ClientesPremium cP= new ClientesPremium(nif, Name, dir, email, quotaCliente, porDes);
-                        datosPr.getListaClientesPremium().add(cP);
+                        CD.insertarClienteEstandar(cP);
                         pedido.setCliente(cP);
                         System.out.println("Cliente premium añadido.");
                         salir=true;
@@ -406,23 +395,16 @@ public class Controller {
         String articuloCode;
 
         System.out.println("====================Listado de Articulos Disponibles======================");
-        for (int i = 0; i < listadoAr.getSize(); i++) {
-            System.out.println(listadoAr.getArt(i).getCodigo() + " " + listadoAr.getArt(i).getDescripcion());
-        }                               //bucle que imprime los nombres de los articulos
+
+        for (int i = 0; i < listadoAr.getSize(); i++) { System.out.println(AD.obtenerArticulos()); }
+
         System.out.println("==========================================================================\n");
 
         System.out.println("Introduce el codigo del articulo para añadirlo al pedido: ");
         input.nextLine();                                                //para limpiar el buffer del "/n"
         String codigo = input.nextLine();
-
-        for (int i = 0; i < datosPr.getListaArticulos().getSize(); i++) {
-            if (codigo.equals(datosPr.getListaArticulos().getArt(i).getCodigo())) {
-                Articulos articulo = datosPr.getListaArticulos().getArt(i);
-
-                pedido.setArticulo(articulo);                                                     //articulo escogido
-
-            }
-        }
+        Articulos articulo = AD.obtenerArticulo(codigo);
+        pedido.setArticulo(articulo);                                                     //articulo escogido
 
         System.out.println("Introduce la cantidad de articulos: ");
         int cantidadArticulos = input.nextInt();                                                //cantidad articulos
@@ -431,27 +413,28 @@ public class Controller {
 
         LocalDateTime horaActual= LocalDateTime.now();                                          //la hora del pedido
         pedido.setFechaHora(horaActual);
-
-
-        datosPr.getListaPedidos().add(pedido);                                                  //pedido guardado en array
-
-
-
+        pedido.setPrecioTotal(pedido.getPrecioTotal());
+        pedido.setEnviado(pedido.getEnviado());
+        PD.insertarPedido(pedido);                                                 //pedido guardado en array
     }
 
 
-    public void menuEliminarPedido(){
+    public void menuEliminarPedido(String user, String pass){
+        List<Pedido> pedidos = new ArrayList<Pedido>();
         System.out.println("MENU PARA ELIMINAR PEDIDOS\n");
         System.out.println("Introduce el numero del pedido.\n" +
                 "(Recuerda que solo podras eliminar pedidos PENDIENTES DE ENVIO!)\n");
         int codigo=input.nextInt();
-        for (int i = 0 ; i<datosPr.getListaPedidos().getSize();i++){
-            if(codigo==datosPr.getListaPedidos().getArt(i).getNumeroPedido()){
-                if( datosPr.getListaPedidos().getArt(i).getEnviado()){
+        PedidosDAO PD = new PedidosDAO(user,pass);
+        pedidos= PD.obtenerPedidos();
+        for (int i = 0 ; i<pedidos.size();i++){
+            if(codigo==pedidos.get(i).getNumeroPedido()){
+                if( pedidos.get(i).getEnviado()){
                     System.out.println("Siento comunicarles que el pedido ya ha sido ENVIADO.");
                     break;
                 }else{
-                    datosPr.getListaPedidos().EliminarConArgumento(i);
+                    int nPedido= pedidos.get(i).getNumeroPedido();
+                    PD.eliminarPedido(nPedido);
                     System.out.println("El pedido "+codigo+" ha sido eliminado.");
                 }
             }
@@ -461,22 +444,17 @@ public class Controller {
 
         System.out.println("\nLista de los pedidos PENDIENTES de envio:\n");
         System.out.println("-----------------------------------------------");
-        for (int i = 0; i < datosPr.getListaPedidos().getSize(); i++) {
-            if (!datosPr.getListaPedidos().getArt(i).getEnviado()) {
-                System.out.println(datosPr.getListaPedidos().getArt(i).toString());
-            }
-            System.out.println("-----------------------------------------------");
-        }
+        System.out.println(PD.obtenerNoEnviados());
     }
     public void menuMostrarEnviados(){
         System.out.println("\nLista de los pedidos ENVIADOS:\n");
         System.out.println("-----------------------------------------------");
-        for (int i = 0 ; i<datosPr.getListaPedidos().getSize();i++){
-            if (datosPr.getListaPedidos().getArt(i).getEnviado()) {
-                System.out.println(datosPr.getListaPedidos().getArt(i).toString());
-            }
-            System.out.println("-----------------------------------------------");
-        }
+        System.out.println(PD.obtenerEnviados());
+    }
+    public void menuMostrarPedido(){
+        System.out.println("Introduce el codigo del pedido: ");
+        int codigo= input.nextInt();
+        System.out.println(PD.obtenerPedido(codigo));
     }
     }
 
