@@ -192,7 +192,7 @@ public class ClientesDAO implements ClientesFactory{
 
 
     @Override
-    public ClientesPremium buscarClientePremium(String codigo) {
+    public ClientesPremium buscarClientePremium(String user, String pass,String codigo) {
         PreparedStatement s = null;
         ResultSet rs = null;
         ClientesPremium a = null;
@@ -228,7 +228,7 @@ public class ClientesDAO implements ClientesFactory{
     }
 
     @Override
-    public ClientesEstandar buscarClienteEstandar(String codigo) {
+    public ClientesEstandar buscarClienteEstandar(String user, String pass,String codigo) {
         PreparedStatement s = null;
         ResultSet rs = null;
         ClientesEstandar a = null;

@@ -19,5 +19,5 @@ public interface ArticulosFactory {
 
     public List<Articulos> obtenerArticulos();
 
-    public Articulos obtenerArticulo(String codigo);
+    public Articulos obtenerArticulo(String user, String pass,String codigo);
 }

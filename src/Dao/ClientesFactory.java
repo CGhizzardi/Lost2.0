@@ -19,6 +19,6 @@ public interface ClientesFactory {
     public List<ClientesEstandar> obtenerClientesE();
     public List<ClientesPremium> obtenerClientesP();
 
-    public ClientesPremium buscarClientePremium(String codigo);
-    public ClientesEstandar buscarClienteEstandar(String codigo);
+    public ClientesPremium buscarClientePremium(String user, String pass, String codigo);
+    public ClientesEstandar buscarClienteEstandar(String user, String pass,String codigo);
 }

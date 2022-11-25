@@ -111,7 +111,7 @@ public class ArticulosDAO implements ArticulosFactory {
         return articulos;
     }
     @Override
-    public Articulos obtenerArticulo(String codigo) {
+    public Articulos obtenerArticulo(String user, String pass,String codigo) {
         PreparedStatement s = null;
         ResultSet rs = null;
         Articulos a = null;

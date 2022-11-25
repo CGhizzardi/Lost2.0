@@ -63,44 +63,37 @@ public class PedidosDAO implements PedidosFactory{
         }
     }
     @Override
-    public Pedido convertirPedido(ResultSet rs) throws SQLException{
+    public Pedido convertirPedido(String user, String pass,ResultSet rs) throws SQLException{
         Articulos articulos;
         Clientes cliente;
         Pedido p = new Pedido();
-        try {
-            int numeroPedido = rs.getInt("numeroPedido");
+
+        int numeroPedido = rs.getInt("numeroPedido");
 
 
-            String nifCliente = rs.getString("nifCliente");
-            cliente = CD.buscarClientePremium(nifCliente);
-            if (cliente == null) {
-                cliente = CD.buscarClienteEstandar(nifCliente);
-            }
-            String codigoArticulo = rs.getString("articulo");
-            articulos = AD.obtenerArticulo(codigoArticulo);
-            int cantidadArticulos = rs.getInt("cantidadArticulos");
-            Date fechaDate = rs.getDate("fechaHora");
-
-
-            //formula para convertir DATE a LOCALDATETIME
-
-            LocalDateTime fecha = fechaDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-
-
-            double precioTotal = rs.getDouble("precioTotal");
-            boolean enviado = rs.getBoolean("enviado");
-            //Pedido p = new Pedido();
-            p.setNumeroPedido(numeroPedido);
-            p.setCliente(cliente);
-            p.setArticulo(articulos);
-            p.setCantidadArticulos(cantidadArticulos);
-            p.setFechaHora(fecha);
-            p.setPrecioTotal(p.getPrecioTotal());
-            p.setEnviado(p.pedidoEnviado(fecha,articulos.getTiempoDePreparacion()));
-
-        }catch(Exception ex){
-            System.out.println("Error en la conversion de PEDIDO_BBDD a OBJETO");
+        String nifCliente = rs.getString("nifCliente");
+        cliente = CD.buscarClientePremium(user,pass,nifCliente);
+        System.out.println(cliente);
+        if (cliente == null) {
+            cliente = CD.buscarClienteEstandar(user, pass,nifCliente);
         }
+        String codigoArticulo = rs.getString("articulo");
+        articulos = AD.obtenerArticulo(user,pass,codigoArticulo);
+        System.out.println("Busco la cantidad de articulos...");
+        int cantidadArticulos = rs.getInt("cantidadArticulos");
+        Date fechaDate = rs.getTimestamp("fechaHora");
+                                //formula para convertir DATE a LOCALDATETIME
+        LocalDateTime fecha = fechaDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        double precioTotal = rs.getDouble("precioTotal");
+        boolean enviado = rs.getBoolean("enviado");
+        p.setNumeroPedido(numeroPedido);
+        p.setCliente(cliente);
+        p.setArticulo(articulos);
+        p.setCantidadArticulos(cantidadArticulos);
+        p.setFechaHora(fecha);
+        p.setPrecioTotal(p.getPrecioTotal());
+        p.setEnviado(p.pedidoEnviado(fecha,articulos.getTiempoDePreparacion()));
+
         return p;
     }
     @Override
@@ -108,7 +101,7 @@ public class PedidosDAO implements PedidosFactory{
 
     }
     @Override
-    public void eliminarPedido(int numeroPedido){
+    public void eliminarPedido(String user, String pass,int numeroPedido){
         PreparedStatement s = null;
         try{
             s = conn.prepareStatement(DELETE);
@@ -120,7 +113,7 @@ public class PedidosDAO implements PedidosFactory{
         }
     }
     @Override
-    public Pedido obtenerPedido (int codigo){    //devuelve un pedido
+    public Pedido obtenerPedido (String user, String pass,int codigo){    //devuelve un pedido
 
         PreparedStatement s = null;
         ResultSet rs = null;
@@ -131,7 +124,7 @@ public class PedidosDAO implements PedidosFactory{
             s.setInt(1, codigo);
             rs = s.executeQuery();
             if (rs.next()) {
-                p = convertirPedido(rs);
+                p = convertirPedido(user,pass,rs);
             } else {
                 System.out.println("No se ha encontrado el registro");
             }
@@ -156,7 +149,7 @@ public class PedidosDAO implements PedidosFactory{
         return p;
     }
     @Override
-    public List<Pedido>  obtenerPedidos(){   //devuelve una lista con los pedidos
+    public List<Pedido>  obtenerPedidos(String user, String pass){   //devuelve una lista con los pedidos
         PreparedStatement s = null;
 
         ResultSet rs = null;
@@ -166,7 +159,7 @@ public class PedidosDAO implements PedidosFactory{
             s = conn.prepareStatement(GETALL);
             rs = s.executeQuery();
             while (rs.next()) {
-                pedidos.add(convertirPedido(rs));
+                pedidos.add(convertirPedido(user,pass,rs));
                 System.out.println(pedidos);
             }
         } catch (SQLException ex){
@@ -190,7 +183,7 @@ public class PedidosDAO implements PedidosFactory{
         return pedidos;
     }
     @Override
-    public List<Pedido> obtenerEnviados(){
+    public List<Pedido> obtenerEnviados(String user, String pass){
         PreparedStatement s = null;
         ResultSet rs = null;
         List<Pedido> pedidos = new ArrayList<>();
@@ -199,7 +192,7 @@ public class PedidosDAO implements PedidosFactory{
             s = conn.prepareStatement(GET_ENVIADOS);
             rs = s.executeQuery();
             while (rs.next()) {
-                pedidos.add(convertirPedido(rs));
+                pedidos.add(convertirPedido(user,pass,rs));
             }
         } catch (SQLException ex){
             System.out.println("Error en SQL");
@@ -222,7 +215,7 @@ public class PedidosDAO implements PedidosFactory{
         return pedidos;
     }
     @Override
-    public List<Pedido> obtenerNoEnviados(){
+    public List<Pedido> obtenerNoEnviados(String user, String pass){
         PreparedStatement s = null;
 
         ResultSet rs = null;
@@ -232,8 +225,8 @@ public class PedidosDAO implements PedidosFactory{
             s = conn.prepareStatement(GET_NO_ENVIADOS);
             rs = s.executeQuery();
             while (rs.next()) {
-                p.add(convertirPedido(rs));
-                System.out.println(p);
+                p.add(convertirPedido(user,pass,rs));
+                //System.out.println(p);
             }
         } catch (SQLException ex){
             System.out.println("Error en Sql");
