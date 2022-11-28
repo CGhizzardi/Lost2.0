@@ -83,9 +83,9 @@ public class Controller {
     }
 
 
-        /** Metodo que Muestra los Articulos
-         *
-         */
+    /** Metodo que Muestra los Articulos
+     *
+     */
 
     public void MostrarArticulo(String user, String pass) {
 
@@ -377,9 +377,4 @@ public class Controller {
         int codigo= input.nextInt();
         System.out.println(PD.obtenerPedido(user, pass,codigo));
     }
-    }
-
-
-
-
-
+}

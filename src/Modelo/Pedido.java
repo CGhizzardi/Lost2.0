@@ -110,7 +110,6 @@ public class Pedido {
         }else{
             return articulo.getPrecioDeVenta() * cantidadArticulos + articulo.getGastosDeEnvio();
         }
-
     }
     */
 
@@ -159,4 +158,3 @@ public class Pedido {
         }
     }
 }
-

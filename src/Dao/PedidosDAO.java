@@ -82,7 +82,7 @@ public class PedidosDAO implements PedidosFactory{
         System.out.println("Busco la cantidad de articulos...");
         int cantidadArticulos = rs.getInt("cantidadArticulos");
         Date fechaDate = rs.getTimestamp("fechaHora");
-                                //formula para convertir DATE a LOCALDATETIME
+        //formula para convertir DATE a LOCALDATETIME
         LocalDateTime fecha = fechaDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
         double precioTotal = rs.getDouble("precioTotal");
         boolean enviado = rs.getBoolean("enviado");
@@ -248,5 +248,4 @@ public class PedidosDAO implements PedidosFactory{
         }
         return p;
     }
-    }
-
+}
