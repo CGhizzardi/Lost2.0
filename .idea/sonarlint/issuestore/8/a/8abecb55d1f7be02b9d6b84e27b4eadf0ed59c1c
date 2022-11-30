@@ -1,0 +1,69 @@
+
+\
+java:S1192/"FDefine a constant instead of duplicating this literal "ERROR" 3 times.(ÿƒ®ë
+m
+java:S1192)"RDefine a constant instead of duplicating this literal "No ha funcionado." 3 times.(ÏÔöåûÿÿÿÿ
+e
+java:S1192‹"NDefine a constant instead of duplicating this literal "Error en SQL" 12 times.(« £®
+t
+java:S1488V"YImmediately return this expression instead of assigning it to the temporary variable "a".(˜º—Ýúÿÿÿÿ
+o
+java:S1488`"YImmediately return this expression instead of assigning it to the temporary variable "a".(ìÈñ‹
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¿ Ø÷
+n	java:S116"YRename this field "INSERT_PREMIUM" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†‹ÛÄ
+o	java:S116"ZRename this field "INSERT_ESTANDAR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ü¨’™
+k	java:S116"QRename this field "UPDATE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßöÕØüÿÿÿÿ
+f	java:S116"QRename this field "DELETE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º±­¹
+m	java:S116"YRename this field "GETALL_Premium" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬ì­
+t	java:S116"ZRename this field "GETALL_Estandar" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø é­ûÿÿÿÿ
+k	java:S116"QRename this field "GETONE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÀŠÏ»ýÿÿÿÿ
+7
+java:S1170"!Make this final field static too.(†‹ÛÄ
+7
+java:S1170"!Make this final field static too.(ü¨’™
+<
+java:S1170"!Make this final field static too.(ßöÕØüÿÿÿÿ
+7
+java:S1170"!Make this final field static too.(º±­¹
+6
+java:S1170"!Make this final field static too.(¬ì­
+<
+java:S1170"!Make this final field static too.(Ø é­ûÿÿÿÿ
+<
+java:S1170"!Make this final field static too.(ÀŠÏ»ýÿÿÿÿ
+–
+java:S1186d"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(½öÃO
+K
+java:S1117("5Rename "e" which hides the field declared at line 18.(”ý¾
+S	java:S106)"9Replace this use of System.out or System.err by a logger.(ÏÔöåûÿÿÿÿ
+N	java:S106/"9Replace this use of System.out or System.err by a logger.(ÿƒ®ë
+K
+java:S1117@"5Rename "e" which hides the field declared at line 18.(”ý¾
+S	java:S106A"9Replace this use of System.out or System.err by a logger.(ÏÔöåûÿÿÿÿ
+N	java:S106G"9Replace this use of System.out or System.err by a logger.(ÿƒ®ë
+K
+java:S1117q"5Rename "e" which hides the field declared at line 18.(”ý¾
+S	java:S106r"9Replace this use of System.out or System.err by a logger.(ÏÔöåûÿÿÿÿ
+N	java:S106x"9Replace this use of System.out or System.err by a logger.(ÿƒ®ë
+O	java:S106‹"9Replace this use of System.out or System.err by a logger.(« £®
+O	java:S106‘"9Replace this use of System.out or System.err by a logger.(« £®
+L
+java:S1117—"5Rename "e" which hides the field declared at line 18.(”ý¾
+O	java:S106˜"9Replace this use of System.out or System.err by a logger.(« £®
+O	java:S106­"9Replace this use of System.out or System.err by a logger.(« £®
+O	java:S106³"9Replace this use of System.out or System.err by a logger.(« £®
+L
+java:S1117¹"5Rename "e" which hides the field declared at line 18.(”ý¾
+O	java:S106º"9Replace this use of System.out or System.err by a logger.(« £®
+T	java:S106Ï"9Replace this use of System.out or System.err by a logger.(¼µ÷öøÿÿÿÿ
+O	java:S106Ò"9Replace this use of System.out or System.err by a logger.(« £®
+O	java:S106Ø"9Replace this use of System.out or System.err by a logger.(« £®
+L
+java:S1117Þ"5Rename "e" which hides the field declared at line 18.(”ý¾
+O	java:S106ß"9Replace this use of System.out or System.err by a logger.(« £®
+T	java:S106ó"9Replace this use of System.out or System.err by a logger.(¼µ÷öøÿÿÿÿ
+O	java:S106ö"9Replace this use of System.out or System.err by a logger.(« £®
+O	java:S106ü"9Replace this use of System.out or System.err by a logger.(« £®
+L
+java:S1117‚"5Rename "e" which hides the field declared at line 18.(”ý¾
+O	java:S106ƒ"9Replace this use of System.out or System.err by a logger.(« £®

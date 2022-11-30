@@ -1,0 +1,8 @@
+
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜¨¾¹
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(àÄ€ü
+V
+java:S1854 "@Remove this useless assignment to local variable "copiaCliente".(ÚŒù‘
+G
+java:S1481 "1Remove this unused "copiaCliente" local variable.(ÚŒù‘
+Q	java:S125,"<This block of commented-out lines of code should be removed.(£ƒÊô

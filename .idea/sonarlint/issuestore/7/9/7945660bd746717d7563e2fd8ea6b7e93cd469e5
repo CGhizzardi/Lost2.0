@@ -1,0 +1,18 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(àÄ€ü
+P	java:S125?"<This block of commented-out lines of code should be removed.(âÄ›
+I
+java:S1172C".Remove this unused method parameter "enviado".(Š°£–ÿÿÿÿÿ
+M
+java:S1172K"2Remove this unused method parameter "precioTotal".(û¼óêÿÿÿÿÿ
+V
+java:S1854\"@Remove this useless assignment to local variable "milisegundos".(Ö†åî
+G
+java:S1481\"1Remove this unused "milisegundos" local variable.(Ö†åî
+\
+java:S1126a"AReplace this if-then-else statement by a single return statement.(­öÄÊúÿÿÿÿ
+X	java:S125_"<This block of commented-out lines of code should be removed.(€Îåä8ãüÓË0
+N	java:S106g"9Replace this use of System.out or System.err by a logger.(ßË­Ë
+V	java:S125y"<This block of commented-out lines of code should be removed.(Ç­¼„þÿÿÿÿ
+R	java:S125ˆ"<This block of commented-out lines of code should be removed.(¡Õ±š
+W	java:S125—"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ
