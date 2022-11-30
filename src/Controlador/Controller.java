@@ -11,28 +11,28 @@ import java.util.Scanner;
 
 public class Controller {
     Scanner input = new Scanner(System.in);
-
-
-
     /**
      * ArrayList para la creacion de los objetos de las clases
      * articulos, clientes y pedidos
      */
-
+    /*
     public ArrayList<Articulos> listaArticulos;
     protected ArrayList<ClientesEstandar> listaClientesEstandar;
     protected ArrayList<ClientesPremium> listaClientesPremium;
     private ArrayList<Pedido> listaPedidos;
-
+    */
 
     /**
      * Objetos de las clases Articulos, Clientes, Pedidos
      */
 
+    /*
     protected ListaArticulos articulosList = new ListaArticulos(listaArticulos);
     protected ListaClientesEstandar clientesEsList = new ListaClientesEstandar(listaClientesEstandar);
     protected ListaClientesPremium clientesPreList = new ListaClientesPremium(listaClientesPremium);
     protected ListaPedidos pedidosList = new ListaPedidos(listaPedidos);
+    */
+
     String user;
     String pass;
 
@@ -43,7 +43,6 @@ public class Controller {
 
 
     public Controller() {
-
     }
 
     public String USUARIO(){
@@ -231,10 +230,12 @@ public class Controller {
         PedidosDAO PD = new PedidosDAO(user,pass);
         Pedido pedido= new Pedido();
 
-
+        //no hace falta ingresar el codigo del pedido, la BBDD lo calcula automaticamente.
+        /*
         System.out.println("Añade el numero de pedido: ");
         int numeroPedido = input.nextInt();                         //numero de pedido
         pedido.setNumeroPedido(numeroPedido);
+        */
 
         System.out.println("1. Escoge un cliente.\n" +
                 "2. Crea un cliente.\n");
@@ -254,18 +255,13 @@ public class Controller {
             System.out.println("Introduce el NIF del cliente:\n ");
             Scanner input2 = new Scanner(System.in);
             String nif = input2.nextLine();
-
-
             pedido.setCliente(CD.buscarClientePremium(user, pass,nif));     //cliente registrado(ESTA PUESTO SOLO PREMIUM PUEDE QUE NO FUNCIONE CON ESTANDAR)
-
-
         }else if(opcion==2){
             boolean salir = false;
             do {
                 System.out.println("1. Crear Cliente Estandar");
                 System.out.println("2. Crear Cliente Estandar");
                 System.out.println("0. Salir");
-
                 int opcio;
                 System.out.println("Elige una opción (1,2 o 0):");
                 opcio = input.nextInt();
@@ -289,7 +285,6 @@ public class Controller {
                     case 2:
                         input.nextLine();
                         System.out.println("introduce el Nif");
-
                         String nif= input.nextLine();
                         System.out.println("introduce el Nombre");
                         String Name= input.nextLine();
@@ -337,24 +332,30 @@ public class Controller {
         PD.insertarPedido(pedido);                                                 //pedido guardado en array
     }
 
-
     public void menuEliminarPedido(String user, String pass){
-        List<Pedido> pedidos = new ArrayList<Pedido>();
         System.out.println("MENU PARA ELIMINAR PEDIDOS\n");
-        System.out.println("Introduce el numero del pedido.\n" +
-                "(Recuerda que solo podras eliminar pedidos PENDIENTES DE ENVIO!)\n");
-        int codigo=input.nextInt();
+        List<Pedido> pedidos = new ArrayList<Pedido>();
         PedidosDAO PD = new PedidosDAO(user,pass);
         pedidos= PD.obtenerPedidos(user, pass);
+
+        for (int i=0; i<pedidos.size();i++){
+            System.out.println("Numero de pedido: "+pedidos.get(i).getNumeroPedido()+
+                    ", Articulo: "+pedidos.get(i).getArticulo().getCodigo()+" *"+pedidos.get(i).getCantidadArticulos()+
+                    ", Fecha: "+pedidos.get(i).getFechaHora()+ ", Cliente: "+ pedidos.get(i).getCliente().getNif()+
+                    "\nPRECIO TOTAL: "+pedidos.get(i).getPrecioTotal()+", ENVIADO: "+pedidos.get(i).getEnviado());
+        }
+        System.out.println("Introduce el numero del pedido.\n" +
+                "(Recuerda que solo podras eliminar pedidos PENDIENTES DE ENVIO!)\n");
+
+        int codigo=input.nextInt();
+
         for (int i = 0 ; i<pedidos.size();i++){
             if(codigo==pedidos.get(i).getNumeroPedido()){
-                if( pedidos.get(i).getEnviado()){
-                    System.out.println("Siento comunicarles que el pedido ya ha sido ENVIADO.");
-                    break;
+                if(!pedidos.get(i).getEnviado()){
+                    PD.eliminarPedido(user,pass,pedidos.get(i).getNumeroPedido());
+                    System.out.println("El pedido "+pedidos.get(i).getNumeroPedido()+" ha sido eliminado.");
                 }else{
-                    int nPedido= pedidos.get(i).getNumeroPedido();
-                    PD.eliminarPedido(user,pass,nPedido);
-                    System.out.println("El pedido "+codigo+" ha sido eliminado.");
+                    System.out.println("Siento comunicarles que el pedido ya ha sido ENVIADO.");
                 }
             }
         }
@@ -364,6 +365,9 @@ public class Controller {
         System.out.println("\nLista de los pedidos PENDIENTES de envio:\n");
         System.out.println("-----------------------------------------------");
         System.out.println(PD.obtenerNoEnviados(user, pass));
+        if (PD.obtenerNoEnviados(user, pass)==null){
+            System.out.println("No hay pedidos pendientes de envio");
+        }
     }
     public void menuMostrarEnviados(String user, String pass){
         PedidosDAO PD = new PedidosDAO(user, pass);
@@ -376,5 +380,12 @@ public class Controller {
         System.out.println("Introduce el codigo del pedido: ");
         int codigo= input.nextInt();
         System.out.println(PD.obtenerPedido(user, pass,codigo));
+    }
+    public void menuMostrarPedidos(String user, String pass){
+        PedidosDAO PD = new PedidosDAO(user, pass);
+        System.out.println("\nLista de los pedidos:");
+        System.out.println("-----------------------------------------------");
+        System.out.println(PD.obtenerPedidos(user, pass));
+        System.out.println("-----------------------------------------------");
     }
 }

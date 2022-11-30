@@ -16,9 +16,9 @@ import java.time.ZoneId;
 public class PedidosDAO implements PedidosFactory{
 
     Entidad e = new Entidad();
-    final String INSERT = "INSERT INTO pedidos VALUES(?,?,?,?,?,?,?)";
+    final String INSERT = "INSERT INTO pedidos VALUES(0,?,?,?,?,?)";
     final String UPDATE = "";
-    final String DELETE = "DELETE FROM pedidos WHERE numeroPedido = ?";
+    final String DELETE = "DELETE FROM lost.pedidos WHERE numeroPedido = ?;";
     final String GETALL = "SELECT * FROM pedidos";
     final String GETONE = "SELECT * FROM pedidos WHERE numeroPedido = ?";
 
@@ -41,13 +41,12 @@ public class PedidosDAO implements PedidosFactory{
         try {
             Connection conn = e.conectarBBDD(user,pass);
             stat = conn.prepareStatement(INSERT);
-            stat.setInt(1, p.getNumeroPedido());
-            stat.setString(2, p.getCliente().getNif());
-            stat.setString(3, p.getArticulo().getCodigo());
-            stat.setInt(4, p.getCantidadArticulos());
-            stat.setDouble(5, p.getPrecioTotal());
-            stat.setObject(6, p.getFechaHora());
-            stat.setBoolean(7, p.getEnviado());
+            //stat.setInt(1, p.getNumeroPedido());
+            stat.setString(1, p.getCliente().getNif());
+            stat.setString(2, p.getArticulo().getCodigo());
+            stat.setInt(3, p.getCantidadArticulos());
+            stat.setDouble(4, p.getPrecioTotal());
+            stat.setObject(5, p.getFechaHora());
             stat.executeUpdate();
         } catch (Exception e) {
             System.out.println("No ha funcionado.");
@@ -69,23 +68,17 @@ public class PedidosDAO implements PedidosFactory{
         Pedido p = new Pedido();
 
         int numeroPedido = rs.getInt("numeroPedido");
-
-
         String nifCliente = rs.getString("nifCliente");
         cliente = CD.buscarClientePremium(user,pass,nifCliente);
-        System.out.println(cliente);
-        if (cliente == null) {
-            cliente = CD.buscarClienteEstandar(user, pass,nifCliente);
-        }
+        if (cliente == null) { cliente = CD.buscarClienteEstandar(user, pass,nifCliente); }
         String codigoArticulo = rs.getString("articulo");
         articulos = AD.obtenerArticulo(user,pass,codigoArticulo);
-        System.out.println("Busco la cantidad de articulos...");
         int cantidadArticulos = rs.getInt("cantidadArticulos");
         Date fechaDate = rs.getTimestamp("fechaHora");
         //formula para convertir DATE a LOCALDATETIME
         LocalDateTime fecha = fechaDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+
         double precioTotal = rs.getDouble("precioTotal");
-        boolean enviado = rs.getBoolean("enviado");
         p.setNumeroPedido(numeroPedido);
         p.setCliente(cliente);
         p.setArticulo(articulos);
@@ -104,12 +97,15 @@ public class PedidosDAO implements PedidosFactory{
     public void eliminarPedido(String user, String pass,int numeroPedido){
         PreparedStatement s = null;
         try{
+
+            Connection conn = e.conectarBBDD(user,pass);
             s = conn.prepareStatement(DELETE);
+
             s.setInt(1, numeroPedido);
-            s.executeUpdate();
-            System.out.println("Pedido eliminado.\n");
+            s.execute();
         }catch(Exception e){
             System.out.println("Algo no ha ido bien eliminando el pedido");
+            System.out.println(e);
         }
     }
     @Override
@@ -151,51 +147,17 @@ public class PedidosDAO implements PedidosFactory{
     @Override
     public List<Pedido>  obtenerPedidos(String user, String pass){   //devuelve una lista con los pedidos
         PreparedStatement s = null;
-
         ResultSet rs = null;
-        List<Pedido> pedidos = new ArrayList<>();
+        List<Pedido> p = new ArrayList<>();
         try {
             Connection conn = e.conectarBBDD(user,pass);
             s = conn.prepareStatement(GETALL);
             rs = s.executeQuery();
             while (rs.next()) {
-                pedidos.add(convertirPedido(user,pass,rs));
-                System.out.println(pedidos);
+                p.add(convertirPedido(user,pass,rs));
             }
         } catch (SQLException ex){
-            System.out.println("Error en SQL");
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    System.out.println("Error en SQL");
-                }
-            }
-            if(s != null ){
-                try{
-                    s.close();
-                }catch (Exception e){
-                    System.out.println("Error en SQL");
-                }
-            }
-        }
-        return pedidos;
-    }
-    @Override
-    public List<Pedido> obtenerEnviados(String user, String pass){
-        PreparedStatement s = null;
-        ResultSet rs = null;
-        List<Pedido> pedidos = new ArrayList<>();
-        try {
-            Connection conn = e.conectarBBDD(user,pass);
-            s = conn.prepareStatement(GET_ENVIADOS);
-            rs = s.executeQuery();
-            while (rs.next()) {
-                pedidos.add(convertirPedido(user,pass,rs));
-            }
-        } catch (SQLException ex){
-            System.out.println("Error en SQL");
+            System.out.println("Error en Sql");
         } finally {
             if (rs != null) {
                 try {
@@ -208,11 +170,49 @@ public class PedidosDAO implements PedidosFactory{
                 try{
                     s.close();
                 }catch (Exception e){
-                    System.out.println("Error cerrando el statement en SQL");
+                    System.out.println("Error cerrando Statement en SQL");
                 }
             }
         }
-        return pedidos;
+        return p;
+    }
+    @Override
+    public List<Pedido> obtenerEnviados(String user, String pass){
+        PreparedStatement s = null;
+
+        ResultSet rs = null;
+        List<Pedido> p = new ArrayList<>();
+        try {
+            Connection conn = e.conectarBBDD(user,pass);
+            s = conn.prepareStatement(GETALL);
+            rs = s.executeQuery();
+            while (rs.next()) {
+                Pedido pedido;
+                pedido= convertirPedido(user,pass,rs);
+                boolean enviado = pedido.pedidoEnviado(pedido.getFechaHora(), pedido.getArticulo().getTiempoDePreparacion());
+                if(enviado){
+                    p.add(convertirPedido(user,pass,rs));
+                }
+            }
+        } catch (SQLException ex){
+            System.out.println("Error en Sql");
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    System.out.println("Error cerrando Resultset en SQL");
+                }
+            }
+            if(s != null ){
+                try{
+                    s.close();
+                }catch (Exception e){
+                    System.out.println("Error cerrando Statement en SQL");
+                }
+            }
+        }
+        return p;
     }
     @Override
     public List<Pedido> obtenerNoEnviados(String user, String pass){
@@ -222,11 +222,15 @@ public class PedidosDAO implements PedidosFactory{
         List<Pedido> p = new ArrayList<>();
         try {
             Connection conn = e.conectarBBDD(user,pass);
-            s = conn.prepareStatement(GET_NO_ENVIADOS);
+            s = conn.prepareStatement(GETALL);
             rs = s.executeQuery();
             while (rs.next()) {
-                p.add(convertirPedido(user,pass,rs));
-                //System.out.println(p);
+                Pedido pedido;
+                pedido= convertirPedido(user,pass,rs);
+                boolean enviado = pedido.pedidoEnviado(pedido.getFechaHora(), pedido.getArticulo().getTiempoDePreparacion());
+                if(!enviado){
+                    p.add(convertirPedido(user,pass,rs));
+                }
             }
         } catch (SQLException ex){
             System.out.println("Error en Sql");
