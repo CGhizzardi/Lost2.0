@@ -2,9 +2,12 @@ package Modelo;
 
 /** Clase abstracta "Clientes" */
 
+
+
 public abstract class Clientes {
 
     /** atributos de la clase */
+
 
     private String nombre;
     private String domicilio;
@@ -15,7 +18,8 @@ public abstract class Clientes {
     private double descuento;
 
 
-
+    protected Clientes() {
+    }
 
     /** Metodo constructor de la clase Clientes
      *
