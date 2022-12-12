@@ -8,7 +8,6 @@ public abstract class Clientes {
 
     /** atributos de la clase */
 
-
     private String nombre;
     private String domicilio;
     private String nif;
@@ -18,8 +17,7 @@ public abstract class Clientes {
     private double descuento;
 
 
-    protected Clientes() {
-    }
+
 
     /** Metodo constructor de la clase Clientes
      *
