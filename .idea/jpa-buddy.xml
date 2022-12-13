@@ -3,5 +3,7 @@
   <component name="JpaBuddyIdeaProjectConfig">
     <option name="defaultUnitInitialized" value="true" />
     <option name="renamerInitialized" value="true" />
+    <option name="newEntityIdStrategy" value="Identity" />
+    <option name="packageNameForExtractSuperclass" value="Modelo" />
   </component>
 </project>

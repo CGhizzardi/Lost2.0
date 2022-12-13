@@ -1,20 +1,40 @@
 package Modelo;
 
+import javax.persistence.*;
+
 /** Clase abstracta "Clientes" */
 
 
-
+@Entity
+@Table(name="clientes")
 public abstract class Clientes {
+
 
     /** atributos de la clase */
 
-    private String nombre;
-    private String domicilio;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "nif")
     private String nif;
+
+
+    @Column(name="nombre")
+    private String nombre;
+
+    @Column(name="domicilio")
+    private String domicilio;
+
+    @Column(name="email")
     private String email;
 
+    @Column(name="cuotaMensual")
     private double cuotaMensual;
+
+    @Column(name="descuento")
     private double descuento;
+
+    protected Clientes() {
+    }
 
 
 
