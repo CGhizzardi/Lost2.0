@@ -1,4 +1,5 @@
 package Dao;
+
 import Modelo.*;
 
 import java.sql.Connection;
@@ -7,6 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+
+
+
+
 public class ClientesDAO implements ClientesFactory{
     final String INSERT_PREMIUM = "INSERT INTO clientes VALUES(?,?,?,?,?,?)";
     final String INSERT_ESTANDAR = "INSERT INTO clientes VALUES(?,?,?,?,null, null)";

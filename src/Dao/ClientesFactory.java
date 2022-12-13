@@ -1,10 +1,15 @@
 package Dao;
 
-import Modelo.*;
+import Modelo.Articulos;
+import Modelo.Clientes;
+import Modelo.ClientesEstandar;
+import Modelo.ClientesPremium;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
-import java.sql.*;
+import java.util.List;
+
+
 public interface ClientesFactory {
     public void insertarClientePremium(Clientes a);
     public void insertarClienteEstandar(Clientes a);
