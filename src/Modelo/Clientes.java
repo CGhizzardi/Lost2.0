@@ -33,8 +33,7 @@ public abstract class Clientes {
     @Column(name="descuento")
     private double descuento;
 
-    protected Clientes() {
-    }
+
 
 
 
@@ -48,11 +47,14 @@ public abstract class Clientes {
      *
      */
 
-    public Clientes(String name, String Ad, String Nif, String mail) {
+    public Clientes(String Nif,String name, String Ad,  String mail) {
+        this.nif= Nif;
         this.nombre= name;
         this.domicilio= Ad;
-        this.nif= Nif;
         this.email= mail;
+    }
+
+    public Clientes() {
     }
 
     /** Metodo constructor con sobrecarga */
