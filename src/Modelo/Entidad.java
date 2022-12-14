@@ -13,4 +13,10 @@ public class Entidad {
         Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/lost", user, password);
         return c;
     }
+
+
+
+
+
+
 }

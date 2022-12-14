@@ -7,13 +7,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="clientes")
-public abstract class Clientes {
+public class Clientes {
 
 
     /** atributos de la clase */
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "nif")
     private String nif;
 
@@ -58,7 +57,7 @@ public abstract class Clientes {
     }
 
     /** Metodo constructor con sobrecarga */
-    public Clientes(String name, String Ad, String Nif, String mail, double quota, double desc) {
+    public Clientes(String Nif,String name, String Ad, String mail, double quota, double desc) {
         this.nombre= name;
         this.domicilio= Ad;
         this.nif= Nif;
@@ -118,10 +117,21 @@ public abstract class Clientes {
     }
 
     //MÉTODOS ABSTRACTOS
-    public abstract Clientes copiaCliente (Clientes clientes);
-    public abstract String tipoCliente();
-    public abstract float calcAnual();
-    public abstract float descuentoEnv();
+    public Clientes copiaCliente(Clientes clientes){
+        ClientesPremium e = (ClientesPremium) clientes;
+        Clientes copiaCliente = new ClientesPremium(e.getNombre(), e.getDomicilio(), e.getNif(),e.getEmail(), e.getCuota(), e.getDescuento());
+        return copiaCliente(e);
+    }
+    /**public String tipoCliente(){
+        return "El cliente " + this.getNombre() + "es de tipo Premium";
+    }
+    public float calcAnual(){
+        return 30;
+    }
+    public float descuentoEnv(){
+        return (float)0.2;
+    }*/
+
 
 
 
