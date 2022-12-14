@@ -4,10 +4,15 @@ package Modelo;
 //CLIENTE PREMIUM
 //CUOTA ANUAL - 30€
 //20% DE DESCUENTO EN LOS GASTOS DE ENVIO DE CADA PEDIDO.
+
+
 public class ClientesPremium extends Clientes {
 
 
-    public ClientesPremium(String name, String Ad, String Nif, String mail, double quota, double desc) {
+    public ClientesPremium() {
+    }
+
+    public ClientesPremium(String Nif, String name, String Ad, String mail, double quota, double desc) {
         super(name, Ad, Nif, mail, quota, desc);
     }
 

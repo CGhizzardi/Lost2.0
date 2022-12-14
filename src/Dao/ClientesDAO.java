@@ -40,7 +40,7 @@ public class ClientesDAO implements ClientesFactory{
             stat.setString(2, a.getNombre());
             stat.setString(3, a.getDomicilio());
             stat.setString(4, a.getEmail());
-            stat.setFloat(5, a.calcAnual());                //  ATENTO AQUI POSIBLE ERROR
+            //stat.setFloat(5, a.calcAnual());                //  ATENTO AQUI POSIBLE ERROR
             stat.setDouble(6, a.getDescuento());
             stat.executeUpdate();
         } catch (Exception e) {

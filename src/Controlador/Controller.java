@@ -1,8 +1,10 @@
 package Controlador;
-import Modelo.*;
-import Vista.ArticuloVista;
-import Dao.*;
 
+import Dao.ArticulosDAO;
+import Dao.ClientesDAO;
+import Dao.OrmCliente;
+import Dao.PedidosDAO;
+import Modelo.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -170,6 +172,18 @@ public class Controller {
             } input.reset();
         }input.reset();
     }
+    public void ormAddClienteP(String user, String pass){
+
+        OrmCliente cliente= new OrmCliente(user, pass);
+        Clientes c;
+        c= cliente.crearCliP();
+        cliente.insClientePr(c);
+
+    }
+
+
+
+
     public void eliminarC(String user, String pass){
         ClientesDAO CD = new ClientesDAO(user,pass);
         mostrarCli(user,pass);
