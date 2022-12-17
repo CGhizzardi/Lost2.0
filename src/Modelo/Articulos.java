@@ -1,15 +1,24 @@
 package Modelo;
 
+import javax.persistence.*;
+
 /** Clase Articulo */
 
-
+@Entity
+@Table(name="Articulos")
 public class Articulos {
 
     /** Atributos de la clase */
+    @Id
+    @Column(name = "codigoArticulo")
     private String codigo;
+    @Column(name = "descripcion")
     private String Descripcion;
+    @Column(name = "precioVenta")
     private double precioDeVenta;
+    @Column(name = "gastosEnvio")
     private double gastosDeEnvio;
+    @Column(name = "tiempoPreparacion")
     private int tiempoDePreparacion;
 
 
@@ -87,4 +96,3 @@ public class Articulos {
 
 
 }
-
