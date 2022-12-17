@@ -64,7 +64,7 @@ public abstract class Clientes {
     }
 
     /** Metodo constructor con sobrecarga */
-    public Clientes(String Nif,String name, String Ad, String mail, double quota, double desc) {
+    public Clientes(String Ad,String name,String Nif,  String mail, double quota, double desc) {
         this.nombre= name;
         this.domicilio= Ad;
         this.nif= Nif;

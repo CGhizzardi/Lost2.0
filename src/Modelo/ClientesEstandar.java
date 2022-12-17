@@ -26,7 +26,7 @@ public class ClientesEstandar extends Clientes {
 
     //cONSTRUCTOR 1
     public ClientesEstandar(String Nif,String name, String addres, String mail) {
-        super(name, addres, Nif, mail);
+        super(Nif,name, addres,  mail);
     }
 
 

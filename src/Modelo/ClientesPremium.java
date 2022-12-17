@@ -19,7 +19,7 @@ public class ClientesPremium extends Clientes {
     }
 
     public ClientesPremium(String Nif, String name, String Ad, String mail, double quota, double desc) {
-        super(name, Ad, Nif, mail, quota, desc);
+        super(Nif,name, Ad,  mail, quota, desc);
     }
 
 
