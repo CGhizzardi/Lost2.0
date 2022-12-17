@@ -5,15 +5,22 @@ import javax.persistence.*;
 /** Clase abstracta "Clientes" */
 
 
-@Entity
-@Table(name="clientes")
-public class Clientes {
+
+
+@Inheritance (strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name= "descuento", discriminatorType = DiscriminatorType.STRING)
+@MappedSuperclass
+public abstract class Clientes {
 
 
     /** atributos de la clase */
 
     @Id
-    @Column(name = "nif")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_cliente", unique = true)
+    private int id_cliente;
+
+    @Column(name = "nif", unique = true)
     private String nif;
 
 
@@ -26,10 +33,10 @@ public class Clientes {
     @Column(name="email")
     private String email;
 
-    @Column(name="cuotaMensual")
+    @Column(name="cuotaMensual", nullable = true)
     private double cuotaMensual;
 
-    @Column(name="descuento")
+    @Column(name="descuento", nullable = true)
     private double descuento;
 
 

@@ -64,5 +64,6 @@
     <orderEntry type="library" name="javax.persistence.api" level="project" />
     <orderEntry type="library" name="eclipse.persistence.javax" level="project" />
     <orderEntry type="library" name="hibernate.c3p0" level="project" />
+    <orderEntry type="library" name="jboss.teiid.hibernate.dialect" level="project" />
   </component>
 </module>

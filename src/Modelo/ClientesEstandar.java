@@ -1,7 +1,19 @@
 package Modelo;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /** Clase "ClientesEstandar" */
 
+
+@Entity
+@Table(name="clientes")
+@DiscriminatorValue(value = "Estandar")
 public class ClientesEstandar extends Clientes {
+
+    protected ClientesEstandar() {
+    }
 
     /**
      * Metodo constructor de la clase
@@ -13,11 +25,9 @@ public class ClientesEstandar extends Clientes {
      */
 
     //cONSTRUCTOR 1
-    public ClientesEstandar(String name, String addres, String Nif, String mail) {
+    public ClientesEstandar(String Nif,String name, String addres, String mail) {
         super(name, addres, Nif, mail);
     }
-
-
 
 
     //TO STRING
