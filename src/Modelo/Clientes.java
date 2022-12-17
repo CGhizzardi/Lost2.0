@@ -34,10 +34,10 @@ public abstract class Clientes {
     private String email;
 
     @Column(name="cuotaMensual")
-    private double cuotaMensual;
+    private float cuotaMensual;
 
     @Column(name="descuento")
-    private double descuento;
+    private float descuento;
 
 
 
@@ -64,7 +64,7 @@ public abstract class Clientes {
     }
 
     /** Metodo constructor con sobrecarga */
-    public Clientes(String Ad,String name,String Nif,  String mail, double quota, double desc) {
+    public Clientes(String Ad,String name,String Nif,  String mail, float quota, float desc) {
         this.nombre= name;
         this.domicilio= Ad;
         this.nif= Nif;
@@ -107,19 +107,19 @@ public abstract class Clientes {
         return email;
     }
 
-    public void setCuota(double cuota) {
+    public void setCuota(float cuota) {
         this.cuotaMensual = cuota;
     }
 
-    public double getCuota() {
+    public float getCuota() {
         return cuotaMensual;
     }
 
-    public void setDescuento(double descuento) {
+    public void setDescuento(float descuento) {
         this.descuento = descuento;
     }
 
-    public double getDescuento() {
+    public float getDescuento() {
         return descuento;
     }
 

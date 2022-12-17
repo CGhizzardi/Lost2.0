@@ -162,9 +162,9 @@ public class Controller {
             switch (option){
                 case 1:
                     System.out.print("Indica cuota: ");
-                    double cuota = input.nextDouble();
+                    float cuota = input.nextFloat();
                     System.out.print("Indica descuento: ");
-                    double descuento = input.nextDouble();
+                    float descuento = input.nextFloat();
 
                     ClientesPremium c1 = new ClientesPremium(nombre, addres, nif, mail, cuota, descuento );
                     CD.insertarClientePremium(c1);
@@ -316,9 +316,9 @@ public class Controller {
                         System.out.println("introduce un correo electronico");
                         String email= input.nextLine();
                         System.out.println("introduce la cuota mensual del socio");
-                        double quotaCliente= input.nextDouble();
+                        float quotaCliente= input.nextFloat();
                         System.out.println("introduce el porcentage de descuento");
-                        double porDes= input.nextDouble();
+                        float porDes= input.nextFloat();
                         ClientesPremium cP= new ClientesPremium(nif, Name, dir, email, quotaCliente, porDes);
                         CD.insertarClienteEstandar(cP);
                         pedido.setCliente(cP);

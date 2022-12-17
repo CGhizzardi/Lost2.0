@@ -86,8 +86,8 @@ public class ClientesDAO implements ClientesFactory{
         String nombre = rs.getString("nombre");
         String domicilio = rs.getString("domicilio");
         String email = rs.getString("email");
-        double cuotaMensual = rs.getInt("cuotaMensual");
-        double descuento = rs.getDouble("descuento");
+        float cuotaMensual = rs.getInt("cuotaMensual");
+        float descuento = rs.getFloat("descuento");
 
         ClientesPremium a = new ClientesPremium(nombre,domicilio,nif,email,cuotaMensual,descuento);
         return a;

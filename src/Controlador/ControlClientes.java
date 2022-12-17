@@ -45,7 +45,7 @@ public class ControlClientes {
         return modelo.getEmail();
     }
 
-    public void setCuota(double cuota) {
+    public void setCuota(long cuota) {
         modelo.setCuota(cuota);
     }
 
@@ -53,7 +53,7 @@ public class ControlClientes {
         return modelo.getCuota();
     }
 
-    public void setDescuento(double descuento) {
+    public void setDescuento(long descuento) {
         modelo.setDescuento(descuento);
     }
 

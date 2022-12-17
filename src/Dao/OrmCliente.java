@@ -58,8 +58,8 @@ Scanner input= new Scanner(System.in);
         String nombre;
         String domicilio;
         String email;
-        double cuotaMensual;
-        double descuento;
+        float cuotaMensual;
+        float descuento;
 
         System.out.println("Introduce el nif");
         nif= input.nextLine();
@@ -74,10 +74,10 @@ Scanner input= new Scanner(System.in);
         email= input.nextLine();
 
         System.out.println("Introduce el cuota mensual");
-        cuotaMensual= input.nextDouble();
+        cuotaMensual= input.nextFloat();
 
         System.out.println("Introduce el descuento");
-        descuento= input.nextDouble();
+        descuento= input.nextFloat();
 
         ClientesPremium cp = new ClientesPremium(nif,nombre,domicilio, email, cuotaMensual,descuento);
 
@@ -143,14 +143,14 @@ Scanner input= new Scanner(System.in);
 
     public void ormImprimirClientesEstandar(){
 
-        SessionFactory ormSession= new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesPremium.class).buildSessionFactory();
+        SessionFactory ormSession= new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesEstandar.class).buildSessionFactory();
         Session actualSession= ormSession.openSession();
 try {
     actualSession.beginTransaction();
 
-    List<ClientesPremium> clienteEstandar = actualSession.createQuery("from ClientesPremium").getResultList();
+    List<ClientesEstandar> clienteEstandar = actualSession.createQuery("from ClientesEstandar").getResultList();
 
-    for (ClientesPremium cEs:clienteEstandar) {
+    for (ClientesEstandar cEs:clienteEstandar) {
 
         System.out.println(cEs);
 

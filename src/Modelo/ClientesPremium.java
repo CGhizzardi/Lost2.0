@@ -18,7 +18,7 @@ public class ClientesPremium extends Clientes {
     public ClientesPremium() {
     }
 
-    public ClientesPremium(String Nif, String name, String Ad, String mail, double quota, double desc) {
+    public ClientesPremium(String Nif, String name, String Ad, String mail, float quota, float desc) {
         super(Nif,name, Ad,  mail, quota, desc);
     }
 
@@ -44,8 +44,5 @@ public class ClientesPremium extends Clientes {
     public float descuentoEnv(){
         return (float)0.2;
     }
-
-
-
 
 }
