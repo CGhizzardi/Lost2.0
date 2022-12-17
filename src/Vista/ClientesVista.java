@@ -32,13 +32,13 @@ public class ClientesVista {
                     controller.ormMostarClientes(user, pass);
                     break;
                 case '3':
-                    controller.mostrarCliEs(user,pass);
+                    controller.ormShowClienteEstandar();
                     break;
                 case '4':
                     controller.ormShowClientesPre(user,pass);
                     break;
                 case '5':
-                    controller.eliminarC(user,pass);
+                    controller.ormDeleteCliente(user,pass);
                     break;
                 case '0':
                     salir = true;

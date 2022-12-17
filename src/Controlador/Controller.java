@@ -110,9 +110,8 @@ public class Controller {
 
     }
 
-    /** Metodo que Muestra los Clientes
-     *
-     */
+    /** Metodo que Muestra los Clientes METODO DEL PRODUCTO ANTERIOR
+
 
     public void mostrarCli(String user, String pass){
         ClientesDAO CD = new ClientesDAO(user,pass);
@@ -126,18 +125,11 @@ public class Controller {
         System.out.println(CD.obtenerClientesP());
         System.out.println("============================================================================\n");
 
-    }
+    } */
 
-    public void ormMostarClientes(String user, String pass){
-
+    public void ormMostarClientes(String user, String pass){ /** Metodo que muestra todos los clientes de ls BBDD con Hibernate */
         OrmCliente clientes= new OrmCliente(user,pass);
-
-
-
         clientes.ormImprimirClientes();
-
-
-
     }
 
 
@@ -198,7 +190,7 @@ public class Controller {
 
 
 
-
+/** Metodo que elimina clientes METODO DEL PRODUCTO ANTERIOR
     public void eliminarC(String user, String pass){
         ClientesDAO CD = new ClientesDAO(user,pass);
         mostrarCli(user,pass);
@@ -206,7 +198,18 @@ public class Controller {
         String nif= input.nextLine();
         CD.eliminarCliente(nif);
         System.out.println("Cliente eliminado.");
-    }
+    } */
+
+public void ormDeleteCliente(String user, String pass){
+    OrmCliente cliente= new OrmCliente(user, pass);
+
+    cliente.ormImprimirClientes();
+    cliente.deleteCliente();
+
+
+
+}
+
 
     public boolean existeClientePr(String user, String pass,String nif){
         String clNIF;
@@ -256,11 +259,18 @@ public class Controller {
     }
 
 
-    //Mostrar Clientes Estandar
+    /**Mostrar Clientes Estandar METODO DEL PRODUCTO ANTERIOR
     public void mostrarCliEs(String user,String pass){
         ClientesDAO CD = new ClientesDAO(user,pass);
         System.out.println(CD.obtenerClientesE());
 
+    } */
+
+
+    public void ormShowClienteEstandar(){
+        OrmCliente clienteEstandar= new OrmCliente(user, pass);
+        System.out.println("Cargando clientes Estandar");
+        clienteEstandar.ormImprimirClientesEstandar();
     }
 
     public void menuCrearPedido(String user, String pass) {
