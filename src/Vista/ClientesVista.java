@@ -29,7 +29,7 @@ public class ClientesVista {
                     controller.ormAddClienteP(user, pass);
                     break;
                 case '2':
-                    controller.ormMostarClienteEstandar(user, pass);
+                    controller.ormMostarClientes(user, pass);
                     break;
                 case '3':
                     controller.mostrarCliEs(user,pass);

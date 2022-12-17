@@ -141,28 +141,93 @@ Scanner input= new Scanner(System.in);
         }
     }
 
-    public void ormImprimirClientesEstandar(){
+    public void ormImprimirClientesEstandar() {
+
+        SessionFactory ormSession = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesEstandar.class).buildSessionFactory();
+        Session actualSession = ormSession.openSession();
+        try {
+            actualSession.beginTransaction();
+
+            List<ClientesEstandar> clienteEstandar = actualSession.createQuery("from ClientesEstandar where descuento=0").getResultList();
+
+            for (ClientesEstandar cEs : clienteEstandar) {
+
+                System.out.println(cEs);
+
+                actualSession.getTransaction().commit();
+
+
+            }
+        } finally {
+            actualSession.close();
+        }
+    }
+        public void ormImprimirClientesPremium(){
+
+            SessionFactory ormSession= new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesPremium.class).buildSessionFactory();
+            Session actualSession= ormSession.openSession();
+            try {
+                actualSession.beginTransaction();
+
+                List<ClientesPremium> clienteP = actualSession.createQuery("from ClientesEstandar where descuento!=0").getResultList();
+
+                for (ClientesPremium cPs:clienteP) {
+
+                    System.out.println(cPs);
+
+                    actualSession.getTransaction().commit();
+                }
+            } finally {
+                actualSession.close();
+            }
+
+
+    }
+    public void ormImprimirClientes(){
+
+        List<ClientesPremium> clienteP;
+        List<ClientesEstandar> clienteEstandar;
 
         SessionFactory ormSession= new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesEstandar.class).buildSessionFactory();
         Session actualSession= ormSession.openSession();
-try {
-    actualSession.beginTransaction();
 
-    List<ClientesEstandar> clienteEstandar = actualSession.createQuery("from ClientesEstandar").getResultList();
+            try {
+                actualSession.beginTransaction();
 
-    for (ClientesEstandar cEs:clienteEstandar) {
+                clienteEstandar = actualSession.createQuery("from ClientesEstandar where descuento=0").getResultList();
+                actualSession.getTransaction().commit();
+            }finally {
+                actualSession.close();
+        }
 
-        System.out.println(cEs);
 
-        actualSession.getTransaction().commit();;
+        SessionFactory ormSessions= new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesPremium.class).buildSessionFactory();
+        Session actualSessions= ormSessions.openSession();
 
+            try {
+                actualSessions.beginTransaction();
+
+                clienteP = actualSessions.createQuery("from ClientesPremium where descuento!=0").getResultList();
+                actualSessions.getTransaction().commit();
+            }finally {
+            actualSessions.close();
+        }
+
+        System.out.println(" ");
+        System.out.println(" ");
+        System.out.println("------------------------------------------------Lista de clientes Premium------------------------------------------------");
+        for (ClientesPremium cPs:clienteP) {
+            System.out.println(cPs);
+
+        }
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+
+        System.out.println("------------------------------------------------Lista de clientes Estandar-----------------------------------------------");
+        for (ClientesEstandar cEs : clienteEstandar) {
+            System.out.println(cEs);
+        }
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------");
     }
-} finally {
-    actualSession.close();
-}
-
-    }
-
 
 
 

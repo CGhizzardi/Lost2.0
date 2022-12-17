@@ -58,6 +58,8 @@ public abstract class Clientes {
         this.nombre= name;
         this.domicilio= Ad;
         this.email= mail;
+        this.cuotaMensual=0;
+        this.descuento=0;
     }
 
     public Clientes() {

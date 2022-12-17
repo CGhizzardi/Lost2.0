@@ -128,11 +128,13 @@ public class Controller {
 
     }
 
-    public void ormMostarClienteEstandar(String user, String pass){
+    public void ormMostarClientes(String user, String pass){
 
         OrmCliente clientes= new OrmCliente(user,pass);
 
-        clientes.ormImprimirClientesEstandar();
+
+
+        clientes.ormImprimirClientes();
 
 
 
