@@ -3,6 +3,7 @@ package Controlador;
 import Dao.ArticulosDAO;
 import Dao.ClientesDAO;
 import Dao.OrmCliente;
+import Dao.OrmArticulos;
 import Dao.PedidosDAO;
 import Modelo.*;
 
@@ -59,7 +60,7 @@ public class Controller {
 
     }
 
-    /** Metodo que agrega los articulos a la Base de datos */
+    /** Metodo que agrega los articulos a la Base de datos
     public void addarticulo (String user, String pass) {
         ArticulosDAO AD = new ArticulosDAO(user, pass);
         String codigos, descripciones;
@@ -81,12 +82,19 @@ public class Controller {
 
         AD.insertarArticulo(artic);
         //datosPr.getListaArticulos().add(artic);
+    }*/
+
+
+    public void OrmAddArticulo(String user, String pass){
+        OrmArticulos articulo= new OrmArticulos(user, pass);
+        Articulos articulos= articulo.crearArticulo();
+        articulo.insArticulo(articulos);
     }
 
 
-    /** Metodo que Muestra los Articulos
+    /** Metodo que Muestra los Articulos METODO DEL PRODUCTO ANTERIOR
      *
-     */
+
 
     public void MostrarArticulo(String user, String pass) {
 
@@ -108,7 +116,15 @@ public class Controller {
 
         System.out.println(AD.obtenerArticulo(user,pass,codigoIngresado));
 
+    } */
+
+    public void ormMostarArticulo(String user, String pass){ /** Metodo que muestra loas articulos usando Hibernate */
+
+        OrmArticulos articulos= new OrmArticulos(user,pass);
+
+        articulos.ormImprimirArticulos();
     }
+
 
     /** Metodo que Muestra los Clientes METODO DEL PRODUCTO ANTERIOR
 

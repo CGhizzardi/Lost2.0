@@ -2,8 +2,8 @@ package Vista;
 
 
 import Controlador.Controller;
+
 import java.util.Scanner;
-import Dao.*;
 
 
 public class ArticuloVista {
@@ -32,10 +32,10 @@ public class ArticuloVista {
             switch (opcio) {
                 case '1':
 
-                    controller.addarticulo(user, pass);
+                    controller.OrmAddArticulo(user, pass);
                     break;
                 case '2':
-                    controller.MostrarArticulo(user, pass);
+                    controller.ormMostarArticulo(user, pass);
                     break;
                 case '0':
                     salir = true;
