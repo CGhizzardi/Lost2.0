@@ -26,7 +26,7 @@ public class ClientesVista {
             opcio = pedirOpcion();
             switch (opcio) {
                 case '1':
-                    controller.ormAddClienteP(user, pass);
+                    controller.ormAddClientes(user, pass);
                     break;
                 case '2':
                     controller.ormMostarClientes(user, pass);

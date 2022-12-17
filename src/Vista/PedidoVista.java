@@ -1,12 +1,9 @@
 package Vista;
 
-import Controlador.*;
+import Controlador.ControlClientes;
+import Controlador.Controller;
 
-
-import java.time.LocalDateTime;
 import java.util.Scanner;
-
-import static java.lang.Integer.parseInt;
 
 public class PedidoVista {
 
@@ -41,7 +38,7 @@ public class PedidoVista {
 
             switch (resp) {
                 case 1:
-                    controller.menuCrearPedido(user, pass);
+                    controller.ormCrearPedidos();
                     break;
                 case 2:
                     controller.menuEliminarPedido(user, pass);

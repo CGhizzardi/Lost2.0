@@ -1,22 +1,42 @@
 package Modelo;
-import java.text.SimpleDateFormat;
-import java.time.*;
+
+import javax.persistence.*;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
+
+
+@Entity
+@Table(name="pedidos")
 public class Pedido {
 
     /**
      * Atributos de la clase
      */
 
-
+    @Id
+    @Column(name="numero Pedido")
     private int numeroPedido;
+    @Column(name="nifCliente")
+    String nifCliente;
     private Clientes cliente;
+    @OneToOne
+    @JoinColumn(name = "articulo_codigo_articulo")
     private Articulos articulo;
+    @Column(name="cantidadArticulos")
     private int cantidadArticulos;
+    @Column(name="fechaHora")
     private LocalDateTime fechaHora;
+    @Column(name="precioTotal")
     private double precioTotal;
     private boolean enviado;
+
+
+
+
+
+
 
 
     /**

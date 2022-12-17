@@ -44,7 +44,7 @@ public class OrmCliente {
         } while (!salir);
     }
 
-    public void ormMenuDeleteCliente(){
+    public void ormMenuDeleteCliente(){ /**Metodo que contiene el menu de borrar clientes */
     boolean salir = false;
     char opcio;
 
@@ -60,10 +60,10 @@ public class OrmCliente {
         opcio = pedirOpcion();
         switch (opcio) {
             case '1':
-                ormdeleteClienteEstandar();
+                ormDeleteClienteEstandar();
                 break;
             case '2':
-                ormdeleteClientePremium();
+                ormDeleteClientePremium();
                 break;
             case '0':
                 salir = true;
@@ -262,7 +262,7 @@ public class OrmCliente {
     }
 
 
-    public void ormdeleteClientePremium() {   /** Metodo que borra un cliente Premium seleccionado con el nif */
+    public void ormDeleteClientePremium() {   /** Metodo que borra un cliente Premium seleccionado con el nif */
 
         SessionFactory ormSessions = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesPremium.class).buildSessionFactory();
         Session actualSessions = ormSessions.openSession();
@@ -284,7 +284,7 @@ public class OrmCliente {
         }
     }
 
-    public void ormdeleteClienteEstandar() {   /** Metodo que borra un cliente Premium seleccionado con el nif */
+    public void ormDeleteClienteEstandar() {   /** Metodo que borra un cliente Premium seleccionado con el nif */
 
         SessionFactory ormSessions = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesEstandar.class).buildSessionFactory();
         Session actualSessions = ormSessions.openSession();
@@ -306,7 +306,103 @@ public class OrmCliente {
         }
     }
 
-}
+    public ClientesEstandar ormObtenerCE(String user, String pass) {  /** Metodo que extrae y guarda un cliente de la base de datos */
+        OrmCliente c = new OrmCliente(user, pass);
+        ClientesEstandar ce;
+        int idc;
+        SessionFactory ormSessions = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesEstandar.class).buildSessionFactory();
+        Session actualSessions = ormSessions.openSession();
+
+        c.ormImprimirClientesEstandar();
+        System.out.println("Selecciona el id cliente\n");
+        idc = input.nextInt();
+
+        try {
+            actualSessions.beginTransaction();
+            ce = actualSessions.get(ClientesEstandar.class, idc);
+            actualSessions.getTransaction().commit();
+        } finally {
+            actualSessions.close();
+        }
+        return ce;
+    }
+
+    public ClientesPremium ormObtenerPR(String user, String pass) {  /** Metodo que extrae y guarda un cliente de la base de datos */
+        OrmCliente c = new OrmCliente(user, pass);
+        ClientesPremium pr;
+        int idc;
+        SessionFactory ormSessions = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesPremium.class).buildSessionFactory();
+        Session actualSessions = ormSessions.openSession();
+
+        c.ormImprimirClientesPremium();
+        System.out.println("Selecciona el id cliente\n");
+        idc = input.nextInt();
+
+        try {
+            actualSessions.beginTransaction();
+            pr = actualSessions.get(ClientesPremium.class, idc);
+            actualSessions.getTransaction().commit();
+        } finally {
+            actualSessions.close();
+        }
+        return pr;
+    }
+
+        public String nifClienteES(ClientesEstandar x) { /** Metodo que extrae el nif de un cliente */
+            String nif;
+            nif = x.getNif();
+            return nif;
+        }
+
+        public String nifClientePR(ClientesPremium x) { /** Metodo que extrae el nif de un cliente */
+        String nif;
+        nif = x.getNif();
+        return nif;
+    }
+
+    public String crearClientePedido(String user, String pass) {
+        boolean salir = false;
+        char opcio;
+
+        ClientesEstandar est;
+        ClientesPremium premium;
+        int idc;
+        String nif = null;
+        do {
+            System.out.println("1. Añadir Clientes Estandar");
+            System.out.println("2. Añadir Clientes Premium");
+            System.out.println("0. Salir");
+            opcio = pedirOpcion();
+            switch (opcio) {
+                case '1':
+                    est = crearCliE();
+                    insClienteEs(est);
+                    nif=nifClienteES(est);
+                    salir = true;
+                    break;
+                case '2':
+                    premium = crearCliP();
+                    insClientePr(premium);
+                    nif=nifClientePR(premium);
+                    salir = true;
+                    break;
+            }
+        } while (!salir);
+
+        return nif;
+    }
+
+
+
+
+    }
+
+
+
+
+
+
+
 
 
 

@@ -74,4 +74,33 @@ public class OrmArticulos {
         }
 
     }
+
+
+    public Articulos ormObtenerArticulo(){
+
+        Articulos ar;
+        String codArt;
+        String seleccion;
+        ormImprimirArticulos();
+        System.out.println("Ingrese el codigo del articulo deseado");
+        seleccion= input.nextLine();
+        SessionFactory ormSession = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Articulos.class).buildSessionFactory();
+        Session actualSession = ormSession.openSession();
+        try {
+            actualSession.beginTransaction();
+            ar = actualSession.get(Articulos.class, seleccion);
+            actualSession.getTransaction().commit();
+        } finally {
+            actualSession.close();
+        }
+
+
+        return ar;
+    }
+
+
+
+
+
+
 }

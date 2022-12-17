@@ -1,10 +1,6 @@
 package Controlador;
 
-import Dao.ArticulosDAO;
-import Dao.ClientesDAO;
-import Dao.OrmCliente;
-import Dao.OrmArticulos;
-import Dao.PedidosDAO;
+import Dao.*;
 import Modelo.*;
 
 import java.time.LocalDateTime;
@@ -197,7 +193,7 @@ public class Controller {
 
 
     /** METODO QUE AGREGA UN CLIENTE USANDO HIBERNATE */
-    public void ormAddClienteP(String user, String pass){
+    public void ormAddClientes(String user, String pass){
         System.out.println("Que tipo de cliente deseas insertar?");
         OrmCliente cliente= new OrmCliente(user, pass);
         cliente.menuInsCliente(user, pass);
@@ -289,6 +285,8 @@ public void ormDeleteCliente(String user, String pass){
         clienteEstandar.ormImprimirClientesEstandar();
     }
 
+
+    /**Metodo para crear Pediidos METODO DEL PRODUCTO ANTERIOR */
     public void menuCrearPedido(String user, String pass) {
 
         ClientesDAO CD = new ClientesDAO(user, pass);
@@ -397,6 +395,32 @@ public void ormDeleteCliente(String user, String pass){
         pedido.setEnviado(pedido.getEnviado());
         PD.insertarPedido(pedido);                                                 //pedido guardado en array
     }
+
+
+    public void ormCrearPedidos(){
+        String nifCl;
+        int cantArticulo;
+        Articulos genero;
+        String codArticulo;
+        OrmPedidos pedido= new OrmPedidos();
+        OrmArticulos articulo= new OrmArticulos(user,pass);
+
+        nifCl=pedido.ormSeleccionarNifCliente(user, pass);
+        System.out.println(nifCl);
+
+        genero= articulo.ormObtenerArticulo();
+        codArticulo= genero.getCodigo();
+        System.out.println(codArticulo);
+
+        System.out.println("introduce la cantidad de articulos del pedido");
+        cantArticulo= input.nextInt();
+
+
+
+    }
+
+
+
 
     public void menuEliminarPedido(String user, String pass){
         System.out.println("MENU PARA ELIMINAR PEDIDOS\n");
