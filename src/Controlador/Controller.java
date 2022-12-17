@@ -128,6 +128,17 @@ public class Controller {
 
     }
 
+    public void ormMostarClienteEstandar(String user, String pass){
+
+        OrmCliente clientes= new OrmCliente(user,pass);
+
+        clientes.ormImprimirClientesEstandar();
+
+
+
+    }
+
+
     //AGREGAR CLIENTE
     public void addCliente(String user, String pass){
         ClientesDAO CD= new ClientesDAO(user,pass);

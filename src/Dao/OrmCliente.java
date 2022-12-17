@@ -141,19 +141,21 @@ Scanner input= new Scanner(System.in);
         }
     }
 
-    public void imprimirClientesEstandar(){
+    public void ormImprimirClientesEstandar(){
 
-        SessionFactory ormSession= new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesEstandar.class).buildSessionFactory();
+        SessionFactory ormSession= new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesPremium.class).buildSessionFactory();
         Session actualSession= ormSession.openSession();
 try {
     actualSession.beginTransaction();
 
-    List<ClientesEstandar> clienteEstandar = actualSession.createQuery("from Clientes cl where cl.cuataMensual != 0").getResultList();
+    List<ClientesPremium> clienteEstandar = actualSession.createQuery("from ClientesPremium").getResultList();
 
-    for (ClientesEstandar cEs:clienteEstandar) {
+    for (ClientesPremium cEs:clienteEstandar) {
 
         System.out.println(cEs);
-        
+
+        actualSession.getTransaction().commit();;
+
     }
 } finally {
     actualSession.close();

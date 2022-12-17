@@ -33,10 +33,10 @@ public abstract class Clientes {
     @Column(name="email")
     private String email;
 
-    @Column(name="cuotaMensual", nullable = true)
+    @Column(name="cuotaMensual")
     private double cuotaMensual;
 
-    @Column(name="descuento", nullable = true)
+    @Column(name="descuento")
     private double descuento;
 
 
