@@ -162,28 +162,30 @@ Scanner input= new Scanner(System.in);
             actualSession.close();
         }
     }
-        public void ormImprimirClientesPremium(){
+        public void ormImprimirClientesPremium(){  /** Imprime una linta de todos los clientes Premium */
 
             SessionFactory ormSession= new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesPremium.class).buildSessionFactory();
             Session actualSession= ormSession.openSession();
+
             try {
                 actualSession.beginTransaction();
 
-                List<ClientesPremium> clienteP = actualSession.createQuery("from ClientesEstandar where descuento!=0").getResultList();
+                List<ClientesPremium> clienteP = actualSession.createQuery("from ClientesPremium where descuento!=0").getResultList();
 
+                System.out.println("------------------------------------------------Lista de clientes Premium------------------------------------------------");
                 for (ClientesPremium cPs:clienteP) {
-
                     System.out.println(cPs);
-
-                    actualSession.getTransaction().commit();
                 }
+
+                actualSession.getTransaction().commit();
+                System.out.println("-------------------------------------------------------------------------------------------------------------------------");
             } finally {
                 actualSession.close();
             }
 
 
     }
-    public void ormImprimirClientes(){
+    public void ormImprimirClientes(){   /** Imprime todos los clientes de la base de datos */
 
         List<ClientesPremium> clienteP;
         List<ClientesEstandar> clienteEstandar;

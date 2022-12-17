@@ -141,8 +141,8 @@ public class Controller {
     }
 
 
-    //AGREGAR CLIENTE
-    public void addCliente(String user, String pass){
+    //AGREGAR CLIENTE METODO PRODUCTO ANTERIOR
+    /**public void addCliente(String user, String pass){
         ClientesDAO CD= new ClientesDAO(user,pass);
         System.out.print("Introduce el NIF: ");
         String nif = input.nextLine();
@@ -184,7 +184,11 @@ public class Controller {
                     System.out.print("Debes introducir un número: ");
             } input.reset();
         }input.reset();
-    }
+    } */
+
+
+
+    /** METODO QUE AGREGA UN CLIENTE USANDO HIBERNATE */
     public void ormAddClienteP(String user, String pass){
         System.out.println("Que tipo de cliente deseas insertar?");
         OrmCliente cliente= new OrmCliente(user, pass);
@@ -235,11 +239,22 @@ public class Controller {
         return false;
     }
 
-    //Mostrar Clientes Premium
+    /**Mostrar Clientes Premium METODO DEL PRODUCTO ANTERIOR
     public void mostrarCliPr(String user,String pass){
         ClientesDAO CD = new ClientesDAO(user,pass);
         System.out.println(CD.obtenerClientesP());
+    }  */
+
+
+    /** METODO QUE MUESTRA CLIENTES PREMIUM */
+
+    public void ormShowClientesPre(String user, String pass){
+
+        OrmCliente clientePremium= new OrmCliente(user, pass);
+        System.out.println("Cargando clientes Premium");
+        clientePremium.ormImprimirClientesPremium();
     }
+
 
     //Mostrar Clientes Estandar
     public void mostrarCliEs(String user,String pass){

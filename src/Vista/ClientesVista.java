@@ -35,7 +35,7 @@ public class ClientesVista {
                     controller.mostrarCliEs(user,pass);
                     break;
                 case '4':
-                    controller.mostrarCliPr(user,pass);
+                    controller.ormShowClientesPre(user,pass);
                     break;
                 case '5':
                     controller.eliminarC(user,pass);
