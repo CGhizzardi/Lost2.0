@@ -1,11 +1,17 @@
 package Modelo;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /** Clase abstracta "ClientesPremium" */
 //CLIENTE PREMIUM
 //CUOTA ANUAL - 30€
 //20% DE DESCUENTO EN LOS GASTOS DE ENVIO DE CADA PEDIDO.
 
-
+@Entity
+@Table(name="clientes")
+@DiscriminatorValue(value = "Premium")
 public class ClientesPremium extends Clientes {
 
 

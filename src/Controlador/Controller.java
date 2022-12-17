@@ -173,11 +173,9 @@ public class Controller {
         }input.reset();
     }
     public void ormAddClienteP(String user, String pass){
-
+        System.out.println("Que tipo de cliente deseas insertar?");
         OrmCliente cliente= new OrmCliente(user, pass);
-        Clientes c;
-        c= cliente.crearCliP();
-        cliente.insClientePr(c);
+        cliente.menuInsCliente(user, pass);
 
     }
 
