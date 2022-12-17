@@ -204,7 +204,7 @@ public void ormDeleteCliente(String user, String pass){
     OrmCliente cliente= new OrmCliente(user, pass);
 
     cliente.ormImprimirClientes();
-    cliente.deleteCliente();
+    cliente.ormMenuDeleteCliente();
 
 
 

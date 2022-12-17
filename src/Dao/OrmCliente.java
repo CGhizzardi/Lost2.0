@@ -44,6 +44,36 @@ public class OrmCliente {
         } while (!salir);
     }
 
+    public void ormMenuDeleteCliente(){
+    boolean salir = false;
+    char opcio;
+
+    ClientesEstandar est;
+    ClientesPremium premium;
+    System.out.println("Los clientes Estandar son los que no pagan una cuota mensual y los Premium son aquellos que si");
+    System.out.println("Que tipo de cliente desea eliminar?");
+
+        do {
+        System.out.println("1. Eliminar un Cliente Estandar");
+        System.out.println("2. Eliminar un Cliente Premium");
+        System.out.println("0. Salir");
+        opcio = pedirOpcion();
+        switch (opcio) {
+            case '1':
+                ormdeleteClienteEstandar();
+                break;
+            case '2':
+                ormdeleteClientePremium();
+                break;
+            case '0':
+                salir = true;
+        }
+    } while (!salir);
+}
+
+
+
+
     char pedirOpcion() {
         String resp;
         System.out.println("Elige una opción (1,2 o 0):");
@@ -232,7 +262,7 @@ public class OrmCliente {
     }
 
 
-    public void deleteCliente() {
+    public void ormdeleteClientePremium() {   /** Metodo que borra un cliente Premium seleccionado con el nif */
 
         SessionFactory ormSessions = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesPremium.class).buildSessionFactory();
         Session actualSessions = ormSessions.openSession();
@@ -245,30 +275,37 @@ public class OrmCliente {
         try {
             actualSessions.beginTransaction();
             ClientesPremium cpr = actualSessions.get(ClientesPremium.class, id);
-
-            if (cpr != null) {
-
-                actualSessions.delete(cpr);
-                actualSessions.getTransaction().commit();
-                System.out.println("registro eliminado.");
-            } else if (cpr == null) {
-                actualSessions.close();
-
-                ormSessions = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesEstandar.class).buildSessionFactory();
-                ClientesEstandar ces= actualSessions.get(ClientesEstandar.class, id);
-                actualSessions = ormSessions.openSession();
-                actualSessions.delete(ces);
-                actualSessions.getTransaction().commit();
-                System.out.println("registro eliminado.");
-            }
-
+             actualSessions.delete(cpr);
+             actualSessions.getTransaction().commit();
+             System.out.println("registro eliminado.");
 
         } finally {
             actualSessions.close();
         }
-
-
     }
+
+    public void ormdeleteClienteEstandar() {   /** Metodo que borra un cliente Premium seleccionado con el nif */
+
+        SessionFactory ormSessions = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesEstandar.class).buildSessionFactory();
+        Session actualSessions = ormSessions.openSession();
+        int id;
+
+        System.out.println("Introduce el id del cliente que deseas eliminar\n");
+        id = input.nextInt();
+        System.out.println(" ");
+
+        try {
+            actualSessions.beginTransaction();
+            ClientesEstandar cpr = actualSessions.get(ClientesEstandar.class, id);
+            actualSessions.delete(cpr);
+            actualSessions.getTransaction().commit();
+            System.out.println("registro eliminado.");
+
+        } finally {
+            actualSessions.close();
+        }
+    }
+
 }
 
 
