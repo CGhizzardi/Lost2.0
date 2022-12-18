@@ -306,16 +306,16 @@ public class OrmCliente {
         }
     }
 
-    public ClientesEstandar ormObtenerCE(String user, String pass) {  /** Metodo que extrae y guarda un cliente de la base de datos */
+    public ClientesEstandar ormObtenerCE(String user, String pass,int id ) {  /** Metodo que extrae y guarda un cliente de la base de datos */
         OrmCliente c = new OrmCliente(user, pass);
         ClientesEstandar ce;
-        int idc;
+        int idc=id;
         SessionFactory ormSessions = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesEstandar.class).buildSessionFactory();
         Session actualSessions = ormSessions.openSession();
 
-        c.ormImprimirClientesEstandar();
-        System.out.println("Selecciona el id cliente\n");
-        idc = input.nextInt();
+        //c.ormImprimirClientesEstandar();
+        //System.out.println("Selecciona el id cliente\n");
+        //idc = input.nextInt();
 
         try {
             actualSessions.beginTransaction();
@@ -327,16 +327,16 @@ public class OrmCliente {
         return ce;
     }
 
-    public ClientesPremium ormObtenerPR(String user, String pass) {  /** Metodo que extrae y guarda un cliente de la base de datos */
+    public ClientesPremium ormObtenerPR(String user, String pass, int id) {  /** Metodo que extrae y guarda un cliente de la base de datos */
         OrmCliente c = new OrmCliente(user, pass);
         ClientesPremium pr;
-        int idc;
+        int idc= id;
         SessionFactory ormSessions = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(ClientesPremium.class).buildSessionFactory();
         Session actualSessions = ormSessions.openSession();
 
-        c.ormImprimirClientesPremium();
-        System.out.println("Selecciona el id cliente\n");
-        idc = input.nextInt();
+        //c.ormImprimirClientesPremium();
+        //System.out.println("Selecciona el id cliente\n");
+        //idc = input.nextInt();
 
         try {
             actualSessions.beginTransaction();
@@ -371,7 +371,6 @@ public class OrmCliente {
         do {
             System.out.println("1. Añadir Clientes Estandar");
             System.out.println("2. Añadir Clientes Premium");
-            System.out.println("0. Salir");
             opcio = pedirOpcion();
             switch (opcio) {
                 case '1':
@@ -391,6 +390,28 @@ public class OrmCliente {
 
         return nif;
     }
+
+public int ormIntroduceIdClienteEstandar(String user, String pass){
+
+        int id = 0;
+
+                ormImprimirClientesEstandar();
+                System.out.println("Intruduce el Id del cliente que deseas facturar");
+
+    id= input.nextInt();
+    return id;
+}
+    public int ormIntroduceIdClientePremium(String user, String pass){
+
+        int id = 0;
+
+        ormImprimirClientesPremium();
+        System.out.println("Intruduce el Id del cliente que deseas facturar");
+
+        id= input.nextInt();
+        return id;
+    }
+
 
 
 

@@ -18,8 +18,8 @@ public class ClientesPremium extends Clientes {
     public ClientesPremium() {
     }
 
-    public ClientesPremium(String Nif, String name, String Ad, String mail, float quota, float desc) {
-        super(Nif,name, Ad,  mail, quota, desc);
+    public ClientesPremium(String nif, String name, String Ad, String mail, float quota, float desc) {
+        super(nif,name, Ad,  mail, quota, desc);
     }
 
 

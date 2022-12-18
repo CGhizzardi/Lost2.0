@@ -14,7 +14,7 @@ public class Test_jUnit extends TestCase{
     public void testPrecioEnvio(){  // se hace un test de la funcion (PrecioEnvio) sin descuento.
         escenario();
         double precioDeVenta= 10;
-        double cantidadArticulos = 50;
+        int cantidadArticulos = 50;
         double gastosEnvio = 5;
         double descuento= 0;
         double resultado= 505;

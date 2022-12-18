@@ -16,28 +16,40 @@ public class Pedido {
      */
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="numero Pedido")
     private int numeroPedido;
     @Column(name="nifCliente")
-    String nifCliente;
+    private String nifCliente;
+    @Transient
     private Clientes cliente;
-    @OneToOne
-    @JoinColumn(name = "articulo_codigo_articulo")
+
+    @Transient
     private Articulos articulo;
+    @Column(name="articulo")
+    String codArticulo;
     @Column(name="cantidadArticulos")
     private int cantidadArticulos;
     @Column(name="fechaHora")
     private LocalDateTime fechaHora;
     @Column(name="precioTotal")
     private double precioTotal;
+    @Transient
     private boolean enviado;
 
 
+    public Pedido() {
+    }
 
+    public Pedido(String nifC, String codArticulo, int catArt) {
 
-
-
-
+        this.nifCliente=nifC;
+        this.codArticulo= codArticulo;
+        this.cantidadArticulos= catArt;
+        this.precioTotal=0;
+        this.fechaHora=null;
+        this.enviado= false;
+    }
 
     /**
      * Metodos Getters y Setters
@@ -95,6 +107,9 @@ public class Pedido {
     public void setPrecioTotal(double precioTotal) {
         this.precioTotal = precioEnvio(articulo.getPrecioDeVenta(), cantidadArticulos, articulo.getGastosDeEnvio(), cliente.getDescuento());
     }
+    public void setPrecioTotal2(double pTotal){
+        this.precioTotal=pTotal;
+    }
 
     public double getPrecioTotal() {
         return precioTotal;
@@ -134,7 +149,7 @@ public class Pedido {
     */
 
     //Funcion para calcular el precio TOTAL del pedido (precio de todos los articulos + envio - descuento)
-    public double precioEnvio(double precioDeVenta, double cantidadArticulos, double gastosEnvio, double descuento) {
+    public double precioEnvio(double precioDeVenta, int cantidadArticulos, double gastosEnvio, double descuento) {
         double precio = precioDeVenta * cantidadArticulos;
         if (descuento != 0) {
             return precio + ((1-(descuento / 100)) * gastosEnvio);
@@ -142,6 +157,20 @@ public class Pedido {
             return precio + gastosEnvio;
         }
 
+    }
+
+
+    public double precioEnvio2(Articulos ar, int cantArt, double gastEnv, float desc){ /** Metodo que calcula el precio de envio total */
+        float pdv;
+        double precio;
+
+        pdv= (float) ar.getPrecioDeVenta();
+        precio=  pdv*cantArt;
+        if(desc>0){
+            return precio + ((1-(desc / 100)) * gastEnv);
+        } else{
+            return precio+ gastEnv;
+        }
     }
 
     @Override

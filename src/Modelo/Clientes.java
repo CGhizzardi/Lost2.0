@@ -66,18 +66,22 @@ public abstract class Clientes {
     }
 
     /** Metodo constructor con sobrecarga */
-    public Clientes(String Nif,String name,String Ad, String mail, float quota, float desc) {
+    public Clientes(String nif,String name,String Ad, String mail, float quota, float desc) {
         this.nombre= name;
         this.domicilio= Ad;
-        this.nif= Nif;
+        this.nif= nif;
         this.email= mail;
         this.cuotaMensual = quota;
         this.descuento = desc;
     }
 
 
+
+
     /** Metodos Getter y setters de la clase */
 
+
+    public int getId_cliente() { return id_cliente; }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

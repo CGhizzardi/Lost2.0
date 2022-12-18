@@ -399,22 +399,55 @@ public void ormDeleteCliente(String user, String pass){
 
     public void ormCrearPedidos(){
         String nifCl;
+        int idCl;
         int cantArticulo;
+        double prTotal;
+        double gastEnv;
+        boolean env;
+        float des;
+        LocalDateTime fecha;
         Articulos genero;
         String codArticulo;
+        Pedido pe;
         OrmPedidos pedido= new OrmPedidos();
         OrmArticulos articulo= new OrmArticulos(user,pass);
-
+        OrmCliente cliente= new OrmCliente(user,pass);
+        /** Obtencion del nif del cliente */
         nifCl=pedido.ormSeleccionarNifCliente(user, pass);
         System.out.println(nifCl);
 
+
+        /** Obtencion del codigo del Articulos */
         genero= articulo.ormObtenerArticulo();
         codArticulo= genero.getCodigo();
         System.out.println(codArticulo);
 
+        /** Obtencion de los gastos de envio */
+
+        gastEnv= genero.getGastosDeEnvio();
+
+        /** Obtencion de Descuento del cliente */
+        cliente.ormImprimirClientes();
+        System.out.println("Introduce nuevamente el id del cliente seleccionado");
+        idCl= input.nextInt();
+         des=pedido.ormObtenerDePrem(idCl);
+
+        /** Obtencion de la cantidad de Articulos */
         System.out.println("introduce la cantidad de articulos del pedido");
         cantArticulo= input.nextInt();
 
+        /** Creacion del pedido con metodo constructor */
+        pe= new Pedido(nifCl,codArticulo,cantArticulo);
+
+        /** Calculo del precio total del envio */
+        prTotal=0;
+        prTotal= (genero.getPrecioDeVenta()* cantArticulo) + ((1-(des / 100)) * gastEnv);
+        pe.setPrecioTotal2(prTotal);
+        fecha=LocalDateTime.now();
+        pe.setFechaHora(fecha);
+        env= false;
+
+        pedido.insPedido(pe);
 
 
     }
