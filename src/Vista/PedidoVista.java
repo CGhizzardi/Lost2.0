@@ -50,7 +50,7 @@ public class PedidoVista {
                     controller.menuMostrarEnviados(user, pass);
                     break;
                 case 5:
-                    controller.menuMostrarPedido(user, pass);
+                    controller.ormMostrarPedidos();
                     break;
                 case 0:
                     salir = true;

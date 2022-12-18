@@ -17,7 +17,7 @@ public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="numero Pedido")
+    @Column(name="numeroPedido")
     private int numeroPedido;
     @Column(name="nifCliente")
     private String nifCliente;
@@ -175,35 +175,47 @@ public class Pedido {
 
     @Override
     public String toString() {
-        if (enviado) {
-            return "\n--------------------------------------------------" +
-                    "\nNumero del Pedido= " + numeroPedido +
-                    "\nfechaHora= " + fechaHora +
-                    "\nNif del cliente= " + cliente.getNif() +
-                    "\nNombre del Cliente= " + cliente.getNombre() +
-                    "\nArticulo codigo= " + articulo.getCodigo() +
-                    "\nDescripción= " + articulo.getDescripcion() +
-                    "\nCantidad= " + cantidadArticulos +
-                    "\nPrecio unidad= " + articulo.getPrecioDeVenta() +
-                    "\nGastos de envio= " + articulo.getGastosDeEnvio() +
-                    "\nPrecio total(con DESCUENTO, si procede)= " + precioEnvio(articulo.getPrecioDeVenta(), cantidadArticulos, articulo.getGastosDeEnvio(), cliente.getDescuento()) + " €" +
-                    "\nEl pedido esta ENVIADO." +
-                    "\n--------------------------------------------------\n";
-
-        } else {
-            return "\n--------------------------------------------------" +
-                    "\nNumero del Pedido= " + numeroPedido +
-                    "\nfechaHora= " + fechaHora +
-                    "\nNif del cliente= " + cliente.getNif() +
-                    "\nNombre del Cliente= " + cliente.getNombre() +
-                    "\nArticulo codigo= " + articulo.getCodigo() +
-                    "\nDescripción= " + articulo.getDescripcion() +
-                    "\nCantidad= " + cantidadArticulos +
-                    "\nPrecio unidad= " + articulo.getPrecioDeVenta() +
-                    "\nGastos de envio= " + articulo.getGastosDeEnvio() +
-                    "\nPrecio total(con DESCUENTO, si procede)= " + precioEnvio(articulo.getPrecioDeVenta(), cantidadArticulos, articulo.getGastosDeEnvio(), cliente.getDescuento()) + " €" +
-                    "\nEl pedido NO esta ENVIADO." +
-                    "\n--------------------------------------------------\n";
-        }
+        return
+                "numeroPedido=" + numeroPedido +
+                ", nifCliente='" + nifCliente + '\'' +
+                ", codArticulo='" + codArticulo + '\'' +
+                ", cantidadArticulos=" + cantidadArticulos +
+                ", fechaHora=" + fechaHora
+                ;
     }
+
+
+    // @Override
+ //   public String toString() {
+        //if (enviado) {
+   //         return "\n--------------------------------------------------" +
+     //               "\nNumero del Pedido= " + numeroPedido +
+       //             "\nfechaHora= " + fechaHora +
+         //           "\nNif del cliente= " + cliente.getNif() +
+           //         "\nNombre del Cliente= " + cliente.getNombre() +
+             //       "\nArticulo codigo= " + articulo.getCodigo() +
+               //     "\nDescripción= " + articulo.getDescripcion() +
+                 //   "\nCantidad= " + cantidadArticulos +
+                   // "\nPrecio unidad= " + articulo.getPrecioDeVenta() +
+//                    "\nGastos de envio= " + articulo.getGastosDeEnvio() +
+  //                  "\nPrecio total(con DESCUENTO, si procede)= " + precioEnvio(articulo.getPrecioDeVenta(), cantidadArticulos, articulo.getGastosDeEnvio(), cliente.getDescuento()) + " €" +
+    //                "\nEl pedido esta ENVIADO." +
+      //              "\n--------------------------------------------------\n";
+
+        //} else {
+          //  return "\n--------------------------------------------------" +
+            //        "\nNumero del Pedido= " + numeroPedido +
+              //      "\nfechaHora= " + fechaHora +
+                //    "\nNif del cliente= " + cliente.getNif() +
+                  //  "\nNombre del Cliente= " + cliente.getNombre() +
+                    //"\nArticulo codigo= " + articulo.getCodigo() +
+                  //  "\nDescripción= " + articulo.getDescripcion() +
+                    //"\nCantidad= " + cantidadArticulos +
+                   // "\nPrecio unidad= " + articulo.getPrecioDeVenta() +
+                 //   "\nGastos de envio= " + articulo.getGastosDeEnvio() +
+                   // "\nPrecio total(con DESCUENTO, si procede)= " + precioEnvio(articulo.getPrecioDeVenta(), cantidadArticulos, articulo.getGastosDeEnvio(), cliente.getDescuento()) + " €" +
+                 //   "\nEl pedido NO esta ENVIADO." +
+               //     "\n--------------------------------------------------\n";
+      //  }
+   // }
 }

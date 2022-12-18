@@ -430,7 +430,7 @@ public void ormDeleteCliente(String user, String pass){
         cliente.ormImprimirClientes();
         System.out.println("Introduce nuevamente el id del cliente seleccionado");
         idCl= input.nextInt();
-         des=pedido.ormObtenerDePrem(idCl);
+         des=pedido.ormObtenerDePedidos(idCl);
 
         /** Obtencion de la cantidad de Articulos */
         System.out.println("introduce la cantidad de articulos del pedido");
@@ -511,4 +511,16 @@ public void ormDeleteCliente(String user, String pass){
         System.out.println(PD.obtenerPedidos(user, pass));
         System.out.println("-----------------------------------------------");
     }
+
+
+    public void ormMostrarPedidos(){
+        OrmPedidos pedid= new OrmPedidos();
+        pedid.ormImprimirPedidos();
+
+    }
+
+
+
+
+
 }

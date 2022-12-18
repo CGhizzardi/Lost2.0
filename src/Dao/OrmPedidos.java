@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class OrmPedidos {
@@ -25,7 +26,7 @@ public class OrmPedidos {
 
     }
 
-    public String ormSeleccionarNifCliente(String user, String pass) {
+    public String ormSeleccionarNifCliente(String user, String pass) { /** Metodo que devuelve el nif del cliente */
         boolean salir = false;
         char opcio;
         char opcion;
@@ -88,7 +89,7 @@ public class OrmPedidos {
     }
 
 
-    public float ormObtenerDePrem(int id) { /** Metodo para Obtener el descuento */
+    public float ormObtenerDePedidos(int id) { /** Metodo para Obtener el descuento */
         float descuento = 0;
         char opcio;
         ClientesPremium cli;
@@ -120,7 +121,7 @@ public class OrmPedidos {
         return descuento;
     }
 
-    public void insPedido(Pedido ped){
+    public void insPedido(Pedido ped){ /**Metodo usado para insertar el objeto de tipo pedido en la BBDD con ORM */
 
         SessionFactory ormSessions = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Pedido.class).buildSessionFactory();
         Session actualSession = ormSessions.openSession();
@@ -139,11 +140,60 @@ public class OrmPedidos {
         } finally {
             actualSession.close();
         }
+    }
+
+    public void ormBorrarPedidos() {   /** Metodo que borra un pedido */
+
+        SessionFactory ormSessions = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Pedido.class).buildSessionFactory();
+        Session actualSessions = ormSessions.openSession();
+        int idPedido;
 
 
+
+        System.out.println("Introduce el id del Pedido que deseas eliminar\n");
+        idPedido = input.nextInt();
+        System.out.println(" ");
+
+        try {
+            actualSessions.beginTransaction();
+            ClientesPremium cpr = actualSessions.get(ClientesPremium.class, idPedido);
+            actualSessions.delete(cpr);
+            actualSessions.getTransaction().commit();
+            System.out.println("registro eliminado.");
+
+        } finally {
+            actualSessions.close();
+        }
     }
 
 
+
+
+
+
+    public void ormImprimirPedidos() {  /** Imprime una lista de todos los pedidos */
+
+        SessionFactory ormSession = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Pedido.class).buildSessionFactory();
+        Session actualSession = ormSession.openSession();
+
+        try {
+            actualSession.beginTransaction();
+
+            List<Pedido> pedidos = actualSession.createQuery("from Pedido").getResultList();
+
+            System.out.println("------------------------------------------------Lista de Pedidos---------------------------------------------------------");
+            for (Pedido pe : pedidos) {
+                System.out.println(pe);
+            }
+
+            actualSession.getTransaction().commit();
+            System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+        } finally {
+            actualSession.close();
+        }
+
+
+    }
 
 }
 
