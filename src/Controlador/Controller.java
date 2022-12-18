@@ -286,7 +286,7 @@ public void ormDeleteCliente(String user, String pass){
     }
 
 
-    /**Metodo para crear Pediidos METODO DEL PRODUCTO ANTERIOR */
+    /**Metodo para crear Pediidos METODO DEL PRODUCTO ANTERIOR
     public void menuCrearPedido(String user, String pass) {
 
         ClientesDAO CD = new ClientesDAO(user, pass);
@@ -295,11 +295,11 @@ public void ormDeleteCliente(String user, String pass){
         Pedido pedido= new Pedido();
 
         //no hace falta ingresar el codigo del pedido, la BBDD lo calcula automaticamente.
-        /*
+
         System.out.println("Añade el numero de pedido: ");
         int numeroPedido = input.nextInt();                         //numero de pedido
         pedido.setNumeroPedido(numeroPedido);
-        */
+
 
         System.out.println("1. Escoge un cliente.\n" +
                 "2. Crea un cliente.\n");
@@ -394,7 +394,7 @@ public void ormDeleteCliente(String user, String pass){
         pedido.setPrecioTotal(pedido.getPrecioTotal());
         pedido.setEnviado(pedido.getEnviado());
         PD.insertarPedido(pedido);                                                 //pedido guardado en array
-    }
+    } */
 
 
     public void ormCrearPedidos(){
