@@ -483,6 +483,14 @@ public void ormDeleteCliente(String user, String pass){
             }
         }
     }
+
+    public void ormEliminarPedido(){
+        OrmPedidos pedido= new OrmPedidos();
+        pedido.ormBorrarPedidos();
+
+    }
+
+
     public void menuMostrarPendientesEnvio(String user, String pass){
         PedidosDAO PD = new PedidosDAO(user, pass);
         System.out.println("\nLista de los pedidos PENDIENTES de envio:\n");

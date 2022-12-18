@@ -41,7 +41,7 @@ public class PedidoVista {
                     controller.ormCrearPedidos();
                     break;
                 case 2:
-                    controller.menuEliminarPedido(user, pass);
+                    controller.ormEliminarPedido();
                     break;
                 case 3:
                     controller.menuMostrarPendientesEnvio(user, pass);
